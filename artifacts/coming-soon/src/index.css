@@ -1322,26 +1322,6 @@ footer > a:last-child {
     font-size: 16px;
   }
   .offering-tabs {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    flex-direction: initial;
-    gap: 7px;
-    margin-top: 21px;
-  }
-  .offering {
-    height: 54px;
-    justify-content: center !important;
-    padding: 8px 5px !important;
-    gap: 0;
-    border-radius: 14px !important;
-    font-size: clamp(13px, 4vw, 17px) !important;
-    text-align: center;
-  }
-  .offering-icon {
-    display: none;
-  }
-  .offering > small,
-  .offering > svg {
     display: none;
   }
   .human-note {
@@ -1354,7 +1334,6 @@ footer > a:last-child {
     display: none;
   }
   .device {
-    scroll-margin-top: 18px;
     transform: none;
     border-radius: 14px 14px 6px 6px;
   }
