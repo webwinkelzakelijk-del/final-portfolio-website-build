@@ -1847,6 +1847,23 @@ footer > a:last-child {
     width: 100%;
   }
 }
+ .portrait-note .fiverr-logo {
+  width: 48px;
+  height: 24px;
+  flex-shrink: 0;
+}
+@media (min-width: 761px) {
+  .portrait-note .fiverr-button {
+    padding: 17px 22px;
+    min-height: 60px;
+    font-size: 16px;
+    gap: 10px;
+  }
+  .portrait-note .fiverr-logo {
+    width: 62px;
+    height: 30px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   :root {
     scroll-behavior: auto;

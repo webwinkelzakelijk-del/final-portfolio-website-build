@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SiFiverr } from "react-icons/si";
 import { motion, MotionConfig } from "framer-motion";
 import {
   ArrowRight,
@@ -317,7 +318,9 @@ export default function App() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Work with me on Fiverr <ArrowUpRight size={17} />
+                    <span>Work with me on <span className="sr-only">Fiverr</span></span>
+                    <SiFiverr className="fiverr-logo" aria-hidden="true" />
+                    <ArrowUpRight size={17} aria-hidden="true" />
                   </a>
                   <a className="portrait-link" href="#about">
                     Meet your builder <ArrowUpRight size={17} />
