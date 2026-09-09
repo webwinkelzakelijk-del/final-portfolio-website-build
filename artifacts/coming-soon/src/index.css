@@ -468,8 +468,9 @@ h1 span,
   background: #290f12;
   flex-shrink: 0;
   transform-origin: 50% 82%;
-  animation: portrait-breathe 7s ease-in-out infinite;
-  will-change: transform;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
 }
 .portrait-copy {
   position: relative;
@@ -519,13 +520,10 @@ h1 span,
   background: #31d186;
   box-shadow: 0 13px 30px #08170f66;
 }
-@keyframes portrait-breathe {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-4px) scale(1.012);
+@media (hover: hover) {
+  .portrait-note img:hover {
+    transform: translateY(-4px) scale(1.035) rotate(-0.4deg);
+    filter: brightness(1.04) saturate(1.03);
   }
 }
 .product-demo {
@@ -1176,7 +1174,8 @@ footer > a:last-child {
   }
   .work-card:hover .work-preview,
   .offering:hover,
-  .button:hover {
+  .button:hover,
+  .portrait-note img:hover {
     transform: none !important;
   }
 }
