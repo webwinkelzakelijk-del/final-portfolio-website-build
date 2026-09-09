@@ -157,46 +157,21 @@ function WebsiteComparison() {
   );
 }
 function Product() {
-  const [done, setDone] = useState([false, true, false]);
+  const [running, setRunning] = useState(false);
+  const [workout, setWorkout] = useState("Strength");
   return (
-    <div className="product-demo">
-      <div className="demo-nav">
-        <b>morrow ●</b>
-        <span>Your space, a little clearer.</span>
-      </div>
-      <div className="product-top">
-        <div>
-          <small>YOUR NEXT CHAPTER</small>
-          <h3>
-            Make room
-            <br />
-            for the good stuff.
-          </h3>
+    <div className={`product-demo fitness-demo ${running ? "is-training" : ""}`}>
+      <div className="fitness-nav"><b>FORM<span>+ </span></b><span>PERSONAL TRAINING / DEMO</span></div>
+      <div className="fitness-main">
+        <div className="fitness-copy"><small>YOUR NEXT LEVEL</small><h3>BUILD<br />YOUR<br /><em>STRONG.</em></h3><p>{workout === "Strength" ? "Full body · 4 exercises · 24 min" : "Core control · 3 exercises · 12 min"}</p></div>
+        <div className="fitness-stage" aria-label="Animated three-dimensional training sculpture">
+          <div className="fitness-orbit" />
+          <div className="fitness-model" aria-hidden="true"><i className="fit-head" /><i className="fit-body" /><i className="fit-arm left" /><i className="fit-arm right" /><i className="fit-leg left" /><i className="fit-leg right" /></div>
+          <span className="fitness-stage-label">3D MOVEMENT LAB</span>
         </div>
-        <span className="spark">✳</span>
       </div>
-      <div className="tasks">
-        {[
-          "Catch that new idea",
-          "Make the first small move",
-          "Put something into the world",
-        ].map((t, i) => (
-          <button
-            className={done[i] ? "done" : ""}
-            key={t}
-            onClick={() => setDone((v) => v.map((x, j) => (i === j ? !x : x)))}
-            aria-pressed={done[i]}
-          >
-            <span>{done[i] && <Check size={13} />}</span>
-            {t}
-            <ArrowUpRight size={14} />
-          </button>
-        ))}
-      </div>
-      <div className="product-bottom">
-        <span>{done.filter(Boolean).length} of 3 little wins</span>
-        <span>One thing at a time. ↗</span>
-      </div>
+      <div className="fitness-controls"><div className="fitness-tabs" aria-label="Workout type">{["Strength", "Core"].map(name => <button key={name} aria-pressed={workout === name} onClick={() => setWorkout(name)}>{name}</button>)}</div><button className="fitness-start" aria-pressed={running} onClick={() => setRunning(!running)}>{running ? "Pause session" : "Start session"}<ArrowUpRight size={13} /></button></div>
+      <div className="fitness-stats"><span><b>{workout === "Strength" ? "24" : "12"}</b> MINUTES</span><span><b>{workout === "Strength" ? "04" : "03"}</b> EXERCISES</span><span className="fitness-status" aria-live="polite">{running ? "● SESSION ACTIVE" : "○ READY WHEN YOU ARE"}</span></div>
     </div>
   );
 }

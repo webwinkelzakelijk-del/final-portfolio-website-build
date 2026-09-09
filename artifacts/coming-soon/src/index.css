@@ -1849,6 +1849,57 @@ footer > a:last-child {
     width: 100%;
   }
 }
+.product-demo.fitness-demo { padding: 20px; background: radial-gradient(ellipse at 75% 40%, #334936, transparent 60%), #101713; color: #eff5e8; }
+.fitness-nav { display:flex; justify-content:space-between; align-items:center; }
+.fitness-nav b { font: 900 21px/1 sans-serif; letter-spacing:-1px; }
+.fitness-nav b span { color:#c7ff69; }
+.fitness-nav > span { font:7px monospace; color:#a9bca7; }
+.fitness-main { display:grid; grid-template-columns:1fr 1fr; height:200px; }
+.fitness-copy { padding-top:20px; z-index:1; }
+.fitness-copy > small { font:8px monospace; letter-spacing:1px; color:#b5c5b0; }
+.fitness-copy h3 { font:700 49px/.85 "Barlow Condensed", sans-serif; letter-spacing:-1px; margin:10px 0; }
+.fitness-copy em { font-style:normal; color:#c7ff69; }
+.fitness-copy p { font:8px/1.4 monospace; color:#b5c5b0; }
+.fitness-stage { position:relative; perspective:600px; }
+.fitness-model { position:absolute; width:100px; height:160px; top:12px; left:50%; margin-left:-50px; transform-style:preserve-3d; animation:fitness-turn 8s ease-in-out infinite; }
+.fitness-model i { position:absolute; display:block; background:linear-gradient(110deg,#f2ffda,#9bd453 35%,#355a36 75%,#bddc93); box-shadow:inset -3px -2px 7px #17311e88, inset 2px 1px 3px #fff7; }
+.fit-head { width:25px; height:29px; left:38px; top:0; border-radius:45%; transform:translateZ(8px); }
+.fit-body { width:44px; height:61px; left:28px; top:34px; border-radius:35% 35% 45% 45%; transform:translateZ(5px); }
+.fit-arm { width:17px; height:66px; top:35px; border-radius:15px; transform-origin:50% 8px; }
+.fit-arm.left { left:10px; transform:rotate(24deg); }
+.fit-arm.right { right:10px; transform:rotate(-24deg); }
+.fit-leg { width:20px; height:68px; top:90px; border-radius:8px 8px 12px 12px; transform-origin:top; }
+.fit-leg.left { left:28px; transform:rotate(9deg); }
+.fit-leg.right { right:28px; transform:rotate(-9deg); }
+.fitness-orbit { position:absolute; inset:18% 0 5%; border:1px solid #c7ff6955; border-radius:50%; transform:rotateX(65deg); box-shadow:0 0 30px #b2ff3920; }
+.fitness-stage-label { position:absolute; bottom:4px; width:100%; text-align:center; font:7px monospace; letter-spacing:1.5px; color:#c7ff69; }
+.fitness-controls { display:flex; justify-content:space-between; gap:8px; margin:10px 0; }
+.fitness-tabs { display:flex; gap:4px; }
+.fitness-controls button { border:1px solid #ffffff25; border-radius:7px; padding:9px 11px; font:10px sans-serif; color:#dce8d6; background:#ffffff08; cursor:pointer; }
+.fitness-tabs button[aria-pressed="true"] { border-color:#c7ff69; color:#c7ff69; }
+.fitness-controls .fitness-start { display:flex; align-items:center; gap:6px; background:#c7ff69; color:#14220e; font-weight:700; }
+.fitness-stats { display:flex; align-items:center; justify-content:space-between; gap:8px; border-top:1px solid #ffffff20; padding-top:10px; font:7px monospace; color:#adbea5; }
+.fitness-stats b { font:700 17px sans-serif; color:white; margin-right:4px; }
+.fitness-status { color:#c7ff69; }
+.is-training .fit-arm.left { animation:fitness-rep 1.8s ease-in-out infinite; }
+.is-training .fit-arm.right { animation:fitness-rep 1.8s ease-in-out infinite reverse; }
+@keyframes fitness-turn { 0%,100% { transform:rotateY(-25deg) rotateZ(-3deg); } 50% { transform:rotateY(30deg) rotateZ(3deg) translateY(-6px); } }
+@keyframes fitness-rep { 0%,100% { transform:rotate(24deg); } 50% { transform:rotate(110deg); } }
+@media (max-width:760px) {
+  .device-product .product-demo.fitness-demo { padding:22px 10px 10px; }
+  .device-product .fitness-nav > span { font-size:5px; }
+  .device-product .fitness-nav b { font-size:18px; }
+  .device-product .fitness-main { height:192px; grid-template-columns:1fr 1fr; }
+  .device-product .fitness-copy h3 { font-size:31px; margin-top:12px; }
+  .device-product .fitness-copy > small { font-size:6px; }
+  .device-product .fitness-copy p { font-size:7px; }
+  .device-product .fitness-model { scale:.72; top:15px; }
+  .device-product .fitness-stage-label { font-size:5px; bottom:12px; }
+  .device-product .fitness-controls { flex-wrap:wrap; margin:0 0 8px; gap:5px; }
+  .device-product .fitness-controls button { padding:6px 8px; font-size:8px; }
+  .device-product .fitness-stats { flex-wrap:wrap; font-size:6px; padding-top:7px; gap:4px; }
+  .device-product .fitness-stats b { font-size:13px; }
+}
  .portrait-note .fiverr-button > span {
   white-space: nowrap;
 }
