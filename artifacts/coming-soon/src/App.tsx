@@ -77,17 +77,13 @@ function Website() {
             <b>↗</b>
           </div>
         </div>
-        <div className="poster">
-          <span className="poster-kicker">CONCEPT / 01</span>
-          <span className="poster-word">
-            MAKE
-            <br />
-            IT
-            <br />
-            REAL.
-          </span>
-          <span className="poster-orbit">↗</span>
-          <small>STRATEGY / DESIGN / DIGITAL</small>
+        <div className="sculpture-stage">
+          <span className="sculpture-kicker">DIGITAL, WITH DIMENSION.</span>
+          <div className="sculpture" aria-hidden="true">
+            <i /><i /><i /><i /><i />
+            <span className="sculpture-core" />
+          </div>
+          <small>DESIGNED TO STAND OUT ↗</small>
         </div>
       </div>
       <div className="demo-footer">
@@ -102,7 +98,7 @@ function WebsiteBefore() {
   return (
     <div className="website-before-demo" aria-hidden="true">
       <div className="before-nav">
-        <b>YOUR BUSINESS</b>
+        <b>FOUND / FORM</b>
         <span>HOME | ABOUT | SERVICES | CONTACT</span>
       </div>
       <div className="before-content">
@@ -123,7 +119,7 @@ function WebsiteBefore() {
         </div>
       </div>
       <div className="before-footer">
-        © 2026 YOUR BUSINESS | ALL RIGHTS RESERVED
+        © 2026 FOUND / FORM | ALL RIGHTS RESERVED
       </div>
     </div>
   );
@@ -394,6 +390,11 @@ export default function App() {
               <div className="scene-caption">
                 <span className="scribble">{options[index].note}</span>
                 <span>INTERACTIVE PREVIEW ↗</span>
+              </div>
+              <div className="capability-detail">
+                <strong>{options[index].mobileTitle}</strong>
+                <p>{options[index].mobileSummary}</p>
+                <small>INTERACTIVE CONCEPT DEMO · EXPLORE SELECTED WORK BELOW</small>
               </div>
             </div>
           </Tabs>
