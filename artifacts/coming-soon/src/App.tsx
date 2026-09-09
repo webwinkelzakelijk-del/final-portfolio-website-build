@@ -401,19 +401,34 @@ export default function App() {
             </div>
             <div>
               <h2>
-                I like the part where
+                I’ve always loved the moment
                 <br />
-                <span>“what if” becomes “here”.</span>
+                <span>an idea becomes real.</span>
               </h2>
               <p>
-                Maybe you’ve been sitting on an idea for months. Maybe you have
-                something that works, but it doesn’t feel like you anymore.
-                Either way, you don’t need a perfect brief to start.
+                I’ve been fascinated by the online world for as long as I can
+                remember. From the moment I built my first website, I knew I
+                wanted to do more with it. Seeing something turn out exactly as
+                you pictured it in your head—that feeling never gets old.
               </p>
               <p>
-                We’ll talk it through. I’ll ask questions, sketch the useful
-                bits, and build something you can actually react to. Then we’ll
-                keep making it better, together.
+                Since then, I’ve built a YouTube channel to 140,000 subscribers,
+                managed another with 3 million, grown an Instagram account from
+                zero to 340,000 followers, and launched an online store of my
+                own. Different projects, but always the same curiosity: what
+                makes an idea connect with people?
+              </p>
+              <p>
+                Away from the screen, I’m a proud dad of three—the best thing
+                that ever happened to me. Even after a full day at work, I’ll
+                often spend my evenings creating because it gives me genuine
+                fulfilment. I bring creativity, ambition, a hunger to learn and,
+                when the moment allows, a good sense of humour.
+              </p>
+              <p>
+                When someone trusts me with their idea, I treat them exactly as
+                I’d want to be treated: honestly, thoughtfully and with real
+                care. I’ll always aim to overdeliver—never under.
               </p>
               <a className="text-link" href="#contact">
                 Tell me what’s on your mind <ArrowRight size={18} />
