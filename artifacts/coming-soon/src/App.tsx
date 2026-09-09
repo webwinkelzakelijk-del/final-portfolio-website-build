@@ -287,35 +287,37 @@ export default function App() {
                 <br />
                 I’m Kevin. I help good ideas become real things.
               </p>
-              <div className="portrait-note">
-                <img
-                  src={`${import.meta.env.BASE_URL}images/kevin-friendly.webp`}
-                  width="320"
-                  height="360"
-                  alt="Kevin smiling in his navy sweater"
-                  fetchPriority="high"
-                />
-                <div className="portrait-copy">
-                  <span className="scribble">Hi, I’m Kevin.</span>
-                  <p>
-                    A person to think with.
-                    <br />A builder to get it done.
-                  </p>
-                  <div className="portrait-actions">
-                    <a
-                      className="fiverr-button"
-                      href="https://www.fiverr.com/s/NeBXK68"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Work with me on Fiverr <ArrowUpRight size={17} />
-                    </a>
-                    <a className="portrait-link" href="#about">
-                      Meet your builder <ArrowUpRight size={17} />
-                    </a>
-                  </div>
+            </div>
+            <div className="portrait-note">
+              <img
+                src={`${import.meta.env.BASE_URL}images/kevin-friendly.webp`}
+                width="320"
+                height="360"
+                alt="Kevin smiling in his navy sweater"
+                fetchPriority="high"
+              />
+              <div className="portrait-copy">
+                <span className="scribble">Hi, I’m Kevin.</span>
+                <p>
+                  A person to think with.
+                  <br />A builder to get it done.
+                </p>
+                <div className="portrait-actions">
+                  <a
+                    className="fiverr-button"
+                    href="https://www.fiverr.com/s/NeBXK68"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Work with me on Fiverr <ArrowUpRight size={17} />
+                  </a>
+                  <a className="portrait-link" href="#about">
+                    Meet your builder <ArrowUpRight size={17} />
+                  </a>
                 </div>
               </div>
+            </div>
+            <div className="hero-controls">
               <TabsList
                 className="offering-tabs"
                 aria-label="What are we making?"
