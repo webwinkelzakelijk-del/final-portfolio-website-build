@@ -868,6 +868,24 @@ h1 span,
   color: var(--muted);
   margin-bottom: 28px;
 }
+.contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.contact-actions .button {
+  width: 222px;
+  min-height: 60px;
+}
+.contact-actions .fiverr-contact-button {
+  background: #1dbf73;
+  color: #10271b;
+}
+.contact-actions .fiverr-contact-button:hover {
+  background: #31d186;
+}
 .contact small {
   display: block;
   color: var(--muted);
@@ -1149,6 +1167,12 @@ footer > a:last-child {
   }
   .contact h2 {
     letter-spacing: -1.3px;
+  }
+  .contact-actions {
+    flex-direction: column;
+  }
+  .contact-actions .button {
+    width: min(100%, 260px);
   }
   footer {
     flex-wrap: wrap;

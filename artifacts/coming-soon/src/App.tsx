@@ -432,13 +432,23 @@ export default function App() {
               <br />
               That’s plenty to start a conversation.
             </p>
-            <a
-              className="button"
-              href={`mailto:hello@kevinrebuilds.com?subject=${encodeURIComponent(`Let's make ${options[index].name.toLowerCase()}`)}`}
-            >
-              Let’s talk about it <ArrowUpRight size={21} />
-            </a>
-            <small>Opens your email app · hello@kevinrebuilds.com</small>
+            <div className="contact-actions">
+              <a
+                className="button"
+                href={`mailto:hello@kevinrebuilds.com?subject=${encodeURIComponent(`Let's make ${options[index].name.toLowerCase()}`)}`}
+              >
+                Let’s talk about it <ArrowUpRight size={21} />
+              </a>
+              <a
+                className="button fiverr-contact-button"
+                href="https://www.fiverr.com/s/NeBXK68"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Hire me on Fiverr <ArrowUpRight size={21} />
+              </a>
+            </div>
+            <small>Email me directly or book through Fiverr.</small>
           </section>
         </main>
         <footer>
