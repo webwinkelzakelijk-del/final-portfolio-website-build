@@ -319,7 +319,7 @@ export default function App() {
                     rel="noreferrer"
                   >
                     <span>Work with me on <span className="sr-only">Fiverr</span></span>
-                    <SiFiverr className="fiverr-logo" aria-hidden="true" />
+                    <SiFiverr className="fiverr-logo" viewBox="0 8 24 8" aria-hidden="true" />
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </a>
                   <a className="portrait-link" href="#about">

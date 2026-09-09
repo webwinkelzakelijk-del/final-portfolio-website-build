@@ -1847,9 +1847,13 @@ footer > a:last-child {
     width: 100%;
   }
 }
+ .portrait-note .fiverr-button > span {
+  white-space: nowrap;
+}
  .portrait-note .fiverr-logo {
   width: 48px;
-  height: 24px;
+  height: 16px;
+  display: block;
   flex-shrink: 0;
 }
 @media (min-width: 761px) {
@@ -1860,8 +1864,8 @@ footer > a:last-child {
     gap: 10px;
   }
   .portrait-note .fiverr-logo {
-    width: 62px;
-    height: 30px;
+    width: 72px;
+    height: 24px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
