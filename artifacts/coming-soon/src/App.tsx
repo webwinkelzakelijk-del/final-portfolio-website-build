@@ -146,8 +146,8 @@ function WebsiteComparison() {
       <input
         className="comparison-range"
         type="range"
-        min="8"
-        max="92"
+        min="0"
+        max="100"
         value={reveal}
         onChange={(event) => setReveal(Number(event.target.value))}
         aria-label="Compare the website before and after the redesign"
