@@ -409,7 +409,7 @@ export default function App() {
                 I’ve been fascinated by the online world for as long as I can
                 remember. From the moment I built my first website, I knew I
                 wanted to do more with it. Seeing something turn out exactly as
-                you pictured it in your head—that feeling never gets old.
+                you pictured it in your head. That feeling never gets old.
               </p>
               <p>
                 Since then, I’ve built a YouTube channel to 140,000 subscribers,
@@ -419,16 +419,16 @@ export default function App() {
                 makes an idea connect with people?
               </p>
               <p>
-                Away from the screen, I’m a proud dad of three—the best thing
-                that ever happened to me. Even after a full day at work, I’ll
-                often spend my evenings creating because it gives me genuine
-                fulfilment. I bring creativity, ambition, a hunger to learn and,
-                when the moment allows, a good sense of humour.
+                Away from the screen, I’m a proud dad of three. It’s the best
+                thing that ever happened to me. Even after a full day at work,
+                I’ll often spend my evenings creating because it gives me
+                genuine fulfilment. I bring creativity, ambition, a hunger to
+                learn and, when the moment allows, a good sense of humour.
               </p>
               <p>
                 When someone trusts me with their idea, I treat them exactly as
                 I’d want to be treated: honestly, thoughtfully and with real
-                care. I’ll always aim to overdeliver—never under.
+                care. I’ll always aim to overdeliver, never under.
               </p>
               <a className="text-link" href="#contact">
                 Tell me what’s on your mind <ArrowRight size={18} />
