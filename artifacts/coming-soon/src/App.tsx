@@ -383,11 +383,11 @@ export default function App() {
           <section className="work-section" id="work">
             <div className="section-top">
               <div>
-                <span className="eyebrow">RECENT EXPLORATIONS</span>
+                <span className="eyebrow">SELECTED WORK</span>
                 <h2>
-                  Small starts.
+                  Ideas I’ve
                   <br />
-                  <span>Real possibilities.</span>
+                  <span>brought to life.</span>
                 </h2>
               </div>
               <p>
