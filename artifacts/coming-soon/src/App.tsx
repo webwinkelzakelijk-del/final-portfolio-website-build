@@ -45,38 +45,43 @@ function Website() {
   return (
     <div className="website-demo">
       <div className="demo-nav">
-        <b>FOUNDERS®</b>
-        <span>Work &nbsp; About &nbsp; Contact ↗</span>
+        <b className="after-brand">
+          FOUND<span>/FORM</span>
+        </b>
+        <span>WORK &nbsp; STUDIO &nbsp; START A PROJECT ↗</span>
       </div>
       <div className="website-content">
-        <h3>
-          Good
-          <br />
-          ideas build
-          <br />
-          <em>brighter</em>
-          <br />
-          tomorrows.
-        </h3>
+        <div className="after-copy">
+          <small>INDEPENDENT CREATIVE STUDIO / 2026</small>
+          <h3>
+            IDEAS
+            <br />
+            <em>BUILT TO</em>
+            <br />
+            MOVE.
+          </h3>
+          <div className="after-cta">
+            <span>START A PROJECT</span>
+            <b>↗</b>
+          </div>
+        </div>
         <div className="poster">
-          <span>
+          <span className="poster-kicker">CONCEPT / 01</span>
+          <span className="poster-word">
             MAKE
             <br />
-            YOUR
+            IT
             <br />
-            MARK.
+            REAL.
           </span>
-          <small>
-            Independent minds.
-            <br />
-            Extraordinary places.
-          </small>
+          <span className="poster-orbit">↗</span>
+          <small>STRATEGY / DESIGN / DIGITAL</small>
         </div>
       </div>
       <div className="demo-footer">
         <span>↗</span>
-        <b>LET’S BUILD SOMETHING.</b>
-        <small>STRATEGY / DESIGN / DEVELOPMENT</small>
+        <b>SCROLL TO EXPLORE</b>
+        <small>AMSTERDAM / AVAILABLE WORLDWIDE</small>
       </div>
     </div>
   );
