@@ -1900,6 +1900,51 @@ footer > a:last-child {
   .device-product .fitness-stats { flex-wrap:wrap; font-size:6px; padding-top:7px; gap:4px; }
   .device-product .fitness-stats b { font-size:13px; }
 }
+.fitness-model.athlete { width:100px; height:170px; top:17px; animation:none; transform:rotateY(-10deg); }
+.athlete div { position:absolute; transform-style:preserve-3d; }
+.fitness-model.athlete i { background:linear-gradient(100deg,#efbd96,#bc805b 60%,#754936); box-shadow:inset 2px 0 3px #fff2, inset -2px 0 3px #24150d44; }
+.athlete-upper { width:100px; height:95px; top:0; }
+.athlete .athlete-neck { width:12px; height:12px; left:44px; top:23px; }
+.athlete .athlete-head { width:23px; height:29px; left:38px; top:0; border-radius:45% 45% 48% 48%; border-top:7px solid #241c18; }
+.athlete-head::after { content:""; position:absolute; left:5px; top:6px; width:3px; height:2px; background:#38251e; box-shadow:9px 0 #38251e, 5px 9px #8a4a39; }
+.athlete .athlete-torso { width:42px; height:56px; left:29px; top:31px; border-radius:15px 15px 9px 9px; background:linear-gradient(100deg,#d7ff82,#85b83b 60%,#3e6328); }
+.athlete-torso::after { content:"F+"; position:absolute; top:12px; left:13px; font:700 8px sans-serif; color:#20341a; }
+.athlete-arm { width:15px; height:34px; top:34px; transform-origin:50% 5px; }
+.athlete-arm.left { left:16px; --lift: -125deg; --press:160deg; }
+.athlete-arm.right { right:16px; --lift:125deg; --press:-160deg; }
+.athlete .athlete-bicep { inset:0; border-radius:10px; }
+.athlete-forearm { width:13px; height:32px; top:28px; left:1px; transform-origin:50% 4px; animation:athlete-curl 2.8s ease-in-out infinite; }
+.athlete .athlete-skin { inset:0; border-radius:8px; }
+.athlete .athlete-weight { width:29px; height:7px; left:-8px; bottom:0; border-radius:2px; background:linear-gradient(#e1e7ed,#606d79); box-shadow:0 3px 5px #0008; }
+.athlete-weight::before,.athlete-weight::after { content:""; position:absolute; top:-6px; width:7px; height:19px; border-radius:3px; background:linear-gradient(100deg,#61707b,#18222a); border:1px solid #85929b; }
+.athlete-weight::before { left:0; }.athlete-weight::after { right:0; }
+.athlete-leg { width:18px; height:40px; top:83px; transform-origin:50% 4px; }
+.athlete-leg.left { left:29px; --knee: -32deg; --shin:48deg; }
+.athlete-leg.right { right:29px; --knee:32deg; --shin:-48deg; }
+.athlete .athlete-thigh { inset:0; border-radius:5px 5px 8px 8px; background:linear-gradient(90deg,#535e59,#202c28); }
+.athlete-shin { width:13px; height:39px; top:32px; left:2px; transform-origin:50% 4px; }
+.athlete-shin i { inset:0; border-radius:6px; }
+.athlete-shin b { position:absolute; bottom:-2px; left:-3px; width:23px; height:10px; border-radius:5px 9px 3px 3px; background:#dfe8d8; border-bottom:3px solid #83946e; }
+.exercise-press .athlete-arm { animation:athlete-press 3s ease-in-out infinite; }
+.exercise-press .athlete-forearm { animation:none; transform:rotate(var(--lift)); }
+.exercise-squat .athlete-forearm { animation:none; }
+.exercise-squat .athlete-upper { animation:athlete-squat 3s ease-in-out infinite; }
+.exercise-squat .athlete-leg { animation:athlete-knee 3s ease-in-out infinite; }
+.exercise-squat .athlete-shin { animation:athlete-shin 3s ease-in-out infinite; }
+.fitness-demo:not(.is-training) .athlete * { animation-play-state:paused; }
+.fitness-controls { flex-wrap:wrap; }
+.fitness-controls button { padding:8px; font-size:9px; }
+@keyframes athlete-curl { 0%,100% { transform:rotate(0deg); } 50% { transform:rotate(var(--lift)); } }
+@keyframes athlete-press { 0%,100% { transform:rotate(0deg); } 50% { transform:rotate(var(--press)); } }
+@keyframes athlete-squat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(19px); } }
+@keyframes athlete-knee { 0%,100% { transform:translateY(0) rotate(0deg); } 50% { transform:translateY(19px) rotate(var(--knee)); } }
+@keyframes athlete-shin { 0%,100% { transform:rotate(0deg); } 50% { transform:rotate(var(--shin)); } }
+@media (max-width:760px) {
+  .device-product .fitness-tabs { flex-wrap:wrap; }
+  .device-product .fitness-controls button { font-size:7px; padding:5px; }
+  .device-product .fitness-main { height:182px; }
+  .device-product .fitness-model.athlete { scale:.7; top:5px; }
+}
  .portrait-note .fiverr-button > span {
   white-space: nowrap;
 }

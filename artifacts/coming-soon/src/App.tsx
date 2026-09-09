@@ -157,21 +157,28 @@ function WebsiteComparison() {
   );
 }
 function Product() {
-  const [running, setRunning] = useState(false);
-  const [workout, setWorkout] = useState("Strength");
+  const [running, setRunning] = useState(true);
+  const [workout, setWorkout] = useState("curl");
+  const exercises = [{ id: "curl", name: "Bicep curl", detail: "3 sets · 12 reps · Dumbbells" }, { id: "press", name: "Shoulder press", detail: "3 sets · 10 reps · Dumbbells" }, { id: "squat", name: "Squat", detail: "3 sets · 12 reps · Dumbbells" }];
+  const exercise = exercises.find(item => item.id === workout)!;
   return (
-    <div className={`product-demo fitness-demo ${running ? "is-training" : ""}`}>
+    <div className={`product-demo fitness-demo exercise-${workout} ${running ? "is-training" : ""}`}>
       <div className="fitness-nav"><b>FORM<span>+ </span></b><span>PERSONAL TRAINING / DEMO</span></div>
       <div className="fitness-main">
-        <div className="fitness-copy"><small>YOUR NEXT LEVEL</small><h3>BUILD<br />YOUR<br /><em>STRONG.</em></h3><p>{workout === "Strength" ? "Full body · 4 exercises · 24 min" : "Core control · 3 exercises · 12 min"}</p></div>
-        <div className="fitness-stage" aria-label="Animated three-dimensional training sculpture">
+        <div className="fitness-copy"><small>YOUR NEXT LEVEL</small><h3>BUILD<br />YOUR<br /><em>STRONG.</em></h3><p aria-live="polite">{exercise.name}<br />{exercise.detail}</p></div>
+        <div className="fitness-stage" role="img" aria-label={`Animated athlete demonstrating ${exercise.name} with dumbbells`}>
           <div className="fitness-orbit" />
-          <div className="fitness-model" aria-hidden="true"><i className="fit-head" /><i className="fit-body" /><i className="fit-arm left" /><i className="fit-arm right" /><i className="fit-leg left" /><i className="fit-leg right" /></div>
-          <span className="fitness-stage-label">3D MOVEMENT LAB</span>
+          <div className="fitness-model athlete" key={workout} aria-hidden="true">
+            <div className="athlete-upper"><i className="athlete-neck" /><i className="athlete-head" /><i className="athlete-torso" />
+              {["left", "right"].map(side => <div className={`athlete-arm ${side}`} key={side}><i className="athlete-bicep" /><div className="athlete-forearm"><i className="athlete-skin" /><i className="athlete-weight" /></div></div>)}
+            </div>
+            {["left", "right"].map(side => <div className={`athlete-leg ${side}`} key={side}><i className="athlete-thigh" /><div className="athlete-shin"><i /><b /></div></div>)}
+          </div>
+          <span className="fitness-stage-label">{exercise.name.toUpperCase()}</span>
         </div>
       </div>
-      <div className="fitness-controls"><div className="fitness-tabs" aria-label="Workout type">{["Strength", "Core"].map(name => <button key={name} aria-pressed={workout === name} onClick={() => setWorkout(name)}>{name}</button>)}</div><button className="fitness-start" aria-pressed={running} onClick={() => setRunning(!running)}>{running ? "Pause session" : "Start session"}<ArrowUpRight size={13} /></button></div>
-      <div className="fitness-stats"><span><b>{workout === "Strength" ? "24" : "12"}</b> MINUTES</span><span><b>{workout === "Strength" ? "04" : "03"}</b> EXERCISES</span><span className="fitness-status" aria-live="polite">{running ? "● SESSION ACTIVE" : "○ READY WHEN YOU ARE"}</span></div>
+      <div className="fitness-controls"><div className="fitness-tabs" aria-label="Choose an exercise">{exercises.map(item => <button key={item.id} aria-pressed={workout === item.id} onClick={() => { setWorkout(item.id); setRunning(true); }}>{item.name}</button>)}</div><button className="fitness-start" aria-pressed={running} onClick={() => setRunning(!running)}>{running ? "Pause" : "Play"}<ArrowUpRight size={13} /></button></div>
+      <div className="fitness-stats"><span><b>03</b> SETS</span><span><b>{workout === "press" ? "10" : "12"}</b> REPS</span><span className="fitness-status" aria-live="polite">{running ? "● MOVEMENT PREVIEW" : "○ PREVIEW PAUSED"}</span></div>
     </div>
   );
 }
