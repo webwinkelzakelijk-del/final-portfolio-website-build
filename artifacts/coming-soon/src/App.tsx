@@ -245,6 +245,25 @@ export default function App() {
               </div>
             </div>
             <div className="showcase">
+              <div className="portrait-note">
+                <img
+                  src={`${import.meta.env.BASE_URL}images/kevin-friendly.webp`}
+                  width="320"
+                  height="360"
+                  alt="Kevin smiling in his navy sweater"
+                  fetchPriority="high"
+                />
+                <div>
+                  <span className="scribble">Hi, I’m Kevin.</span>
+                  <p>
+                    A person to think with.
+                    <br />A builder to get it done.
+                  </p>
+                  <a href="#about">
+                    Meet your builder <ArrowUpRight size={15} />
+                  </a>
+                </div>
+              </div>
               <div className="scene-heading" aria-live="polite">
                 <span className="counter">0{index + 1} / 03</span>
                 <h2>{options[index].name}</h2>
@@ -279,25 +298,6 @@ export default function App() {
               <div className="scene-caption">
                 <span className="scribble">{options[index].note}</span>
                 <span>INTERACTIVE PREVIEW ↗</span>
-              </div>
-              <div className="portrait-note">
-                <img
-                  src={`${import.meta.env.BASE_URL}images/kevin-friendly.webp`}
-                  width="320"
-                  height="360"
-                  alt="Kevin smiling in his navy sweater"
-                  fetchPriority="high"
-                />
-                <div>
-                  <span className="scribble">Hi, I’m Kevin.</span>
-                  <p>
-                    A person to think with.
-                    <br />A builder to get it done.
-                  </p>
-                  <a href="#about">
-                    Meet your builder <ArrowUpRight size={15} />
-                  </a>
-                </div>
               </div>
             </div>
           </Tabs>

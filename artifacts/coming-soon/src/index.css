@@ -430,26 +430,35 @@ h1 span,
 .portrait-note {
   display: flex;
   align-items: center;
-  margin: 24px 0 0;
-  gap: 22px;
+  min-height: 220px;
+  margin: 0 0 34px;
+  padding: 16px 24px 16px 18px;
+  gap: 30px;
+  border: 1px solid var(--line);
+  border-radius: 120px 18px 18px 120px;
+  background: linear-gradient(110deg, #4b171f66, #ffffff04 72%);
 }
 .portrait-note img {
-  width: 145px;
-  height: 152px;
+  width: 190px;
+  height: 198px;
   object-fit: cover;
   object-position: 50% 30%;
-  border-radius: 80px 80px 12px 12px;
-  mask-image: linear-gradient(#000 80%, transparent);
+  border-radius: 100px 100px 14px 14px;
+  mask-image: linear-gradient(#000 84%, transparent);
   background: #290f12;
+  flex-shrink: 0;
+}
+.portrait-note .scribble {
+  font-size: 31px;
 }
 .portrait-note p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--muted);
-  margin: 12px 0;
+  margin: 14px 0;
 }
 .portrait-note a {
-  font-size: 12px;
+  font-size: 13px;
   display: inline-flex;
   gap: 12px;
   align-items: center;
@@ -959,12 +968,27 @@ footer > a:last-child {
     margin-top: 25px;
   }
   .portrait-note {
-    margin-top: 20px;
-    justify-content: center;
+    min-height: 0;
+    margin: 0 0 30px;
+    padding: 14px 16px 14px 12px;
+    gap: 17px;
+    justify-content: flex-start;
+    border-radius: 86px 16px 16px 86px;
   }
   .portrait-note img {
-    width: 122px;
-    height: 135px;
+    width: 146px;
+    height: 158px;
+  }
+  .portrait-note .scribble {
+    font-size: 25px;
+  }
+  .portrait-note p {
+    font-size: 13px;
+    margin: 9px 0;
+  }
+  .portrait-note a {
+    font-size: 11px;
+    gap: 8px;
   }
   .work-section {
     padding: 42px 22px;
