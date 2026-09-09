@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import {
   ArrowRight,
@@ -246,7 +246,18 @@ const interactivePreviews = [WebsiteComparison, Product, System];
 export default function App() {
   const [selected, setSelected] = useState("website");
   const [project, setProject] = useState<number | null>(null);
+  const deviceRef = useRef<HTMLDivElement>(null);
   const index = options.findIndex((o) => o.id === selected);
+  const showMobilePreview = () => {
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      window.requestAnimationFrame(() => {
+        deviceRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    }
+  };
   return (
     <MotionConfig reducedMotion="user">
       <div className="site" id="top">
@@ -292,7 +303,12 @@ export default function App() {
                 aria-label="What are we making?"
               >
                 {options.map(({ id, name, icon: Icon }, i) => (
-                  <TabsTrigger className="offering" key={id} value={id}>
+                  <TabsTrigger
+                    className="offering"
+                    key={id}
+                    value={id}
+                    onClick={showMobilePreview}
+                  >
                     <span className="offering-icon">
                       <Icon size={25} strokeWidth={1.5} />
                     </span>
@@ -346,7 +362,7 @@ export default function App() {
                 <h2>{options[index].name}</h2>
                 <p>{options[index].caption}</p>
               </div>
-              <div className={`device device-${selected}`}>
+              <div ref={deviceRef} className={`device device-${selected}`}>
                 <div className="device-bar">
                   <i />
                   <i />

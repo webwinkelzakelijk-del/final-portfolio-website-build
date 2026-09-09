@@ -1322,33 +1322,41 @@ footer > a:last-child {
     font-size: 16px;
   }
   .offering-tabs {
-    gap: 10px;
-    margin-top: 23px;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    flex-direction: initial;
+    gap: 7px;
+    margin-top: 21px;
   }
   .offering {
-    height: 73px;
-    font-size: 29px !important;
-    gap: 20px;
+    height: 54px;
+    justify-content: center !important;
+    padding: 8px 5px !important;
+    gap: 0;
+    border-radius: 14px !important;
+    font-size: clamp(13px, 4vw, 17px) !important;
+    text-align: center;
   }
   .offering-icon {
-    width: 50px;
-    height: 50px;
+    display: none;
+  }
+  .offering > small,
+  .offering > svg {
+    display: none;
   }
   .human-note {
-    margin-top: 24px;
-    gap: 25px;
+    display: none;
   }
   .showcase {
-    padding: 10px 6px 0;
+    padding: 0;
   }
-  .scene-heading h2 {
-    font-size: 58px;
-  }
-  .scene-heading p {
-    font-size: 11px;
+  .scene-heading {
+    display: none;
   }
   .device {
-    transform: perspective(1000px) rotateY(-3deg) rotateZ(-1deg);
+    scroll-margin-top: 18px;
+    transform: none;
+    border-radius: 14px 14px 6px 6px;
   }
   .website-demo,
   .product-demo,
@@ -1366,30 +1374,31 @@ footer > a:last-child {
   }
   .portrait-note {
     min-height: 0;
-    margin: 0 0 30px;
-    padding: 14px 16px 14px 12px;
-    gap: 17px;
+    margin: 0 0 22px;
+    padding: 10px 13px 10px 9px;
+    gap: 13px;
     justify-content: flex-start;
-    border-radius: 86px 16px 16px 86px;
+    border-radius: 66px 14px 14px 66px;
   }
   .portrait-note img {
-    width: 146px;
-    height: 158px;
+    width: 108px;
+    height: 116px;
   }
   .portrait-note .scribble {
-    font-size: 25px;
+    font-size: 22px;
   }
   .portrait-note p {
-    font-size: 13px;
-    margin: 9px 0;
+    font-size: 11px;
+    line-height: 1.45;
+    margin: 6px 0;
   }
   .portrait-note .portrait-link {
     font-size: 11px;
     gap: 8px;
   }
   .portrait-note .fiverr-button {
-    padding: 8px 11px;
-    font-size: 10px;
+    padding: 7px 9px;
+    font-size: 9px;
   }
   .work-section {
     padding: 42px 22px;
