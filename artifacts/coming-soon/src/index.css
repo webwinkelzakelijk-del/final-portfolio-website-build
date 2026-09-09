@@ -1363,12 +1363,13 @@ footer > a:last-child {
     grid-template-areas:
       "intro"
       "portrait"
+      "controls"
       "showcase";
     gap: 24px;
     padding: 28px 22px 35px;
   }
   .hero-controls {
-    display: none;
+    display: block;
   }
   .eyebrow {
     font-size: 10px;
@@ -1382,6 +1383,27 @@ footer > a:last-child {
     font-size: 16px;
   }
   .offering-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 0;
+  }
+  .offering {
+    width: 100%;
+    height: 62px;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px;
+    border-radius: 14px !important;
+    padding: 8px 4px !important;
+    font-size: 17px !important;
+    line-height: 1;
+  }
+  .offering-icon,
+  .offering > small,
+  .offering > svg {
     display: none;
   }
   .human-note {
@@ -1392,6 +1414,13 @@ footer > a:last-child {
   }
   .scene-heading {
     display: none;
+  }
+  .preview-panel,
+  .preview-panel > div,
+  .preview-panel > div > div,
+  .website-comparison {
+    height: 280px;
+    min-height: 280px;
   }
   .device {
     transform: none;
