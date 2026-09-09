@@ -81,6 +81,67 @@ function Website() {
     </div>
   );
 }
+function WebsiteBefore() {
+  return (
+    <div className="website-before-demo" aria-hidden="true">
+      <div className="before-nav">
+        <b>YOUR BUSINESS</b>
+        <span>HOME | ABOUT | SERVICES | CONTACT</span>
+      </div>
+      <div className="before-content">
+        <div>
+          <small>WELCOME TO OUR WEBSITE</small>
+          <h3>Quality solutions for your business</h3>
+          <p>
+            We are passionate about delivering professional services that help
+            you succeed.
+          </p>
+          <span className="before-button">CLICK HERE</span>
+        </div>
+        <div className="before-card">
+          <strong>WHY CHOOSE US?</strong>
+          <span>✓ Professional</span>
+          <span>✓ Reliable</span>
+          <span>✓ Affordable</span>
+        </div>
+      </div>
+      <div className="before-footer">
+        © 2026 YOUR BUSINESS | ALL RIGHTS RESERVED
+      </div>
+    </div>
+  );
+}
+function WebsiteComparison() {
+  const [reveal, setReveal] = useState(52);
+
+  return (
+    <div className="website-comparison">
+      <div className="comparison-layer comparison-after">
+        <Website />
+      </div>
+      <div
+        className="comparison-layer comparison-before"
+        style={{ clipPath: `inset(0 ${100 - reveal}% 0 0)` }}
+      >
+        <WebsiteBefore />
+      </div>
+      <span className="comparison-label comparison-label-before">BEFORE</span>
+      <span className="comparison-label comparison-label-after">AFTER</span>
+      <div className="comparison-divider" style={{ left: `${reveal}%` }}>
+        <span aria-hidden="true">↔</span>
+      </div>
+      <input
+        className="comparison-range"
+        type="range"
+        min="8"
+        max="92"
+        value={reveal}
+        onChange={(event) => setReveal(Number(event.target.value))}
+        aria-label="Compare the website before and after the redesign"
+      />
+    </div>
+  );
+}
 function Product() {
   const [done, setDone] = useState([false, true, false]);
   return (
@@ -176,6 +237,7 @@ function System() {
   );
 }
 const previews = [Website, Product, System];
+const interactivePreviews = [WebsiteComparison, Product, System];
 export default function App() {
   const [selected, setSelected] = useState("website");
   const [project, setProject] = useState<number | null>(null);
@@ -287,7 +349,7 @@ export default function App() {
                   <small>an idea, taking shape</small>
                 </div>
                 {options.map(({ id }, i) => {
-                  const Preview = previews[i];
+                  const Preview = interactivePreviews[i];
                   return (
                     <TabsContent className="preview-panel" key={id} value={id}>
                       <motion.div
