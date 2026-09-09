@@ -1762,6 +1762,8 @@ footer > a:last-child {
   .portrait-note .fiverr-button {
     padding: 10px 12px;
     font-size: 11px;
+    margin-left: -24px;
+    gap: 6px;
   }
   .work-section {
     padding: 42px 22px;
