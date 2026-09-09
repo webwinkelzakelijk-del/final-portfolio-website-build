@@ -275,6 +275,9 @@ h1 span,
   text-transform: uppercase;
   max-width: 90%;
 }
+.mobile-scene-intro {
+  display: none;
+}
 .counter {
   float: right;
   font: 12px monospace;
@@ -1414,6 +1417,35 @@ footer > a:last-child {
   }
   .scene-heading {
     display: none;
+  }
+  .mobile-scene-intro {
+    display: grid;
+    gap: 7px;
+    margin: -2px 0 16px;
+    padding: 15px;
+    border: 1px solid #ffffff1c;
+    border-left: 3px solid var(--pink);
+    border-radius: 0 12px 12px 0;
+    background: linear-gradient(90deg, #4b171f32, #ffffff05);
+  }
+  .mobile-scene-intro > span {
+    color: #d8949f;
+    font: 700 8px/1 monospace;
+    letter-spacing: 1.2px;
+  }
+  .mobile-scene-intro strong {
+    font-family: "Barlow Condensed", Impact, sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.4px;
+    text-transform: uppercase;
+  }
+  .mobile-scene-intro p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
   }
   .preview-panel,
   .preview-panel > div,

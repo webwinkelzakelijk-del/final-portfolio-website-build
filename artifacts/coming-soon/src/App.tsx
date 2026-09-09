@@ -17,8 +17,12 @@ const options = [
     id: "website",
     name: "A website",
     icon: Monitor,
-    caption: "From an idea to a site people remember.",
-    note: "A clear story. A strong first impression.",
+    caption: "Beautiful websites that make your business feel impossible to ignore.",
+    note: "A clear story. A stronger first impression. More enquiries.",
+    deviceLabel: "WEBSITE / DESIGN + BUILD",
+    mobileTitle: "Beautiful websites, built to win trust.",
+    mobileSummary:
+      "Turn an outdated or unclear site into a distinctive online home that makes the next step obvious.",
     description:
       "For the business you’ve outgrown your old website to become. We find the story, give it a distinct look, and build a site that makes the next step obvious.",
   },
@@ -26,8 +30,12 @@ const options = [
     id: "product",
     name: "A product",
     icon: Box,
-    caption: "That thing you keep imagining. Let’s make it work.",
-    note: "Less “what if”. More “try this”.",
+    caption: "Beautiful apps people can actually open, use, and come back to.",
+    note: "From the idea in your head to a product in someone’s hand.",
+    deviceLabel: "APP / PRODUCT PROTOTYPE",
+    mobileTitle: "Beautiful apps, made real.",
+    mobileSummary:
+      "Shape the right idea into a polished, testable app—so people can use it, not just imagine it.",
     description:
       "An idea becomes easier to explain when someone can use it. I turn the important part into a working first version, so we can learn from something real.",
   },
@@ -35,8 +43,12 @@ const options = [
     id: "system",
     name: "A system",
     icon: Workflow,
-    caption: "Less busywork. More room for the good work.",
-    note: "Connect the dots. Get your time back.",
+    caption: "Smart business systems that solve the bottlenecks stealing your time.",
+    note: "Connect the dots. Remove the chasing. Get your time back.",
+    deviceLabel: "SYSTEM / BUSINESS AUTOMATION",
+    mobileTitle: "Systems that make business feel lighter.",
+    mobileSummary:
+      "Connect the messy steps behind the scenes, so leads, projects, and follow-ups keep moving without the manual chase.",
     description:
       "The spreadsheet, the copied email, the step everyone forgets. We join the loose ends into a simple workflow that helps your business run with less chasing.",
   },
@@ -348,12 +360,17 @@ export default function App() {
                 <h2>{options[index].name}</h2>
                 <p>{options[index].caption}</p>
               </div>
+              <div className="mobile-scene-intro" aria-live="polite">
+                <span>{options[index].deviceLabel}</span>
+                <strong>{options[index].mobileTitle}</strong>
+                <p>{options[index].mobileSummary}</p>
+              </div>
               <div className={`device device-${selected}`}>
                 <div className="device-bar">
                   <i />
                   <i />
                   <i />
-                  <small>an idea, taking shape</small>
+                  <small>{options[index].deviceLabel}</small>
                 </div>
                 {options.map(({ id }, i) => {
                   const Preview = interactivePreviews[i];
