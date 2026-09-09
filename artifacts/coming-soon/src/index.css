@@ -314,11 +314,19 @@ h1 span,
   margin: 0 !important;
   overflow: hidden;
   border-radius: 4px;
+  height: 350px;
   min-height: 350px;
   background: #f4f1ec;
 }
+.preview-panel > div,
 .preview-panel > div > div {
-  min-height: 350px;
+  height: 350px;
+  min-height: 0;
+}
+.preview-panel .website-demo,
+.preview-panel .product-demo,
+.preview-panel .system-demo {
+  overflow: hidden;
 }
 .device-base {
   position: absolute;
@@ -428,17 +436,29 @@ h1 span,
   color: var(--muted);
 }
 .portrait-note {
+  position: relative;
   display: flex;
   align-items: center;
   min-height: 220px;
   margin: 0 0 34px;
   padding: 16px 24px 16px 18px;
   gap: 30px;
-  border: 1px solid var(--line);
+  overflow: hidden;
   border-radius: 120px 18px 18px 120px;
   background: linear-gradient(110deg, #4b171f66, #ffffff04 72%);
 }
+.portrait-note::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 1px solid var(--line);
+  border-radius: inherit;
+  pointer-events: none;
+}
 .portrait-note img {
+  position: relative;
+  z-index: 1;
   width: 190px;
   height: 198px;
   object-fit: cover;
@@ -447,6 +467,13 @@ h1 span,
   mask-image: linear-gradient(#000 84%, transparent);
   background: #290f12;
   flex-shrink: 0;
+  transform-origin: 50% 82%;
+  animation: portrait-breathe 7s ease-in-out infinite;
+  will-change: transform;
+}
+.portrait-copy {
+  position: relative;
+  z-index: 1;
 }
 .portrait-note .scribble {
   font-size: 31px;
@@ -457,13 +484,49 @@ h1 span,
   color: var(--muted);
   margin: 14px 0;
 }
-.portrait-note a {
+.portrait-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+.portrait-note .portrait-link {
   font-size: 13px;
   display: inline-flex;
   gap: 12px;
   align-items: center;
   border-bottom: 1px solid #ae6b71;
   padding-bottom: 4px;
+}
+.portrait-note .fiverr-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #1dbf73;
+  color: #10271b;
+  font-size: 12px;
+  font-weight: 750;
+  box-shadow: 0 10px 25px #08170f45;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.portrait-note .fiverr-button:hover {
+  transform: translateY(-2px);
+  background: #31d186;
+  box-shadow: 0 13px 30px #08170f66;
+}
+@keyframes portrait-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.012);
+  }
 }
 .product-demo {
   background: #ede7f0;
@@ -746,6 +809,32 @@ h1 span,
   margin-top: 35px;
   font-size: 33px;
 }
+.about-portrait {
+  position: relative;
+  width: min(100%, 310px);
+  aspect-ratio: 4 / 5;
+  margin: 30px 0 0;
+  overflow: hidden;
+  border: 1px solid #ffffff2e;
+  border-radius: 18px 90px 18px 18px;
+  background: #2c1115;
+  box-shadow: 20px 28px 55px #07020370;
+  transform: rotate(-1.25deg);
+}
+.about-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, transparent 65%, #4b101f38);
+  pointer-events: none;
+}
+.about-portrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
 .about h2 {
   margin: 0 0 30px;
 }
@@ -986,9 +1075,13 @@ footer > a:last-child {
     font-size: 13px;
     margin: 9px 0;
   }
-  .portrait-note a {
+  .portrait-note .portrait-link {
     font-size: 11px;
     gap: 8px;
+  }
+  .portrait-note .fiverr-button {
+    padding: 8px 11px;
+    font-size: 10px;
   }
   .work-section {
     padding: 42px 22px;
@@ -1043,7 +1136,12 @@ footer > a:last-child {
     gap: 28px;
   }
   .about-label .scribble {
-    display: none;
+    margin-top: 20px;
+    font-size: 28px;
+  }
+  .about-portrait {
+    width: min(82vw, 310px);
+    margin-top: 22px;
   }
   .about p {
     font-size: 16px;

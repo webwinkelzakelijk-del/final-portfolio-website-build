@@ -253,15 +253,25 @@ export default function App() {
                   alt="Kevin smiling in his navy sweater"
                   fetchPriority="high"
                 />
-                <div>
+                <div className="portrait-copy">
                   <span className="scribble">Hi, I’m Kevin.</span>
                   <p>
                     A person to think with.
                     <br />A builder to get it done.
                   </p>
-                  <a href="#about">
-                    Meet your builder <ArrowUpRight size={15} />
-                  </a>
+                  <div className="portrait-actions">
+                    <a
+                      className="fiverr-button"
+                      href="https://www.fiverr.com/s/NeBXK68"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Work with me on Fiverr <ArrowUpRight size={15} />
+                    </a>
+                    <a className="portrait-link" href="#about">
+                      Meet your builder <ArrowUpRight size={15} />
+                    </a>
+                  </div>
                 </div>
               </div>
               <div className="scene-heading" aria-live="polite">
@@ -379,6 +389,15 @@ export default function App() {
                 <br />
                 Very real curiosity.
               </span>
+              <figure className="about-portrait">
+                <img
+                  src={`${import.meta.env.BASE_URL}images/kevin-casual-v2.png`}
+                  width="1122"
+                  height="1402"
+                  alt="Kevin relaxing in a warm creative workspace"
+                  loading="lazy"
+                />
+              </figure>
             </div>
             <div>
               <h2>
