@@ -450,7 +450,7 @@ export default function App() {
             <div className="contact-actions">
               <a
                 className="button"
-                href={`mailto:hello@kevinrebuilds.com?subject=${encodeURIComponent(`Let's make ${options[index].name.toLowerCase()}`)}`}
+                href={`mailto:webwinkelzakelijk@gmail.com?subject=${encodeURIComponent(`Let's make ${options[index].name.toLowerCase()}`)}`}
               >
                 Let’s talk about it <ArrowUpRight size={21} />
               </a>
