@@ -208,8 +208,8 @@ export default function App() {
   const dialog = useRef<HTMLDialogElement>(null);
   const t: Translate = (nl, en) => (language === "nl" ? nl : en);
   const title = t(
-    "Kevin Rebuilds — Websites, apps & slimme systemen",
-    "Kevin Rebuilds — Websites, apps & smart systems",
+    "Kevin Rebuilds | Websites, apps & slimme systemen",
+    "Kevin Rebuilds | Websites, apps & smart systems",
   );
   const description = t(
     "Ik ben Kevin. Ik ontwerp en bouw websites, apps en automatiseringen. Persoonlijk contact, doordacht ontwerp en aandacht voor ieder detail.",
@@ -437,8 +437,8 @@ export default function App() {
             </h1>
             <p className="intro-description">
               {t(
-                "Van een sterke website tot een handige app. Ik help je iets maken dat klopt — in uitstraling én gebruik.",
-                "From a distinctive website to a useful app. I help you build something that feels right — in design and in use.",
+                "Van een sterke website tot een handige app. Ik help je iets maken dat klopt in uitstraling én gebruik.",
+                "From a distinctive website to a useful app. I help you build something that feels right in design and in use.",
               )}
             </p>
             <a className="button button-primary" href="#contact">
