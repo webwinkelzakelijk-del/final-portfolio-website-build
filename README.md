@@ -33,7 +33,7 @@ pnpm --filter @workspace/coming-soon serve
 - Forma Studio, Ritme, and Flowdesk are clearly labelled **concept projects**. Replace their text and previews with verified client work when available; do not present the examples as completed commissions.
 - Project cards open native dialogs with keyboard focus handling. Ritme and Flowdesk contain local interactive demonstrations.
 - Contact uses email and the existing Fiverr profile. There is no form submission backend, analytics, or external data transfer in the demos.
-- `public/images/kevin-casual.webp` is an optimized derivative of the existing portrait. The original image is retained.
+- `public/images/kevin-head-portrait.webp` is the optimized portrait used in the About section. The original source image remains outside the repository.
 
 ## Browser verification
 

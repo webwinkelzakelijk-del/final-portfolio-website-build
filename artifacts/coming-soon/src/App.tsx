@@ -502,7 +502,7 @@ export default function App() {
         <section className="about-section" id="about">
           <div className="about-photo">
             <img
-              src={`${import.meta.env.BASE_URL}images/kevin-casual.webp`}
+              src={`${import.meta.env.BASE_URL}images/kevin-head-portrait.webp`}
               alt={t(
                 "Kevin in zijn creatieve werkruimte",
                 "Kevin in his creative workspace",
