@@ -10,11 +10,11 @@ import {
 } from "lucide-react";
 
 type Language = "nl" | "en";
-type Translate = (nl: string, en: string) => string;
+export type Translate = (nl: string, en: string) => string;
 const email = "webwinkelzakelijk@gmail.com";
 const languageKey = "kevin-rebuilds-language";
 const names = ["Forma Studio", "Ritme", "Flowdesk"];
-function initialLanguage(): Language {
+export function initialLanguage(): Language {
   const parameter = new URLSearchParams(window.location.search).get("lang");
   if (parameter === "en" || parameter === "nl") return parameter;
   try {
@@ -24,7 +24,7 @@ function initialLanguage(): Language {
   }
 }
 
-function Preview({
+export function Preview({
   index,
   t,
   interactive = false,
@@ -376,7 +376,10 @@ export default function App() {
         </a>
         <nav aria-label={t("Hoofdnavigatie", "Main navigation")}>
           {["work", "about", "process", "contact"].map((id, index) => (
-            <a key={id} href={`#${id}`}>
+            <a
+              key={id}
+              href={index === 0 ? `${import.meta.env.BASE_URL}werk/` : `#${id}`}
+            >
               {
                 [
                   t("Werk", "Work"),

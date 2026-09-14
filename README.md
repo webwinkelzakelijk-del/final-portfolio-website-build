@@ -2,6 +2,8 @@
 
 The portfolio lives in `artifacts/coming-soon`. It is a static React + Vite site; the portfolio itself does not need the API server or a database.
 
+The homepage is served from `/`. The complete project overview is a separate multi-page entry at `/werk/`; the Work link in the main navigation opens that page.
+
 ## Develop
 
 ```sh
