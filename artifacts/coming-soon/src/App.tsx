@@ -1,551 +1,732 @@
-import { useState } from "react";
-import { SiFiverr } from "react-icons/si";
-import { motion, MotionConfig } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import {
-  ArrowRight,
+  ArrowDown,
   ArrowUpRight,
-  Monitor,
-  Box,
-  Workflow,
   Check,
-  Zap,
+  Copy,
   Mail,
+  Plus,
+  X,
 } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-const options = [
-  {
-    id: "website",
-    name: "A website",
-    icon: Monitor,
-    caption: "Beautiful websites that make your business feel impossible to ignore.",
-    note: "A clear story. A stronger first impression. More enquiries.",
-    deviceLabel: "WEBSITE / DESIGN + BUILD",
-    mobileTitle: "Beautiful websites, built to win trust.",
-    mobileSummary:
-      "Turn an outdated or unclear site into a distinctive online home that makes the next step obvious.",
-    description:
-      "For the business you’ve outgrown your old website to become. We find the story, give it a distinct look, and build a site that makes the next step obvious.",
-  },
-  {
-    id: "product",
-    name: "A product",
-    icon: Box,
-    caption: "Beautiful apps people can actually open, use, and come back to.",
-    note: "From the idea in your head to a product in someone’s hand.",
-    deviceLabel: "APP / PRODUCT PROTOTYPE",
-    mobileTitle: "Beautiful apps, made real.",
-    mobileSummary:
-      "Shape the right idea into a polished, testable app—so people can use it, not just imagine it.",
-    description:
-      "An idea becomes easier to explain when someone can use it. I turn the important part into a working first version, so we can learn from something real.",
-  },
-  {
-    id: "system",
-    name: "A system",
-    icon: Workflow,
-    caption: "Smart business systems that solve the bottlenecks stealing your time.",
-    note: "Connect the dots. Remove the chasing. Get your time back.",
-    deviceLabel: "SYSTEM / BUSINESS AUTOMATION",
-    mobileTitle: "Systems that make business feel lighter.",
-    mobileSummary:
-      "Connect the messy steps behind the scenes, so leads, projects, and follow-ups keep moving without the manual chase.",
-    description:
-      "The spreadsheet, the copied email, the step everyone forgets. We join the loose ends into a simple workflow that helps your business run with less chasing.",
-  },
-];
-function Website() {
-  return (
-    <div className="website-demo">
-      <div className="demo-nav">
-        <b className="after-brand">
-          FOUND<span>/FORM</span>
-        </b>
-        <span>WORK &nbsp; STUDIO &nbsp; START A PROJECT ↗</span>
-      </div>
-      <div className="website-content">
-        <div className="after-copy">
-          <small>INDEPENDENT CREATIVE STUDIO / 2026</small>
-          <h3>
-            IDEAS
-            <br />
-            <em>BUILT TO</em>
-            <br />
-            MOVE.
-          </h3>
-          <div className="after-cta">
-            <span>START A PROJECT</span>
-            <b>↗</b>
-          </div>
-        </div>
-        <div className="sculpture-stage">
-          <span className="sculpture-kicker">DIGITAL, WITH DIMENSION.</span>
-          <div className="sculpture" aria-hidden="true">
-            <i /><i /><i /><i /><i />
-            <span className="sculpture-core" />
-          </div>
-          <small>DESIGNED TO STAND OUT ↗</small>
-        </div>
-      </div>
-      <div className="demo-footer">
-        <span>↗</span>
-        <b>SCROLL TO EXPLORE</b>
-        <small>AMSTERDAM / AVAILABLE WORLDWIDE</small>
-      </div>
-    </div>
-  );
+type Language = "nl" | "en";
+type Translate = (nl: string, en: string) => string;
+const email = "webwinkelzakelijk@gmail.com";
+const languageKey = "kevin-rebuilds-language";
+const names = ["Forma Studio", "Ritme", "Flowdesk"];
+function initialLanguage(): Language {
+  const parameter = new URLSearchParams(window.location.search).get("lang");
+  if (parameter === "en" || parameter === "nl") return parameter;
+  try {
+    return localStorage.getItem(languageKey) === "en" ? "en" : "nl";
+  } catch {
+    return "nl";
+  }
 }
-function WebsiteBefore() {
-  return (
-    <div className="website-before-demo" aria-hidden="true">
-      <div className="before-nav">
-        <b>FOUND / FORM</b>
-        <span>HOME | ABOUT | SERVICES | CONTACT</span>
-      </div>
-      <div className="before-content">
-        <div>
-          <small>WELCOME TO OUR WEBSITE</small>
-          <h3>Quality solutions for your business</h3>
-          <p>
-            We are passionate about delivering professional services that help
-            you succeed.
-          </p>
-          <span className="before-button">CLICK HERE</span>
-        </div>
-        <div className="before-card">
-          <strong>WHY CHOOSE US?</strong>
-          <span>✓ Professional</span>
-          <span>✓ Reliable</span>
-          <span>✓ Affordable</span>
-        </div>
-      </div>
-      <div className="before-footer">
-        © 2026 FOUND / FORM | ALL RIGHTS RESERVED
-      </div>
-    </div>
-  );
-}
-function WebsiteComparison() {
-  const [reveal, setReveal] = useState(52);
 
-  return (
-    <div className="website-comparison">
-      <div className="comparison-layer comparison-after">
-        <Website />
-      </div>
-      <div
-        className="comparison-layer comparison-before"
-        style={{ clipPath: `inset(0 ${100 - reveal}% 0 0)` }}
-      >
-        <WebsiteBefore />
-      </div>
-      <span className="comparison-label comparison-label-before">BEFORE</span>
-      <span className="comparison-label comparison-label-after">AFTER</span>
-      <div className="comparison-divider" style={{ left: `${reveal}%` }}>
-        <span aria-hidden="true">↔</span>
-      </div>
-      <input
-        className="comparison-range"
-        type="range"
-        min="0"
-        max="100"
-        value={reveal}
-        onChange={(event) => setReveal(Number(event.target.value))}
-        aria-label="Compare the website before and after the redesign"
-      />
-    </div>
-  );
-}
-function Product() {
-  const [running, setRunning] = useState(true);
-  const [workout, setWorkout] = useState("curl");
-  const exercises = [{ id: "curl", name: "Bicep curl", detail: "3 sets · 12 reps · Dumbbells" }, { id: "press", name: "Shoulder press", detail: "3 sets · 10 reps · Dumbbells" }, { id: "squat", name: "Squat", detail: "3 sets · 12 reps · Dumbbells" }];
-  const exercise = exercises.find(item => item.id === workout)!;
-  return (
-    <div className={`product-demo fitness-demo exercise-${workout} ${running ? "is-training" : ""}`}>
-      <div className="fitness-nav"><b>FORM<span>+ </span></b><span>PERSONAL TRAINING / DEMO</span></div>
-      <div className="fitness-main">
-        <div className="fitness-copy"><small>YOUR NEXT LEVEL</small><h3>BUILD<br />YOUR<br /><em>STRONG.</em></h3><p aria-live="polite">{exercise.name}<br />{exercise.detail}</p></div>
-        <div className="fitness-stage" role="img" aria-label={`Animated athlete demonstrating ${exercise.name} with dumbbells`}>
-          <div className="fitness-orbit" />
-          <div className="fitness-model athlete" key={workout} aria-hidden="true">
-            <div className="athlete-upper"><i className="athlete-neck" /><i className="athlete-head" /><i className="athlete-torso" />
-              {["left", "right"].map(side => <div className={`athlete-arm ${side}`} key={side}><i className="athlete-bicep" /><div className="athlete-forearm"><i className="athlete-skin" /><i className="athlete-weight" /></div></div>)}
+function Preview({
+  index,
+  t,
+  interactive = false,
+}: {
+  index: number;
+  t: Translate;
+  interactive?: boolean;
+}) {
+  const [done, setDone] = useState(false);
+  const [step, setStep] = useState(3);
+  useEffect(() => {
+    if (step >= 3) return;
+    const timer = window.setTimeout(() => setStep((value) => value + 1), 550);
+    return () => window.clearTimeout(timer);
+  }, [step]);
+  if (index === 0)
+    return (
+      <div className="scene scene-web" aria-hidden={!interactive}>
+        <div className="laptop">
+          <div className="laptop-screen">
+            <div className="device-nav">
+              <span>
+                FORMA<span className="tiny-star">✳</span>
+              </span>
+              <span>STUDIO / 01</span>
             </div>
-            {["left", "right"].map(side => <div className={`athlete-leg ${side}`} key={side}><i className="athlete-thigh" /><div className="athlete-shin"><i /><b /></div></div>)}
-          </div>
-          <span className="fitness-stage-label">{exercise.name.toUpperCase()}</span>
-        </div>
-      </div>
-      <div className="fitness-controls"><div className="fitness-tabs" aria-label="Choose an exercise">{exercises.map(item => <button key={item.id} aria-pressed={workout === item.id} onClick={() => { setWorkout(item.id); setRunning(true); }}>{item.name}</button>)}</div><button className="fitness-start" aria-pressed={running} onClick={() => setRunning(!running)}>{running ? "Pause" : "Play"}<ArrowUpRight size={13} /></button></div>
-      <div className="fitness-stats"><span><b>03</b> SETS</span><span><b>{workout === "press" ? "10" : "12"}</b> REPS</span><span className="fitness-status" aria-live="polite">{running ? "● MOVEMENT PREVIEW" : "○ PREVIEW PAUSED"}</span></div>
-    </div>
-  );
-}
-function System() {
-  const [runs, setRuns] = useState(0);
-  return (
-    <div className="system-demo">
-      <div className="demo-nav">
-        <b>FLOW / workspace</b>
-        <span className="live">System online</span>
-      </div>
-      <div className="system-heading">
-        <small>THE WORK BEHIND THE WORK</small>
-        <h3>
-          A little less
-          <br />
-          on your plate.
-        </h3>
-      </div>
-      <div className="flow" key={runs}>
-        {[
-          { icon: Mail, title: "New enquiry", sub: "The conversation starts" },
-          {
-            icon: Workflow,
-            title: "Everything in place",
-            sub: "Brief + project created",
-          },
-          { icon: Check, title: "Ready for you", sub: "One clear next step" },
-        ].map(({ icon: Icon, title, sub }, i) => (
-          <div
-            className="flow-node"
-            key={title}
-            style={{ animationDelay: `${i * 0.3}s` }}
-          >
-            <span>
-              <Icon size={19} />
-            </span>
-            <div>
-              <b>{title}</b>
-              <small>{sub}</small>
-            </div>
-            <Check size={14} />
-          </div>
-        ))}
-      </div>
-      <button className="run-flow" onClick={() => setRuns((v) => v + 1)}>
-        <Zap size={14} />
-        {runs ? "Run it again" : "Try the workflow"}
-        <ArrowRight size={14} />
-      </button>
-    </div>
-  );
-}
-const previews = [Website, Product, System];
-const interactivePreviews = [WebsiteComparison, Product, System];
-export default function App() {
-  const [selected, setSelected] = useState("website");
-  const [project, setProject] = useState<number | null>(null);
-  const index = options.findIndex((o) => o.id === selected);
-  return (
-    <MotionConfig reducedMotion="user">
-      <div className="site" id="top">
-        <a className="skip-link" href="#main">
-          Skip to content
-        </a>
-        <header>
-          <a className="brand" href="#top">
-            KEVIN <span>REBUILDS</span>
-            <sup>®</sup>
-          </a>
-          <nav aria-label="Main navigation">
-            <a href="#work">Recent work</a>
-            <a href="#about">Meet the builder</a>
-            <a className="button small" href="#contact">
-              Start with a question <ArrowUpRight size={17} />
-            </a>
-          </nav>
-        </header>
-        <main id="main">
-          <Tabs
-            value={selected}
-            onValueChange={setSelected}
-            className="hero"
-            orientation="vertical"
-          >
-            <div className="hero-copy">
-              <div className="eyebrow">
-                <i /> INDEPENDENT BUILDER. CURIOUS BY DEFAULT.
+            <div className="device-layout">
+              <div className="device-title">
+                {t("Een plek die bij je past.", "A space to call your own.")}
+                <span>FORMA STUDIO</span>
               </div>
-              <h1>
-                WHAT ARE
-                <br />
-                WE <span>MAKING?</span>
-              </h1>
-              <p className="intro">
-                Websites, products, and the systems behind them.
-                <br />
-                I’m Kevin. I help good ideas become real things.
-              </p>
+              <div className="architectural-object">
+                <div />
+              </div>
             </div>
-            <div className="portrait-note">
+            <div className="device-footer">
+              <span>DESIGN & INTERIORS</span>
+              <ArrowUpRight size={12} />
+            </div>
+          </div>
+          <div className="laptop-base" />
+        </div>
+      </div>
+    );
+  if (index === 1)
+    return (
+      <div className="scene scene-app" aria-hidden={!interactive}>
+        <div className="app-word">
+          {t("kleine stappen.", "small steps.")}
+          <br />
+          <em>{t("jouw ritme.", "your rhythm.")}</em>
+        </div>
+        <div className="phone">
+          <div className="phone-top">
+            <span>9:41</span>
+            <span>•••</span>
+          </div>
+          <span className="phone-brand">ritme.</span>
+          <div className="phone-title">
+            {t("Ruimte voor jezelf.", "Make room for yourself.")}
+          </div>
+          <div className={`habit-ring ${done ? "is-done" : ""}`}>
+            <span>
+              {done ? "3" : "2"}
+              <small>/3</small>
+            </span>
+          </div>
+          {interactive ? (
+            <button
+              className="habit"
+              onClick={() => setDone(!done)}
+              aria-pressed={done}
+              aria-label={t("Vink gewoonte af", "Complete habit")}
+            >
+              <span className={done ? "checked" : ""}>
+                {done && <Check size={12} />}
+              </span>
+              {t("Even naar buiten", "Go for a walk")}
+            </button>
+          ) : (
+            <div className="habit">
+              <span />
+              {t("Even naar buiten", "Go for a walk")}
+            </div>
+          )}
+          <div className="phone-home" />
+        </div>
+      </div>
+    );
+  return (
+    <div className="scene scene-system" aria-hidden={!interactive}>
+      <div className="dashboard">
+        <div className="dash-top">
+          <span>
+            flowdesk<span>◇</span>
+          </span>
+          <span className="dash-avatar">K</span>
+        </div>
+        <div className="dash-title">
+          {t("Alles op zijn plek.", "Everything in place.")}
+        </div>
+        <div className="dash-rows">
+          {[
+            t("Nieuwe aanvraag", "New enquiry"),
+            t("Afspraak ingepland", "Meeting scheduled"),
+            t("Opvolging klaar", "Follow-up ready"),
+          ].map((row, i) => (
+            <div className={`dash-row ${i < step ? "complete" : ""}`} key={i}>
+              <span className="dash-step">0{i + 1}</span>
+              <span>{row}</span>
+              <Check size={14} />
+            </div>
+          ))}
+        </div>
+        {interactive && (
+          <>
+            <button
+              className="flow-button"
+              onClick={() => setStep(0)}
+              disabled={step < 3}
+            >
+              {t("Bekijk de flow", "Watch the flow")}
+              <ArrowUpRight size={14} />
+            </button>
+            <span className="sr-only" role="status">
+              {step === 3
+                ? t("Voorbeeldflow voltooid", "Example workflow complete")
+                : t("Voorbeeldflow gestart", "Example workflow started")}
+            </span>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({
+  index,
+  t,
+  onOpen,
+}: {
+  index: number;
+  t: Translate;
+  onOpen: (index: number) => void;
+}) {
+  const category = [
+    t("Webdesign & development", "Web design & development"),
+    "App & product design",
+    t("Systemen & automatisering", "Systems & automation"),
+  ][index];
+  return (
+    <article className={`project-card project-${index}`}>
+      <button
+        onClick={() => onOpen(index)}
+        aria-label={`${t("Bekijk project", "View project")}: ${names[index]}`}
+      >
+        <Preview index={index} t={t} />
+        <div className="project-copy">
+          <div>
+            <span className="project-category">{category}</span>
+            <h2>{names[index]}</h2>
+          </div>
+          <span className="project-open">
+            <ArrowUpRight size={21} />
+          </span>
+        </div>
+        <span className="concept-label">
+          {t("Conceptproject", "Concept project")}
+        </span>
+      </button>
+    </article>
+  );
+}
+
+export default function App() {
+  const [language, setLanguage] = useState<Language>(initialLanguage);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">(
+    "idle",
+  );
+  const dialog = useRef<HTMLDialogElement>(null);
+  const t: Translate = (nl, en) => (language === "nl" ? nl : en);
+  const title = t(
+    "Kevin Rebuilds — Websites, apps & slimme systemen",
+    "Kevin Rebuilds — Websites, apps & smart systems",
+  );
+  const description = t(
+    "Ik ben Kevin. Ik ontwerp en bouw websites, apps en automatiseringen. Persoonlijk contact, doordacht ontwerp en aandacht voor ieder detail.",
+    "I'm Kevin. I design and build websites, apps and automations. Direct contact, thoughtful design and attention to every detail.",
+  );
+  const projects = [
+    {
+      description: t(
+        "Een digitale plek met karakter. Dit concept voor een interieurstudio combineert rustige typografie, ruimtelijke beelden en een heldere route naar het werk.",
+        "A digital place with character. This interior studio concept combines quiet typography, spatial imagery and a clear path to the work.",
+      ),
+      focus: t(
+        "Visuele identiteit · Webdesign · Responsive development",
+        "Visual identity · Web design · Responsive development",
+      ),
+      idea: t(
+        "De projecten krijgen de hoofdrol. Een rustige opbouw en duidelijke contactmomenten helpen bezoekers om van inspiratie naar een gesprek te gaan.",
+        "The projects take centre stage. A calm structure and clear contact points help visitors move from inspiration to a conversation.",
+      ),
+    },
+    {
+      description: t(
+        "Kleine stappen, op jouw manier. Een appconcept dat dagelijkse gewoontes overzichtelijk en prettig maakt, zonder druk of een overvolle interface.",
+        "Small steps, your way. An app concept that makes daily habits clear and enjoyable, without pressure or an overloaded interface.",
+      ),
+      focus: t(
+        "UX-design · Interfaceontwerp · Interactie",
+        "UX design · Interface design · Interaction",
+      ),
+      idea: t(
+        "Eén helder overzicht, kleine haalbare acties en directe feedback. Probeer een gewoonte af te vinken in de preview.",
+        "One clear overview, small achievable actions and immediate feedback. Try completing a habit in the preview.",
+      ),
+    },
+    {
+      description: t(
+        "Rust in je dagelijkse werk. Een concept dat aanvragen, afspraken en opvolging samenbrengt in één overzichtelijk proces.",
+        "Calm in your working day. A concept bringing enquiries, appointments and follow-ups into one clear process.",
+      ),
+      focus: t(
+        "Procesontwerp · Automatisering · Dashboard",
+        "Process design · Automation · Dashboard",
+      ),
+      idea: t(
+        "Een nieuwe aanvraag leidt tot een duidelijke volgende stap. De preview laat de stappen zien; er worden geen echte gegevens verstuurd.",
+        "A new enquiry leads to a clear next step. The preview illustrates the workflow; it doesn't send any real data.",
+      ),
+    },
+  ];
+  const services = [
+    [
+      "Websites",
+      t(
+        "Een eigen uitstraling, een helder verhaal en een website die fijn werkt op ieder scherm.",
+        "A distinctive identity, a clear story and a website that feels right on every screen.",
+      ),
+    ],
+    [
+      t("Apps & producten", "Apps & products"),
+      t(
+        "Van een eerste idee naar een tastbaar product, met aandacht voor hoe mensen het gebruiken.",
+        "From an initial idea to a tangible product, with care for how people use it.",
+      ),
+    ],
+    [
+      t("Automatisering", "Automation"),
+      t(
+        "Minder losse taken, meer overzicht. Slimme verbindingen tussen de stappen in je werkdag.",
+        "Fewer scattered tasks, more clarity. Smart connections between the steps in your working day.",
+      ),
+    ],
+  ];
+  const steps = [
+    [
+      t("Eerst begrijpen", "Understand first"),
+      t(
+        "We bespreken je idee, je doelgroep en wat je wilt bereiken. Je hoeft nog geen uitgewerkt plan te hebben.",
+        "We talk about your idea, your audience and what you want to achieve. You don't need a finished brief.",
+      ),
+    ],
+    [
+      t("Samen vormgeven", "Shape it together"),
+      t(
+        "Ik vertaal het naar een heldere richting. Je ziet het ontwerp, geeft feedback en denkt mee voordat we verder bouwen.",
+        "I turn it into a clear direction. You see the design, give feedback and help shape it before we build further.",
+      ),
+    ],
+    [
+      t("Bouwen & verfijnen", "Build & refine"),
+      t(
+        "Ik bouw, test en werk de details af. We lopen alles samen door, zodat je weet hoe het werkt.",
+        "I build, test and polish the details. We walk through everything together, so you know how it works.",
+      ),
+    ],
+  ];
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.title = title;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", description);
+    for (const property of ["og:title", "twitter:title"])
+      document
+        .querySelector(`meta[property="${property}"], meta[name="${property}"]`)
+        ?.setAttribute("content", title);
+    for (const property of ["og:description", "twitter:description"])
+      document
+        .querySelector(`meta[property="${property}"], meta[name="${property}"]`)
+        ?.setAttribute("content", description);
+    document
+      .querySelector('meta[property="og:locale"]')
+      ?.setAttribute("content", language === "nl" ? "nl_NL" : "en_GB");
+  }, [language, title, description]);
+  useEffect(() => {
+    const update = () => setLanguage(initialLanguage());
+    window.addEventListener("popstate", update);
+    return () => window.removeEventListener("popstate", update);
+  }, []);
+  useEffect(() => {
+    const element = dialog.current;
+    if (selected !== null && element && !element.open) element.showModal();
+    if (selected === null) element?.close();
+    if (selected === null) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [selected]);
+  useEffect(() => {
+    if (copyStatus === "idle") return;
+    const timer = window.setTimeout(() => setCopyStatus("idle"), 4000);
+    return () => clearTimeout(timer);
+  }, [copyStatus]);
+  function changeLanguage(next: Language) {
+    setLanguage(next);
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", next);
+    window.history.replaceState(null, "", url);
+    try {
+      localStorage.setItem(languageKey, next);
+    } catch {
+      /* The switch works without storage. */
+    }
+  }
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopyStatus("copied");
+    } catch {
+      setCopyStatus("failed");
+    }
+  }
+  return (
+    <div className="site-shell" id="top">
+      <a className="skip-link" href="#main">
+        {t("Ga naar inhoud", "Skip to content")}
+      </a>
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="Kevin Rebuilds">
+          kevin<span>rebuilds.</span>
+        </a>
+        <nav aria-label={t("Hoofdnavigatie", "Main navigation")}>
+          {["work", "about", "process", "contact"].map((id, index) => (
+            <a key={id} href={`#${id}`}>
+              {
+                [
+                  t("Werk", "Work"),
+                  t("Over mij", "About"),
+                  t("Werkwijze", "Process"),
+                  "Contact",
+                ][index]
+              }
+            </a>
+          ))}
+        </nav>
+        <div
+          className="language-switch"
+          role="group"
+          aria-label={t("Taal", "Language")}
+        >
+          <button
+            lang="nl"
+            aria-label="Nederlands"
+            aria-pressed={language === "nl"}
+            onClick={() => changeLanguage("nl")}
+          >
+            NL
+          </button>
+          <span>/</span>
+          <button
+            lang="en"
+            aria-label="English"
+            aria-pressed={language === "en"}
+            onClick={() => changeLanguage("en")}
+          >
+            EN
+          </button>
+        </div>
+      </header>
+      <main id="main">
+        <section
+          className="portfolio-grid"
+          id="work"
+          aria-label={t(
+            "Een selectie van wat ik kan maken",
+            "A selection of what I can create",
+          )}
+        >
+          <div className="intro-card">
+            <span className="eyebrow">
+              <i />
+              {t(
+                "ZELFSTANDIG. VEELZIJDIG. BETROKKEN.",
+                "INDEPENDENT. VERSATILE. INVESTED.",
+              )}
+            </span>
+            <h1>
+              {t("Jouw idee.", "Your idea.")}
+              <br />
+              {t("Mijn aandacht.", "My attention.")}
+              <br />
+              <span>{t("Sterk resultaat.", "Built to work.")}</span>
+            </h1>
+            <p className="intro-description">
+              {t(
+                "Van een sterke website tot een handige app. Ik help je iets maken dat klopt — in uitstraling én gebruik.",
+                "From a distinctive website to a useful app. I help you build something that feels right — in design and in use.",
+              )}
+            </p>
+            <a className="button button-primary" href="#contact">
+              {t("Laten we iets maken", "Let’s make something")}
+              <ArrowUpRight size={19} />
+            </a>
+            <a className="person" href="#about">
               <img
                 src={`${import.meta.env.BASE_URL}images/kevin-friendly.webp`}
-                width="320"
-                height="360"
-                alt="Kevin smiling in his navy sweater"
+                width="58"
+                height="64"
+                alt="Kevin"
                 fetchPriority="high"
               />
-              <div className="portrait-copy">
-                <span className="scribble">Hi, I’m Kevin.</span>
-                <p>
-                  A person to think with.
-                  <br />A builder to get it done.
-                </p>
-                <div className="portrait-actions">
-                  <a
-                    className="fiverr-button"
-                    href="https://www.fiverr.com/s/NeBXK68"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span>Work with me on <span className="sr-only">Fiverr</span></span>
-                    <SiFiverr className="fiverr-logo" viewBox="0 8 24 8" aria-hidden="true" />
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </a>
-                  <a className="portrait-link" href="#about">
-                    Meet your builder <ArrowUpRight size={17} />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="hero-controls">
-              <TabsList
-                className="offering-tabs"
-                aria-label="What are we making?"
-              >
-                {options.map(({ id, name, icon: Icon }, i) => (
-                  <TabsTrigger className="offering" key={id} value={id}>
-                    <span className="offering-icon">
-                      <Icon size={25} strokeWidth={1.5} />
-                    </span>
-                    <span>{name}</span>
-                    <small>0{i + 1}</small>
-                    <ArrowRight size={25} />
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              <div className="human-note">
-                <span className="scribble">Ideas into reality.</span>
+              <span>
+                <strong>{t("Hoi, ik ben Kevin.", "Hi, I’m Kevin.")}</strong>
                 <span>
-                  One person. From the first
-                  <br />
-                  conversation to the final detail.
+                  {t(
+                    "De persoon achter je project.",
+                    "The person behind your project.",
+                  )}
                 </span>
-              </div>
-            </div>
-            <div className="showcase">
-              <div className="scene-heading" aria-live="polite">
-                <span className="counter">0{index + 1} / 03</span>
-                <h2>{options[index].name}</h2>
-                <p>{options[index].caption}</p>
-              </div>
-              <div className="mobile-scene-intro" aria-live="polite">
-                <span>{options[index].deviceLabel}</span>
-                <strong>{options[index].mobileTitle}</strong>
-                <p>{options[index].mobileSummary}</p>
-              </div>
-              <div className={`device device-${selected}`}>
-                <div className="device-bar">
-                  <i />
-                  <i />
-                  <i />
-                  <small>{options[index].deviceLabel}</small>
-                </div>
-                {options.map(({ id }, i) => {
-                  const Preview = interactivePreviews[i];
-                  return (
-                    <TabsContent className="preview-panel" key={id} value={id}>
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.97, y: 12 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{
-                          duration: 0.45,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                      >
-                        <Preview />
-                      </motion.div>
-                    </TabsContent>
-                  );
-                })}
-                <div className="device-base" />
-              </div>
-              <div className="scene-caption">
-                <span className="scribble">{options[index].note}</span>
-                <span>INTERACTIVE PREVIEW ↗</span>
-              </div>
-              <div className="capability-detail">
-                <strong>{options[index].mobileTitle}</strong>
-                <p>{options[index].mobileSummary}</p>
-                <small>INTERACTIVE CONCEPT DEMO · EXPLORE SELECTED WORK BELOW</small>
-              </div>
-            </div>
-          </Tabs>
-          <section className="work-section" id="work">
-            <div className="section-top">
-              <div>
-                <span className="eyebrow">SELECTED WORK</span>
-                <h2>
-                  Ideas I’ve
-                  <br />
-                  <span>brought to life.</span>
-                </h2>
-              </div>
-              <p>
-                A closer look at what we could make.
-                <br />
-                Three concept projects. Three different starting points.
-              </p>
-            </div>
-            <div className="work-grid">
-              {[
-                "A calmer internet.",
-                "Tools for real progress.",
-                "Small systems. Big change.",
-              ].map((title, i) => {
-                const Preview = previews[i];
-                return (
-                  <article className="work-card" key={title}>
-                    <div className="work-preview" aria-hidden="true" inert>
-                      <Preview />
-                    </div>
-                    <button
-                      className="work-title"
-                      onClick={() => setProject(project === i ? null : i)}
-                      aria-expanded={project === i}
-                      aria-controls="project-detail"
-                    >
-                      <span>
-                        <small>
-                          0{i + 1} / {options[i].name.slice(2).toUpperCase()}{" "}
-                          CONCEPT
-                        </small>
-                        <strong>{title}</strong>
-                      </span>
-                      <span className="work-arrow">
-                        <ArrowUpRight size={24} />
-                      </span>
-                    </button>
-                  </article>
-                );
-              })}
-            </div>
-            <div id="project-detail">
-              {project !== null && (
-                <motion.div
-                  className="project-detail"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <span className="eyebrow">WHAT THIS COULD BECOME</span>
-                  <h3>{options[project].name}, built around you.</h3>
-                  <p>{options[project].description}</p>
-                  <a
-                    href="#contact"
-                    className="text-link"
-                    onClick={() => setSelected(options[project].id)}
-                  >
-                    Make something like this <ArrowRight size={17} />
-                  </a>
-                </motion.div>
-              )}
-            </div>
-          </section>
-          <section className="about" id="about">
-            <div className="about-label">
-              <span className="eyebrow">MEET THE BUILDER</span>
-              <span className="scribble">
-                A real person.
-                <br />
-                Very real curiosity.
               </span>
-              <figure className="about-portrait">
-                <img
-                  src={`${import.meta.env.BASE_URL}images/kevin-casual-v2.png`}
-                  width="1122"
-                  height="1402"
-                  alt="Kevin relaxing in a warm creative workspace"
-                  loading="lazy"
-                />
-              </figure>
-            </div>
-            <div>
-              <h2>
-                I’ve always loved the moment
-                <br />
-                <span>an idea becomes real.</span>
-              </h2>
-              <p>
-                I’ve been fascinated by the online world for as long as I can
-                remember. From the moment I built my first website, I knew I
-                wanted to do more with it. Seeing something turn out exactly as
-                you pictured it in your head. That feeling never gets old.
-              </p>
-              <p>
-                Since then, I’ve built a YouTube channel to 140,000 subscribers,
-                managed another with 3 million, grown an Instagram account from
-                zero to 340,000 followers, and launched an online store of my
-                own. Different projects, but always the same curiosity: what
-                makes an idea connect with people?
-              </p>
-              <p>
-                Away from the screen, I’m a proud dad of three. It’s the best
-                thing that ever happened to me. Even after a full day at work,
-                I’ll often spend my evenings creating because it gives me
-                genuine fulfilment. I bring creativity, ambition, a hunger to
-                learn and, when the moment allows, a good sense of humour.
-              </p>
-              <p>
-                When someone trusts me with their idea, I treat them exactly as
-                I’d want to be treated: honestly, thoughtfully and with real
-                care. I’ll always aim to overdeliver, never under.
-              </p>
-              <a className="text-link" href="#contact">
-                Tell me what’s on your mind <ArrowRight size={18} />
-              </a>
-            </div>
-          </section>
-          <section className="contact" id="contact">
-            <span className="eyebrow">NO PERFECT BRIEF REQUIRED</span>
+              <ArrowDown size={17} />
+            </a>
+          </div>
+          <ProjectCard index={0} t={t} onOpen={setSelected} />
+          <ProjectCard index={2} t={t} onOpen={setSelected} />
+          <ProjectCard index={1} t={t} onOpen={setSelected} />
+          <div className="services-card">
+            <span className="eyebrow">
+              {t("VAN IDEE NAAR IETS ECHTS", "FROM IDEA TO SOMETHING REAL")}
+            </span>
             <h2>
-              What’s the idea
+              {t("Creatief denken.", "Creative thinking.")}
               <br />
-              <span>you keep coming back to?</span>
+              {t("Praktisch maken.", "Practical making.")}
+            </h2>
+            <div className="services">
+              {services.map(([service, text], index) => (
+                <details key={index}>
+                  <summary>
+                    <span>
+                      <small>0{index + 1}</small>
+                      {service}
+                    </span>
+                    <Plus size={18} />
+                  </summary>
+                  <p>{text}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+        <p className="concept-note">
+          {t(
+            "Drie conceptprojecten. Een indruk van de mogelijkheden, geen uitgevoerde klantopdrachten.",
+            "Three concept projects. An illustration of the possibilities, not completed client commissions.",
+          )}
+        </p>
+        <section className="about-section" id="about">
+          <div className="about-photo">
+            <img
+              src={`${import.meta.env.BASE_URL}images/kevin-casual.webp`}
+              alt={t(
+                "Kevin in zijn creatieve werkruimte",
+                "Kevin in his creative workspace",
+              )}
+              width="1122"
+              height="1402"
+              loading="lazy"
+            />
+            <span>
+              {t(
+                "Een maker. Korte lijnen. Veel aandacht.",
+                "One maker. Direct contact. Real attention.",
+              )}
+            </span>
+          </div>
+          <div className="about-copy">
+            <span className="eyebrow">
+              {t("DE MAKER ACHTER DE PIXELS", "THE MAKER BEHIND THE PIXELS")}
+            </span>
+            <h2>
+              {t("Nieuwsgierig van nature.", "Curious by nature.")}
+              <br />
+              <span>{t("Maker in hart en nieren.", "A maker at heart.")}</span>
             </h2>
             <p>
-              A sentence, a sketch, a “could we…?”
-              <br />
-              That’s plenty to start a conversation.
+              {t(
+                "Ik ben Kevin. Ik vind het bijzonder om iets dat eerst alleen in je hoofd bestaat, echt te zien werken. Een website, een product of een systeem dat je dag makkelijker maakt. Daar krijg ik energie van.",
+                "I'm Kevin. I love seeing something that started as an idea become something real. A website, a product or a system that makes your day easier. That's what gives me energy.",
+              )}
             </p>
-            <div className="contact-actions">
-              <a
-                className="button"
-                href={`mailto:webwinkelzakelijk@gmail.com?subject=${encodeURIComponent(`Let's make ${options[index].name.toLowerCase()}`)}`}
+            <p>
+              {t(
+                "Die nieuwsgierigheid heeft me van content en social media naar een eigen webshop en digitale producten gebracht. Verschillende projecten, steeds dezelfde vraag: wat maakt iets waardevol voor de mensen die het gebruiken?",
+                "That curiosity has taken me from content and social media to my own online store and digital products. Different projects, always the same question: what makes something valuable to the people using it?",
+              )}
+            </p>
+            <p>
+              {t(
+                "Buiten het scherm ben ik vader van drie. Ik werk graag met mensen die ergens voor gaan. Met korte lijnen, eerlijk advies en aandacht voor de details. Je werkt rechtstreeks met mij, van de eerste vraag tot de laatste afwerking.",
+                "Away from the screen, I'm a dad of three. I enjoy working with people who care about what they do. Expect direct communication, honest advice and attention to the details. You work with me, from the first question to the finishing touches.",
+              )}
+            </p>
+            <a className="text-link" href="#contact">
+              {t("Vertel me wat je bezighoudt", "Tell me what’s on your mind")}
+              <ArrowUpRight size={18} />
+            </a>
+          </div>
+        </section>
+        <section className="process-section" id="process">
+          <span className="eyebrow">
+            {t("ZO WERKEN WE SAMEN", "HOW WE WORK TOGETHER")}
+          </span>
+          <h2>
+            {t(
+              "Van eerste gesprek tot laatste detail.",
+              "From first conversation to final detail.",
+            )}
+          </h2>
+          <div className="process-grid">
+            {steps.map(([heading, text], index) => (
+              <article key={index}>
+                <span className="step-number">0{index + 1}</span>
+                <h3>{heading}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="contact-section" id="contact">
+          <div>
+            <span className="eyebrow">
+              {t(
+                "EEN GOED PROJECT BEGINT MET EEN GESPREK",
+                "A GOOD PROJECT STARTS WITH A CONVERSATION",
+              )}
+            </span>
+            <h2>
+              {t("Wat wil jij", "What would you")}
+              <br />
+              <span>{t("maken?", "like to make?")}</span>
+            </h2>
+            <p>
+              {t(
+                "Een idee, een vraag of een ‘zou het kunnen…?’ is genoeg. Vertel me waar je aan denkt.",
+                "An idea, a question or a ‘could we…?’ is enough. Tell me what you have in mind.",
+              )}
+            </p>
+          </div>
+          <div className="contact-actions">
+            <a
+              className="button button-primary"
+              href={`mailto:${email}?subject=${encodeURIComponent(t("Een idee voor mijn bedrijf", "An idea for my business"))}`}
+            >
+              <Mail size={19} />
+              {t("Mail me je idee", "Email me your idea")}
+              <ArrowUpRight size={19} />
+            </a>
+            <a
+              className="button button-secondary"
+              href="https://www.fiverr.com/s/NeBXK68"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("Werk met mij via Fiverr", "Work with me on Fiverr")}
+              <ArrowUpRight size={18} />
+            </a>
+            <div className="email-row">
+              <a href={`mailto:${email}`}>{email}</a>
+              <button
+                aria-label={t("Kopieer e-mailadres", "Copy email address")}
+                onClick={copyEmail}
               >
-                Let’s talk about it <ArrowUpRight size={21} />
-              </a>
-              <a
-                className="button fiverr-contact-button"
-                href="https://www.fiverr.com/s/NeBXK68"
-                target="_blank"
-                rel="noreferrer"
+                {copyStatus === "copied" ? (
+                  <Check size={16} />
+                ) : (
+                  <Copy size={16} />
+                )}
+              </button>
+            </div>
+            <span className="copy-status" role="status">
+              {copyStatus === "copied"
+                ? t("E-mailadres gekopieerd", "Email address copied")
+                : copyStatus === "failed"
+                  ? t(
+                      "Kopiëren lukt niet. Je kunt het adres hierboven selecteren.",
+                      "Couldn't copy. You can select the address above.",
+                    )
+                  : ""}
+            </span>
+          </div>
+        </section>
+      </main>
+      <footer className="site-footer">
+        <a className="brand" href="#top">
+          kevin<span>rebuilds.</span>
+        </a>
+        <span>
+          © {new Date().getFullYear()} ·{" "}
+          {t(
+            "Met aandacht bedacht. Met plezier gebouwd.",
+            "Thoughtfully designed. Happily built.",
+          )}
+        </span>
+        <a href="#top">
+          {t("Terug naar boven", "Back to top")}
+          <ArrowUpRight size={15} />
+        </a>
+      </footer>
+      <dialog
+        ref={dialog}
+        className="project-dialog"
+        aria-labelledby="project-title"
+        onCancel={() => setSelected(null)}
+        onClose={() => setSelected(null)}
+        onKeyDown={(event) => {
+          if (event.key !== "Tab") return;
+          const controls = event.currentTarget.querySelectorAll<HTMLElement>(
+            "button:not(:disabled), a[href], input:not(:disabled)",
+          );
+          const first = controls[0];
+          const last = controls[controls.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+          }
+        }}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) {
+            const bounds = event.currentTarget.getBoundingClientRect();
+            if (
+              event.clientX < bounds.left ||
+              event.clientX > bounds.right ||
+              event.clientY < bounds.top ||
+              event.clientY > bounds.bottom
+            )
+              setSelected(null);
+          }
+        }}
+      >
+        {selected !== null && (
+          <>
+            <div className="dialog-heading">
+              <span className="eyebrow">
+                {t("Conceptproject", "Concept project")} / 0{selected + 1}
+              </span>
+              <button
+                className="close-button"
+                onClick={() => setSelected(null)}
+                aria-label={t("Sluiten", "Close")}
               >
-                Hire me on Fiverr <ArrowUpRight size={21} />
+                <X size={22} />
+              </button>
+            </div>
+            <div
+              className="dialog-preview"
+              aria-label={t("Visuele conceptpreview", "Visual concept preview")}
+            >
+              <Preview key={selected} index={selected} t={t} interactive />
+            </div>
+            <div className="dialog-copy">
+              <h2 id="project-title">{names[selected]}</h2>
+              <p>{projects[selected].description}</p>
+              <h3>{t("Mijn focus", "My focus")}</h3>
+              <p>{projects[selected].focus}</p>
+              <h3>{t("Het idee", "The idea")}</h3>
+              <p>{projects[selected].idea}</p>
+              <a
+                className="button button-primary"
+                href="#contact"
+                onClick={() => setSelected(null)}
+              >
+                {t(
+                  "Zoiets voor jouw bedrijf?",
+                  "Something like this for your business?",
+                )}
+                <ArrowUpRight size={18} />
               </a>
             </div>
-            <small>Email me directly or book through Fiverr.</small>
-          </section>
-        </main>
-        <footer>
-          <a className="brand" href="#top">
-            KEVIN <span>REBUILDS</span>
-          </a>
-          <span>Ideas into reality. With a human behind it.</span>
-          <a href="#top">Back to top ↑</a>
-        </footer>
-      </div>
-    </MotionConfig>
+          </>
+        )}
+      </dialog>
+    </div>
   );
 }
