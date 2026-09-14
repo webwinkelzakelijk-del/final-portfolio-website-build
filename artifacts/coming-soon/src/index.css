@@ -248,14 +248,15 @@ svg {
 .person {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   margin-top: auto;
   padding-top: 54px;
   width: 100%;
 }
 .person img {
-  width: 58px;
-  height: 64px;
+  width: 86px;
+  height: 86px;
+  flex: 0 0 86px;
   border-radius: 50%;
   object-fit: cover;
   object-position: 50% 20%;
@@ -264,11 +265,11 @@ svg {
 .person > span {
   display: grid;
   gap: 5px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .person strong {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--ink);
 }
@@ -1052,7 +1053,12 @@ svg {
   }
   .person {
     padding-top: 40px;
-    gap: 10px;
+    gap: 14px;
+  }
+  .person img {
+    width: 76px;
+    height: 76px;
+    flex-basis: 76px;
   }
   .person > span {
     font-size: 10px;

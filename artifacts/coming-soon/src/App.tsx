@@ -448,8 +448,8 @@ export default function App() {
             <a className="person" href="#about">
               <img
                 src={`${import.meta.env.BASE_URL}images/kevin-friendly.webp`}
-                width="58"
-                height="64"
+                width="86"
+                height="86"
                 alt="Kevin"
                 fetchPriority="high"
               />
