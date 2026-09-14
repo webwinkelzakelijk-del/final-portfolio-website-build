@@ -205,6 +205,7 @@ export default function App() {
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">(
     "idle",
   );
+  const [openService, setOpenService] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const t: Translate = (nl, en) => (language === "nl" ? nl : en);
   const title = t(
@@ -479,8 +480,14 @@ export default function App() {
             </h2>
             <div className="services">
               {services.map(([service, text], index) => (
-                <details key={index}>
-                  <summary>
+                <details key={index} open={openService === index}>
+                  <summary
+                    aria-expanded={openService === index}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setOpenService(openService === index ? null : index);
+                    }}
+                  >
                     <span>
                       <small>0{index + 1}</small>
                       {service}
