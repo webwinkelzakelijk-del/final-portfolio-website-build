@@ -170,28 +170,19 @@ export function Preview({
     );
   return (
     <div className="scene scene-live" aria-hidden={!interactive}>
-      <div className="live-preview">
-        <div className="live-preview-top">
-          <span>DH!</span>
-          <strong>Different Hair!</strong>
-          <small>EMMEN · NL</small>
-        </div>
-        <div className="live-preview-body">
-          <div>
-            <span className="live-kicker">ONE-MAN SALON · EST. 2011</span>
-            <strong className="live-title">
-              DIFFERENT
-              <em>HAIR!</em>
-            </strong>
-          </div>
-          <div className="live-collage" aria-hidden="true">
-            <span>✂</span>
-            <span>✦</span>
-            <span>DH!</span>
-          </div>
-        </div>
-        <span className="live-ticker">DO YOU DARE TO BE DIFFERENT ✶</span>
-      </div>
+      <img
+        className="live-screenshot"
+        src={`${import.meta.env.BASE_URL}images/different-hair-homepage.png`}
+        alt={
+          interactive
+            ? t(
+                "Screenshot van de homepage van Different Hair",
+                "Screenshot of the Different Hair homepage",
+              )
+            : ""
+        }
+        loading="lazy"
+      />
     </div>
   );
 }
@@ -524,7 +515,6 @@ export default function App() {
           </div>
           <ProjectCard index={0} t={t} onOpen={setSelected} />
           <ProjectCard index={2} t={t} onOpen={setSelected} />
-          <ProjectCard index={3} t={t} onOpen={setSelected} />
           <ProjectCard index={1} t={t} onOpen={setSelected} />
           <div className="services-card">
             <span className="eyebrow">
@@ -559,10 +549,69 @@ export default function App() {
         </section>
         <p className="portfolio-note">
           {t(
-            "Recent werk: Different Hair. Daarnaast drie duidelijke voorbeelden van wat ik bouw: websites, apps en systemen.",
-            "Recent work: Different Hair. Plus three clear examples of what I build: websites, apps and systems.",
+            "Drie duidelijke voorbeelden van wat ik bouw: websites, apps en slimme systemen.",
+            "Three clear examples of what I build: websites, apps and smart systems.",
           )}
         </p>
+        <section
+          className="recent-work-section"
+          aria-labelledby="recent-work-title"
+        >
+          <div className="recent-work-copy">
+            <span className="eyebrow">
+              {t("RECENT WERK / LIVE WEBSITE", "RECENT WORK / LIVE WEBSITE")}
+            </span>
+            <h2 id="recent-work-title">Different Hair!</h2>
+            <p>
+              {t(
+                "Een uitgesproken website voor de one-man kapsalon van Frank Meichsner in Emmen. Van strategie en webdesign tot copy en responsive development.",
+                "A bold website for Frank Meichsner's one-man hair salon in Emmen. From strategy and web design to copy and responsive development.",
+              )}
+            </p>
+            <a
+              className="button button-primary"
+              href="https://differenthair.nl"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("Bekijk de live website", "View the live website")}
+              <ArrowUpRight size={18} />
+            </a>
+          </div>
+          <a
+            className="recent-work-browser"
+            href="https://differenthair.nl"
+            target="_blank"
+            rel="noreferrer"
+            aria-label={t(
+              "Bekijk Different Hair live",
+              "View Different Hair live",
+            )}
+          >
+            <span className="browser-bar" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+              <small>differenthair.nl</small>
+            </span>
+            <img
+              src={
+                import.meta.env.BASE_URL + "images/different-hair-homepage.png"
+              }
+              alt={t(
+                "Screenshot van de homepage van Different Hair",
+                "Screenshot of the Different Hair homepage",
+              )}
+              width="1440"
+              height="900"
+              loading="lazy"
+            />
+            <span className="browser-link">
+              {t("Open live", "Open live")}
+              <ArrowUpRight size={17} />
+            </span>
+          </a>
+        </section>
         <section className="about-section" id="about">
           <div className="about-photo">
             <img
