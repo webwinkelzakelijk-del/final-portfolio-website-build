@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/api/website-check",
+      "destination": "https://hosting.kevinrebuilds.com/api/website-check"
+    },
+    {
       "source": "/api/website-check/:path*",
       "destination": "https://hosting.kevinrebuilds.com/api/website-check/:path*"
     }
