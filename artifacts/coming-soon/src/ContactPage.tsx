@@ -1,5 +1,12 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowUpRight, Check, Copy, Mail, MessageCircle } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  Copy,
+  LoaderCircle,
+  Mail,
+  MessageCircle,
+} from "lucide-react";
 import { PagePolish, initialLanguage, type Translate } from "./App";
 
 type Language = "nl" | "en";
@@ -12,6 +19,9 @@ export default function ContactPage() {
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">(
     "idle",
   );
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const t: Translate = (nl, en) => (language === "nl" ? nl : en);
   const base = import.meta.env.BASE_URL;
   const projectTypes = [
@@ -62,9 +72,14 @@ export default function ContactPage() {
     }
   }
 
-  function startEmail(event: FormEvent<HTMLFormElement>) {
+  async function submitContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
+    if (String(form.get("_honey") ?? "")) {
+      setSubmitStatus("success");
+      event.currentTarget.reset();
+      return;
+    }
     const name = String(form.get("name") ?? "").trim();
     const replyTo = String(form.get("email") ?? "").trim();
     const idea = String(form.get("idea") ?? "").trim();
@@ -72,15 +87,40 @@ export default function ContactPage() {
       projectTypes[projectType][0],
       projectTypes[projectType][1],
     );
-    const subject = t(
-      `${selectedProjectType} — nieuw projectidee van ${name}`,
-      `${selectedProjectType} — new project idea from ${name}`,
-    );
-    const body = t(
-      `Hoi Kevin,\n\nIk wil je graag vertellen over mijn idee.\n\nSoort project: ${selectedProjectType}\nNaam: ${name}\nE-mailadres: ${replyTo}\n\nMijn idee:\n${idea}\n\nGroet,\n${name}`,
-      `Hi Kevin,\n\nI'd like to tell you about my idea.\n\nProject type: ${selectedProjectType}\nName: ${name}\nEmail: ${replyTo}\n\nMy idea:\n${idea}\n\nBest,\n${name}`,
-    );
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setSubmitStatus("submitting");
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email: replyTo,
+          project: selectedProjectType,
+          message: idea,
+          _subject: `Nieuw projectidee · ${selectedProjectType} · ${name}`,
+          _template: "table",
+          _url: window.location.href,
+        }),
+      });
+      const result = (await response.json().catch(() => null)) as {
+        success?: boolean | string;
+      } | null;
+      if (
+        !response.ok ||
+        result?.success === false ||
+        result?.success === "false"
+      ) {
+        throw new Error("Form submission failed");
+      }
+      event.currentTarget.reset();
+      setProjectType(0);
+      setSubmitStatus("success");
+    } catch {
+      setSubmitStatus("error");
+    }
   }
 
   return (
@@ -182,13 +222,17 @@ export default function ContactPage() {
               <h2>{t("Waar denk je aan?", "What do you have in mind?")}</h2>
               <p>
                 {t(
-                  "Vertel het in je eigen woorden. Na verzenden opent je e-mailapp met alles alvast ingevuld.",
-                  "Tell me in your own words. When you continue, your email app opens with everything filled in.",
+                  "Vertel het in je eigen woorden. Na verzenden komt je bericht rechtstreeks in mijn inbox.",
+                  "Tell me in your own words. When you send it, your message arrives directly in my inbox.",
                 )}
               </p>
             </div>
 
-            <form id="contact-form" onSubmit={startEmail}>
+            <form id="contact-form" onSubmit={submitContact}>
+              <label className="contact-honeypot" aria-hidden="true">
+                Website
+                <input name="_honey" tabIndex={-1} autoComplete="off" />
+              </label>
               <fieldset className="project-type-field">
                 <legend>
                   {t("Wat wil je maken?", "What would you like to make?")}
@@ -258,11 +302,53 @@ export default function ContactPage() {
                     "No obligations. Let's get acquainted first.",
                   )}
                 </span>
-                <button className="button button-primary" type="submit">
-                  <Mail size={18} />
-                  {t("Open mijn e-mail", "Open my email")}
-                  <ArrowUpRight size={18} />
+                <button
+                  className="button button-primary"
+                  type="submit"
+                  disabled={submitStatus === "submitting"}
+                >
+                  {submitStatus === "submitting" ? (
+                    <LoaderCircle className="submit-spinner" size={18} />
+                  ) : submitStatus === "success" ? (
+                    <Check size={18} />
+                  ) : (
+                    <Mail size={18} />
+                  )}
+                  {submitStatus === "submitting"
+                    ? t("Even versturen…", "Sending…")
+                    : submitStatus === "success"
+                      ? t("Bericht verzonden", "Message sent")
+                      : t("Versturen", "Send message")}
+                  {submitStatus === "idle" && <ArrowUpRight size={18} />}
                 </button>
+              </div>
+              <div
+                className={`contact-form-status ${submitStatus}`}
+                role="status"
+                aria-live="polite"
+              >
+                {submitStatus === "success" ? (
+                  <>
+                    <Check size={17} />
+                    {t(
+                      "Dankjewel! Je bericht is verzonden. Ik neem persoonlijk contact met je op.",
+                      "Thank you! Your message has been sent. I'll get back to you personally.",
+                    )}
+                  </>
+                ) : submitStatus === "error" ? (
+                  <>
+                    {t(
+                      "Verzenden lukte niet. Mail me rechtstreeks via",
+                      "Sending failed. Email me directly at",
+                    )}{" "}
+                    <a href={`mailto:${email}`}>{email}</a>
+                  </>
+                ) : (
+                  t(
+                    "Je gegevens worden alleen gebruikt om op je bericht te reageren.",
+                    "Your details are only used to respond to your message.",
+                  )
+                )}
               </div>
             </form>
           </div>
