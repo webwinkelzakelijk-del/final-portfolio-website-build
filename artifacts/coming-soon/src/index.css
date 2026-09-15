@@ -793,6 +793,8 @@ svg {
 }
 .services details {
   border-top: 1px solid var(--line);
+  position: relative;
+  transition: background-color 0.35s ease;
 }
 .services summary {
   list-style: none;
@@ -815,16 +817,34 @@ svg {
   color: #687d9e;
 }
 .services summary svg {
-  transition: transform 0.25s;
+  transition:
+    transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s ease;
 }
 .services details[open] summary svg {
   transform: rotate(45deg);
+  color: var(--blue);
 }
 .services details p {
   font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
   padding: 0 8px 18px 30px;
+}
+.services details[open] p {
+  animation: service-answer-in 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes service-answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-9px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 .portfolio-note {
   font-size: 13px;
