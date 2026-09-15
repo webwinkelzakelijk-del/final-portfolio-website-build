@@ -1332,15 +1332,15 @@ svg {
 }
 .contact-person {
   display: grid;
-  grid-template-columns: 82px minmax(0, 1fr);
-  gap: 17px;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 22px;
   align-items: center;
   margin-top: auto;
   padding-top: 70px;
 }
 .contact-person img {
-  width: 82px;
-  height: 82px;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
   object-fit: cover;
   object-position: 50% 20%;
@@ -1348,15 +1348,15 @@ svg {
 }
 .contact-person > span:not(.contact-signal) {
   display: grid;
-  gap: 5px;
+  gap: 6px;
 }
 .contact-person strong {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
 }
 .contact-person small {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
 }
 .contact-signal {
   grid-column: 1 / -1;
@@ -2793,7 +2793,19 @@ svg {
     font-size: clamp(50px, 8vw, 70px);
   }
   .contact-person {
+    grid-template-columns: 94px minmax(0, 1fr);
+    gap: 18px;
     max-width: 560px;
+  }
+  .contact-person img {
+    width: 94px;
+    height: 94px;
+  }
+  .contact-person strong {
+    font-size: 17px;
+  }
+  .contact-person small {
+    font-size: 14px;
   }
 }
 
@@ -2817,7 +2829,12 @@ svg {
     font-size: 16px;
   }
   .contact-person {
+    grid-template-columns: 92px minmax(0, 1fr);
     padding-top: 48px;
+  }
+  .contact-person img {
+    width: 92px;
+    height: 92px;
   }
   .contact-form-heading h2 {
     font-size: 34px;
@@ -2877,18 +2894,18 @@ svg {
     font-size: clamp(38px, 11.8vw, 49px);
   }
   .contact-person {
-    grid-template-columns: 70px minmax(0, 1fr);
-    gap: 14px;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 15px;
   }
   .contact-person img {
-    width: 70px;
-    height: 70px;
+    width: 88px;
+    height: 88px;
   }
   .contact-person strong {
-    font-size: 14px;
+    font-size: 16px;
   }
   .contact-person small {
-    font-size: 12px;
+    font-size: 13px;
   }
   .project-type-options button {
     padding-inline: 12px;
