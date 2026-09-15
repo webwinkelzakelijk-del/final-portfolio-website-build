@@ -24,10 +24,7 @@ export default function WorkPage() {
   const projects: WorkProject[] = [
     {
       name: "Different Hair!",
-      category: t(
-        "Live website · design & development",
-        "Live website · design & development",
-      ),
+      category: t("Recent werk · live website", "Recent work · live website"),
       tagline: t(
         "Een salon die online net zo eigen voelt.",
         "A salon that feels just as distinctive online.",
@@ -37,8 +34,8 @@ export default function WorkPage() {
         "A bold website for Frank Meichsner's one-man hair salon in Emmen. Strong typography, playful collage elements, customer reviews and an interactive tour bring the salon atmosphere to life online.",
       ),
       focus: t(
-        "Concept, webdesign, copy en responsive development",
-        "Concept, web design, copy and responsive development",
+        "Strategie, webdesign, copy en responsive development",
+        "Strategy, web design, copy and responsive development",
       ),
       preview: 3,
       live: true,
@@ -52,8 +49,8 @@ export default function WorkPage() {
         "A digital place with character.",
       ),
       description: t(
-        "Een concept voor een interieurstudio dat rustige typografie, ruimtelijke beelden en een heldere route naar het werk samenbrengt. Het ontwerp voelt verfijnd, maar blijft eenvoudig te gebruiken.",
-        "An interior studio concept combining quiet typography, spatial imagery and a clear path to the work. The design feels refined while staying simple to use.",
+        "Een website voor een interieurstudio die rustige typografie, ruimtelijke beelden en een heldere route naar het werk samenbrengt. Het ontwerp voelt verfijnd, maar blijft eenvoudig te gebruiken.",
+        "A website for an interior studio combining quiet typography, spatial imagery and a clear path to the work. The design feels refined while staying simple to use.",
       ),
       focus: t(
         "Visuele identiteit, webdesign en responsive development",
@@ -66,8 +63,8 @@ export default function WorkPage() {
       category: "App & product design",
       tagline: t("Kleine stappen, op jouw manier.", "Small steps, your way."),
       description: t(
-        "Een appconcept dat dagelijkse gewoontes overzichtelijk en prettig maakt. Eén rustig scherm, haalbare acties en directe feedback geven de gebruiker houvast zonder druk.",
-        "An app concept that makes daily habits clear and enjoyable. One calm screen, achievable actions and immediate feedback give the user structure without pressure.",
+        "Een app die dagelijkse gewoontes overzichtelijk en prettig maakt. Eén rustig scherm, haalbare acties en directe feedback geven de gebruiker houvast zonder druk.",
+        "An app that makes daily habits clear and enjoyable. One calm screen, achievable actions and immediate feedback give the user structure without pressure.",
       ),
       focus: t(
         "UX-design, interfaceontwerp en interactie",
@@ -83,8 +80,8 @@ export default function WorkPage() {
         "More clarity. Less busywork.",
       ),
       description: t(
-        "Een systeemconcept dat aanvragen, afspraken en opvolging verbindt. Iedere stap heeft een duidelijke status, zodat werk blijft bewegen en er minder tussen losse tools verdwijnt.",
-        "A system concept connecting enquiries, appointments and follow-ups. Every step has a clear status, keeping work moving with less falling between separate tools.",
+        "Een slim systeem dat aanvragen, afspraken en opvolging verbindt. Iedere stap heeft een duidelijke status, zodat werk blijft bewegen en er minder tussen losse tools verdwijnt.",
+        "A smart system connecting enquiries, appointments and follow-ups. Every step has a clear status, keeping work moving with less falling between separate tools.",
       ),
       focus: t(
         "Procesontwerp, automatisering en dashboarddesign",
@@ -102,8 +99,8 @@ export default function WorkPage() {
       ?.setAttribute(
         "content",
         t(
-          "Bekijk het conceptwerk van Kevin Rebuilds: websites, apps en slimme systemen.",
-          "Explore concept work by Kevin Rebuilds: websites, apps and smart systems.",
+          "Bekijk wat Kevin Rebuilds bouwt: websites, apps en slimme systemen, plus recent live werk.",
+          "Explore what Kevin Rebuilds builds: websites, apps and smart systems, plus recent live work.",
         ),
       );
   }, [language]);
@@ -169,16 +166,16 @@ export default function WorkPage() {
               {t("MIJN WERK / SELECTIE 2026", "MY WORK / SELECTED 2026")}
             </span>
             <h1>
-              {t("Ideeën die je", "Ideas you can")}
+              {t("Wat ik bouw.", "What I build.")}
               <br />
-              <span>{t("kunt beleven.", "experience.")}</span>
+              <span>{t("Wat al live staat.", "What is already live.")}</span>
             </h1>
           </div>
           <div className="work-hero-copy">
             <p>
               {t(
-                "Websites, apps en systemen met een duidelijke functie en een eigen uitstraling. Hieronder zie je hoe ik ideeën vertaal naar iets tastbaars.",
-                "Websites, apps and systems with a clear purpose and a distinctive identity. Below, you can see how I turn ideas into something tangible.",
+                "Ik ontwerp en bouw websites, apps en slimme systemen. Bekijk mijn recente live werk en drie voorbeelden van wat ik voor je kan maken.",
+                "I design and build websites, apps and smart systems. Explore my recent live work and three examples of what I can create for you.",
               )}
             </p>
             <a href={base} className="back-link">
@@ -194,8 +191,8 @@ export default function WorkPage() {
               <div
                 className="work-visual"
                 aria-label={t(
-                  "Interactieve conceptpreview",
-                  "Interactive concept preview",
+                  "Interactieve projectpreview",
+                  "Interactive project preview",
                 )}
               >
                 <Preview index={project.preview} t={t} interactive />
@@ -204,8 +201,12 @@ export default function WorkPage() {
                 <span className="eyebrow">
                   0{index + 1} /{" "}
                   {project.live
-                    ? t("LIVE PROJECT", "LIVE PROJECT")
-                    : t("CONCEPTPROJECT", "CONCEPT PROJECT")}
+                    ? t("RECENT WERK", "RECENT WORK")
+                    : [
+                        t("WEBSITE", "WEBSITE"),
+                        t("APP", "APP"),
+                        t("SYSTEEM", "SYSTEM"),
+                      ][project.preview]}
                 </span>
                 <span className="work-category">{project.category}</span>
                 <h2>{project.name}</h2>
@@ -244,8 +245,8 @@ export default function WorkPage() {
 
         <p className="work-disclaimer">
           {t(
-            "Different Hair is een live klantproject. De overige projecten zijn conceptwerk en laten mijn ontwerp- en ontwikkelmogelijkheden zien.",
-            "Different Hair is a live client project. The remaining projects are concept work illustrating my design and development capabilities.",
+            "Different Hair is recent live werk. Forma Studio, Ritme en Flowdesk zijn voorbeelden van de websites, apps en systemen die ik kan bouwen.",
+            "Different Hair is recent live work. Forma Studio, Ritme and Flowdesk are examples of the websites, apps and systems I can build.",
           )}
         </p>
 

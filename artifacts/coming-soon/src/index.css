@@ -149,7 +149,7 @@ svg {
   border: 1px solid var(--line);
   border-radius: 30px;
   padding: 2px 8px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .language-switch button {
   background: none;
@@ -181,7 +181,7 @@ svg {
   padding: 54px;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 1.8px;
   line-height: 1.6;
@@ -225,7 +225,7 @@ svg {
   padding: 14px 22px;
   border: 0;
   border-radius: 32px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
   transition:
@@ -268,11 +268,11 @@ svg {
 .person > span {
   display: grid;
   gap: 5px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
 }
 .person strong {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--ink);
 }
@@ -343,12 +343,12 @@ svg {
 }
 .project-category {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   margin-bottom: 5px;
 }
 .project-copy h2 {
-  font-size: 21px;
+  font-size: 24px;
   letter-spacing: -0.4px;
   font-weight: 500;
 }
@@ -370,7 +370,7 @@ svg {
   color: white;
   transform: rotate(5deg);
 }
-.concept-label {
+.project-label {
   position: absolute;
   top: 13px;
   left: 14px;
@@ -379,10 +379,10 @@ svg {
   color: #435773;
   padding: 5px 9px;
   border-radius: 18px;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.3px;
 }
-.live-label {
+.recent-label {
   background: #f72585;
   border-color: #f72585;
   color: #fff;
@@ -790,7 +790,7 @@ svg {
 }
 .services-card {
   grid-column: 2;
-  grid-row: 3;
+  grid-row: 4;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 35px;
@@ -816,7 +816,7 @@ svg {
   justify-content: space-between;
   gap: 16px;
   min-height: 53px;
-  font-size: 13px;
+  font-size: 15px;
 }
 .services summary::-webkit-details-marker {
   display: none;
@@ -826,7 +826,7 @@ svg {
   gap: 16px;
 }
 .services summary small {
-  font-size: 11px;
+  font-size: 12px;
   color: #687d9e;
 }
 .services summary svg {
@@ -836,13 +836,13 @@ svg {
   transform: rotate(45deg);
 }
 .services details p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
   padding: 0 8px 18px 30px;
 }
-.concept-note {
-  font-size: 11px;
+.portfolio-note {
+  font-size: 13px;
   line-height: 1.7;
   color: var(--muted);
   margin: 18px 4px 0;
@@ -871,7 +871,7 @@ svg {
 }
 .about-photo > span {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   margin-top: 15px;
   text-align: center;
@@ -888,7 +888,7 @@ svg {
   color: var(--blue);
 }
 .about-copy p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.85;
   color: var(--muted);
   margin-bottom: 17px;
@@ -899,7 +899,7 @@ svg {
   gap: 13px;
   border-bottom: 1px solid #97abd3;
   padding: 6px 0;
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 6px;
   color: var(--blue);
 }
@@ -925,7 +925,7 @@ svg {
   padding-top: 24px;
 }
 .step-number {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   color: var(--blue);
 }
@@ -936,7 +936,7 @@ svg {
   margin: 20px 0 12px;
 }
 .process-grid p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   color: var(--muted);
 }
@@ -961,7 +961,7 @@ svg {
   color: var(--blue);
 }
 .contact-section p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   color: #4d6386;
   max-width: 350px;
@@ -986,7 +986,7 @@ svg {
   align-items: center;
   justify-content: center;
   margin-top: 7px;
-  font-size: 12px;
+  font-size: 14px;
   overflow-wrap: anywhere;
 }
 .email-row button {
@@ -995,7 +995,7 @@ svg {
   background: transparent;
 }
 .copy-status {
-  font-size: 11px;
+  font-size: 13px;
   min-height: 20px;
   line-height: 1.6;
   text-align: center;
@@ -1012,11 +1012,11 @@ svg {
   font-size: 21px;
 }
 .site-footer > span {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .site-footer > a:last-child {
-  font-size: 11px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1132,7 +1132,7 @@ svg {
   display: flex;
   gap: 10px;
   align-items: center;
-  font-size: 12px;
+  font-size: 13px;
   margin-top: 15px;
 }
 .flow-button:disabled {
@@ -1149,12 +1149,12 @@ svg {
   font-weight: 500;
 }
 .dialog-copy p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   color: var(--muted);
 }
 .dialog-copy h3 {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   margin: 22px 0 7px;
 }
@@ -1190,7 +1190,7 @@ svg {
 }
 .work-hero-copy p {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
 }
 .back-link {
@@ -1199,7 +1199,7 @@ svg {
   gap: 10px;
   width: fit-content;
   color: var(--blue);
-  font-size: 12px;
+  font-size: 14px;
   border-bottom: 1px solid #9cb1db;
   padding-bottom: 6px;
 }
@@ -1318,7 +1318,7 @@ svg {
 .work-category {
   display: block;
   color: var(--blue);
-  font-size: 12px;
+  font-size: 14px;
   margin: 24px 0 9px;
 }
 .work-case-copy h2 {
@@ -1338,7 +1338,7 @@ svg {
 .work-case-copy > p,
 .work-case-copy dd {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
 }
 .work-case-copy dl {
@@ -1348,17 +1348,17 @@ svg {
   width: 100%;
 }
 .work-case-copy dt {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--ink);
   margin-bottom: 7px;
 }
 .work-case-copy dd {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
 }
 .work-disclaimer {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.7;
   border-top: 1px solid var(--line);
   padding-top: 18px;
@@ -1416,7 +1416,7 @@ svg {
     letter-spacing: -2.3px;
   }
   .intro-description {
-    font-size: 13px;
+    font-size: 15px;
   }
   .person {
     padding-top: 40px;
@@ -1428,7 +1428,7 @@ svg {
     flex-basis: 76px;
   }
   .person > span {
-    font-size: 10px;
+    font-size: 12px;
   }
   .scene {
     height: 196px;
@@ -1471,7 +1471,7 @@ svg {
     padding: 32px;
   }
   .about-copy p {
-    font-size: 13px;
+    font-size: 15px;
   }
   .about-copy h2 {
     font-size: 29px;
@@ -1484,7 +1484,7 @@ svg {
     font-size: 46px;
   }
   .email-row {
-    font-size: 11px;
+    font-size: 13px;
   }
   .site-footer {
     flex-wrap: wrap;
@@ -1526,14 +1526,14 @@ svg {
   }
   .intro-description {
     max-width: 410px;
-    font-size: 14px;
+    font-size: 16px;
   }
   .person {
     max-width: 370px;
     padding-top: 32px;
   }
   .person > span {
-    font-size: 11px;
+    font-size: 13px;
   }
   .project-3 {
     grid-column: 1 / -1;
@@ -1574,17 +1574,17 @@ svg {
     gap: 8px;
   }
   .project-category {
-    font-size: 10px;
+    font-size: 12px;
   }
   .project-copy h2 {
-    font-size: 17px;
+    font-size: 19px;
   }
   .project-open {
     width: 28px;
     height: 28px;
   }
-  .concept-label {
-    font-size: 8px;
+  .project-label {
+    font-size: 10px;
     top: 9px;
     left: 10px;
   }
@@ -1653,21 +1653,21 @@ svg {
     font-size: 26px;
   }
   .services summary {
-    font-size: 11px;
+    font-size: 14px;
     gap: 8px;
   }
   .services summary > span {
     gap: 8px;
   }
   .services summary small {
-    font-size: 9px;
+    font-size: 11px;
   }
   .services details p {
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 0;
   }
   .eyebrow {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 1.2px;
   }
   .about-section {
@@ -1685,7 +1685,7 @@ svg {
     font-size: 32px;
   }
   .about-copy p {
-    font-size: 14px;
+    font-size: 16px;
   }
   .process-section {
     margin: 65px 0;
@@ -1859,13 +1859,13 @@ svg {
     padding: 18px 21px;
   }
   .project-category {
-    font-size: 11px;
+    font-size: 13px;
   }
   .project-copy h2 {
     font-size: 19px;
   }
-  .concept-label {
-    font-size: 9px;
+  .project-label {
+    font-size: 10px;
     top: 12px;
     left: 12px;
   }
@@ -1873,17 +1873,17 @@ svg {
     font-size: 32px;
   }
   .services summary {
-    font-size: 13px;
+    font-size: 14px;
     min-height: 56px;
   }
   .services summary > span {
     gap: 16px;
   }
   .services details p {
-    font-size: 13px;
+    font-size: 14px;
   }
-  .concept-note {
-    font-size: 10px;
+  .portfolio-note {
+    font-size: 12px;
   }
   .about-section {
     padding: 23px;
@@ -1898,12 +1898,12 @@ svg {
     font-size: 45px;
   }
   .contact-actions .button {
-    font-size: 12px;
+    font-size: 13px;
     padding-inline: 16px;
     gap: 12px;
   }
   .email-row {
-    font-size: 11px;
+    font-size: 13px;
     gap: 0;
   }
   .dialog-heading {

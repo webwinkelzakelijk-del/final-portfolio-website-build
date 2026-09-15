@@ -14,6 +14,14 @@ export type Translate = (nl: string, en: string) => string;
 const email = "webwinkelzakelijk@gmail.com";
 const languageKey = "kevin-rebuilds-language";
 const names = ["Forma Studio", "Ritme", "Flowdesk", "Different Hair!"];
+function projectType(index: number, t: Translate) {
+  return [
+    t("Website", "Website"),
+    t("App", "App"),
+    t("Systeem", "System"),
+    t("Recent werk", "Recent work"),
+  ][index];
+}
 export function initialLanguage(): Language {
   const parameter = new URLSearchParams(window.location.search).get("lang");
   if (parameter === "en" || parameter === "nl") return parameter;
@@ -199,10 +207,10 @@ function ProjectCard({
 }) {
   const category = [
     t("Webdesign & development", "Web design & development"),
-    "App & product design",
+    t("Appdesign & development", "App design & development"),
     t("Systemen & automatisering", "Systems & automation"),
     t(
-      "Live website · design & development",
+      "Live website · ontwerp & development",
       "Live website · design & development",
     ),
   ][index];
@@ -222,10 +230,8 @@ function ProjectCard({
             <ArrowUpRight size={21} />
           </span>
         </div>
-        <span className={`concept-label ${index === 3 ? "live-label" : ""}`}>
-          {index === 3
-            ? t("Live project", "Live project")
-            : t("Conceptproject", "Concept project")}
+        <span className={`project-label ${index === 3 ? "recent-label" : ""}`}>
+          {projectType(index, t)}
         </span>
       </button>
     </article>
@@ -252,8 +258,8 @@ export default function App() {
   const projects = [
     {
       description: t(
-        "Een digitale plek met karakter. Dit concept voor een interieurstudio combineert rustige typografie, ruimtelijke beelden en een heldere route naar het werk.",
-        "A digital place with character. This interior studio concept combines quiet typography, spatial imagery and a clear path to the work.",
+        "Een digitale plek met karakter voor een interieurstudio, met rustige typografie, ruimtelijke beelden en een heldere route naar het werk.",
+        "A digital place with character for an interior studio, with quiet typography, spatial imagery and a clear path to the work.",
       ),
       focus: t(
         "Visuele identiteit · Webdesign · Responsive development",
@@ -266,8 +272,8 @@ export default function App() {
     },
     {
       description: t(
-        "Kleine stappen, op jouw manier. Een appconcept dat dagelijkse gewoontes overzichtelijk en prettig maakt, zonder druk of een overvolle interface.",
-        "Small steps, your way. An app concept that makes daily habits clear and enjoyable, without pressure or an overloaded interface.",
+        "Kleine stappen, op jouw manier. Een app die dagelijkse gewoontes overzichtelijk en prettig maakt, zonder druk of een overvolle interface.",
+        "Small steps, your way. An app that makes daily habits clear and enjoyable, without pressure or an overloaded interface.",
       ),
       focus: t(
         "UX-design · Interfaceontwerp · Interactie",
@@ -280,8 +286,8 @@ export default function App() {
     },
     {
       description: t(
-        "Rust in je dagelijkse werk. Een concept dat aanvragen, afspraken en opvolging samenbrengt in één overzichtelijk proces.",
-        "Calm in your working day. A concept bringing enquiries, appointments and follow-ups into one clear process.",
+        "Rust in je dagelijkse werk. Een systeem dat aanvragen, afspraken en opvolging samenbrengt in één overzichtelijk proces.",
+        "Calm in your working day. A system bringing enquiries, appointments and follow-ups into one clear process.",
       ),
       focus: t(
         "Procesontwerp · Automatisering · Dashboard",
@@ -298,8 +304,8 @@ export default function App() {
         "A bold website for Frank Meichsner's one-man hair salon in Emmen. The site turns his personal approach into a distinctive digital salon experience.",
       ),
       focus: t(
-        "Concept · Webdesign · Copy · Responsive development",
-        "Concept · Web design · Copy · Responsive development",
+        "Strategie · Webdesign · Copy · Responsive development",
+        "Strategy · Web design · Copy · Responsive development",
       ),
       idea: t(
         "Sterke typografie, speelse collage-elementen, klantreviews en een interactieve rondleiding brengen de sfeer van de salon online tot leven. Bezoekers kunnen direct een afspraak plannen.",
@@ -316,14 +322,14 @@ export default function App() {
       ),
     ],
     [
-      t("Apps & producten", "Apps & products"),
+      "Apps",
       t(
         "Van een eerste idee naar een tastbaar product, met aandacht voor hoe mensen het gebruiken.",
         "From an initial idea to a tangible product, with care for how people use it.",
       ),
     ],
     [
-      t("Automatisering", "Automation"),
+      t("Slimme systemen", "Smart systems"),
       t(
         "Minder losse taken, meer overzicht. Slimme verbindingen tussen de stappen in je werkdag.",
         "Fewer scattered tasks, more clarity. Smart connections between the steps in your working day.",
@@ -467,16 +473,16 @@ export default function App() {
           className="portfolio-grid"
           id="work"
           aria-label={t(
-            "Een selectie van wat ik kan maken",
-            "A selection of what I can create",
+            "Wat ik bouw en mijn recente werk",
+            "What I build and my recent work",
           )}
         >
           <div className="intro-card">
             <span className="eyebrow">
               <i />
               {t(
-                "ZELFSTANDIG. VEELZIJDIG. BETROKKEN.",
-                "INDEPENDENT. VERSATILE. INVESTED.",
+                "WEBSITES · APPS · SLIMME SYSTEMEN",
+                "WEBSITES · APPS · SMART SYSTEMS",
               )}
             </span>
             <h1>
@@ -488,8 +494,8 @@ export default function App() {
             </h1>
             <p className="intro-description">
               {t(
-                "Van een sterke website tot een handige app. Ik help je iets maken dat klopt in uitstraling én gebruik.",
-                "From a distinctive website to a useful app. I help you build something that feels right in design and in use.",
+                "Ik ontwerp en bouw websites, apps en slimme systemen die sterk ogen, snel werken en prettig zijn in gebruik.",
+                "I design and build websites, apps and smart systems that look distinctive, work fast and feel effortless to use.",
               )}
             </p>
             <a className="button button-primary" href="#contact">
@@ -522,7 +528,7 @@ export default function App() {
           <ProjectCard index={1} t={t} onOpen={setSelected} />
           <div className="services-card">
             <span className="eyebrow">
-              {t("VAN IDEE NAAR IETS ECHTS", "FROM IDEA TO SOMETHING REAL")}
+              {t("DIT BOUW IK VOOR JOU", "WHAT I CAN BUILD FOR YOU")}
             </span>
             <h2>
               {t("Creatief denken.", "Creative thinking.")}
@@ -551,10 +557,10 @@ export default function App() {
             </div>
           </div>
         </section>
-        <p className="concept-note">
+        <p className="portfolio-note">
           {t(
-            "Eén live klantproject en drie conceptprojecten. Samen laten ze zien wat er mogelijk is.",
-            "One live client project and three concept projects. Together, they show what is possible.",
+            "Recent werk: Different Hair. Daarnaast drie duidelijke voorbeelden van wat ik bouw: websites, apps en systemen.",
+            "Recent work: Different Hair. Plus three clear examples of what I build: websites, apps and systems.",
           )}
         </p>
         <section className="about-section" id="about">
@@ -747,10 +753,7 @@ export default function App() {
           <>
             <div className="dialog-heading">
               <span className="eyebrow">
-                {selected === 3
-                  ? t("Live project", "Live project")
-                  : t("Conceptproject", "Concept project")}{" "}
-                / 0{selected + 1}
+                {projectType(selected, t)} / 0{selected + 1}
               </span>
               <button
                 className="close-button"
@@ -762,7 +765,7 @@ export default function App() {
             </div>
             <div
               className="dialog-preview"
-              aria-label={t("Visuele conceptpreview", "Visual concept preview")}
+              aria-label={t("Visuele projectpreview", "Visual project preview")}
             >
               <Preview key={selected} index={selected} t={t} interactive />
             </div>
