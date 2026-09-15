@@ -60,6 +60,7 @@ export default defineConfig({
     },
   },
   server: {
+    proxy: { "/api/website-check": "http://127.0.0.1:3010" },
     port,
     strictPort: true,
     host: "0.0.0.0",
@@ -69,6 +70,7 @@ export default defineConfig({
     },
   },
   preview: {
+    proxy: { "/api/website-check": "http://127.0.0.1:3010" },
     port,
     host: "0.0.0.0",
     allowedHosts: true,

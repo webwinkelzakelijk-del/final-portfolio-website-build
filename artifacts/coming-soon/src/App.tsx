@@ -8,6 +8,7 @@ import {
   Plus,
   X,
 } from "lucide-react";
+import { WebsiteCheck } from "./WebsiteCheck";
 
 type Language = "nl" | "en";
 export type Translate = (nl: string, en: string) => string;
@@ -556,7 +557,7 @@ export default function App() {
           kevin<span>rebuilds.</span>
         </a>
         <nav aria-label={t("Hoofdnavigatie", "Main navigation")}>
-          {["work", "about", "process", "contact"].map((id, index) => (
+          {["work", "about", "website-check", "contact"].map((id, index) => (
             <a
               key={id}
               href={
@@ -571,7 +572,7 @@ export default function App() {
                 [
                   t("Werk", "Work"),
                   t("Over mij", "About"),
-                  t("Werkwijze", "Process"),
+                  t("Gratis check", "Free check"),
                   "Contact",
                 ][index]
               }
@@ -765,6 +766,7 @@ export default function App() {
             </span>
           </a>
         </section>
+        <WebsiteCheck t={t} />
         <section className="about-section" id="about">
           <div className="about-photo">
             <img
