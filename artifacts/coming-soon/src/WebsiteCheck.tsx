@@ -34,6 +34,7 @@ type Report = {
   copyrightYear: number | null;
   checks: CheckResult[];
 };
+// Keep production scans on the protected server while Vercel serves the portfolio.
 const api = import.meta.env.PROD
   ? "https://hosting.kevinrebuilds.com/api/website-check"
   : `${import.meta.env.BASE_URL}api/website-check`;
