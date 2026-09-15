@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Mail } from "lucide-react";
-import { Preview, initialLanguage, type Translate } from "./App";
+import { PagePolish, Preview, initialLanguage, type Translate } from "./App";
 
 type Language = "nl" | "en";
 const email = "webwinkelzakelijk@gmail.com";
@@ -72,6 +72,7 @@ export default function WorkPage() {
 
   return (
     <div className="site-shell work-page" id="top">
+      <PagePolish />
       <a className="skip-link" href="#work-list">
         {t("Ga naar projecten", "Skip to projects")}
       </a>

@@ -32,6 +32,135 @@ export function initialLanguage(): Language {
   }
 }
 
+export function PagePolish() {
+  useEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    let interactionTimer = 0;
+
+    const updateScroll = () => {
+      const available = root.scrollHeight - window.innerHeight;
+      const progress = available > 0 ? window.scrollY / available : 0;
+      root.style.setProperty(
+        "--scroll-progress",
+        String(Math.min(1, Math.max(0, progress))),
+      );
+      header?.classList.toggle("is-compact", window.scrollY > 64);
+    };
+
+    const showGrid = () => {
+      if (reduceMotion) return;
+      body.classList.add("is-interacting");
+      window.clearTimeout(interactionTimer);
+      interactionTimer = window.setTimeout(
+        () => body.classList.remove("is-interacting"),
+        700,
+      );
+    };
+
+    const cleanups: Array<() => void> = [];
+    const magneticElements = document.querySelectorAll<HTMLElement>(".button");
+    magneticElements.forEach((element) => {
+      const move = (event: PointerEvent) => {
+        if (reduceMotion || event.pointerType === "touch") return;
+        const rect = element.getBoundingClientRect();
+        const x = Math.max(
+          -7,
+          Math.min(7, (event.clientX - rect.left - rect.width / 2) * 0.13),
+        );
+        const y = Math.max(
+          -5,
+          Math.min(5, (event.clientY - rect.top - rect.height / 2) * 0.13),
+        );
+        element.style.setProperty("--magnetic-x", `${x}px`);
+        element.style.setProperty("--magnetic-y", `${y}px`);
+      };
+      const reset = () => {
+        element.style.setProperty("--magnetic-x", "0px");
+        element.style.setProperty("--magnetic-y", "0px");
+      };
+      element.addEventListener("pointermove", move);
+      element.addEventListener("pointerleave", reset);
+      cleanups.push(() => {
+        element.removeEventListener("pointermove", move);
+        element.removeEventListener("pointerleave", reset);
+      });
+    });
+
+    const tiltElements = document.querySelectorAll<HTMLElement>(
+      ".project-card .scene, .recent-work-browser, .work-visual .scene",
+    );
+    tiltElements.forEach((element) => {
+      element.classList.add("polish-tilt");
+      const move = (event: PointerEvent) => {
+        if (reduceMotion || event.pointerType === "touch") return;
+        const rect = element.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        element.style.setProperty("--tilt-x", `${-y * 2.2}deg`);
+        element.style.setProperty("--tilt-y", `${x * 2.2}deg`);
+        element.style.setProperty("--shine-x", `${(x + 0.5) * 100}%`);
+      };
+      const reset = () => {
+        element.style.setProperty("--tilt-x", "0deg");
+        element.style.setProperty("--tilt-y", "0deg");
+        element.style.setProperty("--shine-x", "-35%");
+      };
+      element.addEventListener("pointermove", move);
+      element.addEventListener("pointerleave", reset);
+      cleanups.push(() => {
+        element.removeEventListener("pointermove", move);
+        element.removeEventListener("pointerleave", reset);
+        element.classList.remove("polish-tilt");
+      });
+    });
+
+    const titles = document.querySelectorAll<HTMLElement>(
+      "main h1, main section h2, .work-case-copy h2",
+    );
+    titles.forEach((title) => title.classList.add("title-rise"));
+    root.classList.add("polish-ready");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -9%", threshold: 0.08 },
+    );
+    titles.forEach((title) => observer.observe(title));
+
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    window.addEventListener("resize", updateScroll);
+    window.addEventListener("pointermove", showGrid, { passive: true });
+
+    return () => {
+      window.clearTimeout(interactionTimer);
+      window.removeEventListener("scroll", updateScroll);
+      window.removeEventListener("resize", updateScroll);
+      window.removeEventListener("pointermove", showGrid);
+      observer.disconnect();
+      cleanups.forEach((cleanup) => cleanup());
+      header?.classList.remove("is-compact");
+      body.classList.remove("is-interacting");
+      root.classList.remove("polish-ready");
+      root.style.removeProperty("--scroll-progress");
+      titles.forEach((title) =>
+        title.classList.remove("title-rise", "is-visible"),
+      );
+    };
+  }, []);
+
+  return <div className="page-progress" aria-hidden="true" />;
+}
+
 export function Preview({
   index,
   t,
@@ -411,6 +540,7 @@ export default function App() {
   }
   return (
     <div className="site-shell" id="top">
+      <PagePolish />
       <a className="skip-link" href="#main">
         {t("Ga naar inhoud", "Skip to content")}
       </a>
@@ -513,9 +643,19 @@ export default function App() {
               <ArrowDown size={17} />
             </a>
           </div>
-          <ProjectCard index={0} t={t} onOpen={setSelected} />
-          <ProjectCard index={2} t={t} onOpen={setSelected} />
-          <ProjectCard index={1} t={t} onOpen={setSelected} />
+          <div className="project-carousel-wrap">
+            <div className="carousel-hint" aria-hidden="true">
+              <span>
+                {t("Swipe door wat ik bouw", "Swipe through what I build")}
+              </span>
+              <ArrowUpRight size={16} />
+            </div>
+            <div className="project-carousel">
+              <ProjectCard index={0} t={t} onOpen={setSelected} />
+              <ProjectCard index={1} t={t} onOpen={setSelected} />
+              <ProjectCard index={2} t={t} onOpen={setSelected} />
+            </div>
+          </div>
           <div className="services-card">
             <span className="eyebrow">
               {t("DIT BOUW IK VOOR JOU", "WHAT I CAN BUILD FOR YOU")}
