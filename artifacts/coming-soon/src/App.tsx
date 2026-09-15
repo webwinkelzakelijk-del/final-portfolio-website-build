@@ -134,7 +134,14 @@ export function PagePolish() {
       },
       { rootMargin: "0px 0px -9%", threshold: 0.08 },
     );
-    titles.forEach((title) => observer.observe(title));
+    titles.forEach((title) => {
+      const bounds = title.getBoundingClientRect();
+      if (bounds.top < window.innerHeight * 0.96 && bounds.bottom > 0) {
+        title.classList.add("is-visible");
+      } else {
+        observer.observe(title);
+      }
+    });
 
     updateScroll();
     window.addEventListener("scroll", updateScroll, { passive: true });
@@ -552,7 +559,13 @@ export default function App() {
           {["work", "about", "process", "contact"].map((id, index) => (
             <a
               key={id}
-              href={index === 0 ? `${import.meta.env.BASE_URL}werk/` : `#${id}`}
+              href={
+                index === 0
+                  ? `${import.meta.env.BASE_URL}werk/`
+                  : index === 3
+                    ? `${import.meta.env.BASE_URL}contact/`
+                    : `#${id}`
+              }
             >
               {
                 [

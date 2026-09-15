@@ -86,7 +86,7 @@ export default function WorkPage() {
           </a>
           <a href={`${base}#about`}>{t("Over mij", "About")}</a>
           <a href={`${base}#process`}>{t("Werkwijze", "Process")}</a>
-          <a href={`${base}#contact`}>Contact</a>
+          <a href={`${base}contact/`}>Contact</a>
         </nav>
         <div
           className="language-switch"

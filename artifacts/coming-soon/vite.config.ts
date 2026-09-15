@@ -55,6 +55,7 @@ export default defineConfig({
       input: {
         home: path.resolve(import.meta.dirname, "index.html"),
         werk: path.resolve(import.meta.dirname, "werk", "index.html"),
+        contact: path.resolve(import.meta.dirname, "contact", "index.html"),
       },
     },
   },
