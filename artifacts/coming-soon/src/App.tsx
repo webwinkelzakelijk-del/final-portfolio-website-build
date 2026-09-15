@@ -13,7 +13,7 @@ type Language = "nl" | "en";
 export type Translate = (nl: string, en: string) => string;
 const email = "webwinkelzakelijk@gmail.com";
 const languageKey = "kevin-rebuilds-language";
-const names = ["Forma Studio", "Ritme", "Flowdesk"];
+const names = ["Forma Studio", "Ritme", "Flowdesk", "Different Hair!"];
 export function initialLanguage(): Language {
   const parameter = new URLSearchParams(window.location.search).get("lang");
   if (parameter === "en" || parameter === "nl") return parameter;
@@ -114,48 +114,75 @@ export function Preview({
         </div>
       </div>
     );
-  return (
-    <div className="scene scene-system" aria-hidden={!interactive}>
-      <div className="dashboard">
-        <div className="dash-top">
-          <span>
-            flowdesk<span>◇</span>
-          </span>
-          <span className="dash-avatar">K</span>
-        </div>
-        <div className="dash-title">
-          {t("Alles op zijn plek.", "Everything in place.")}
-        </div>
-        <div className="dash-rows">
-          {[
-            t("Nieuwe aanvraag", "New enquiry"),
-            t("Afspraak ingepland", "Meeting scheduled"),
-            t("Opvolging klaar", "Follow-up ready"),
-          ].map((row, i) => (
-            <div className={`dash-row ${i < step ? "complete" : ""}`} key={i}>
-              <span className="dash-step">0{i + 1}</span>
-              <span>{row}</span>
-              <Check size={14} />
-            </div>
-          ))}
-        </div>
-        {interactive && (
-          <>
-            <button
-              className="flow-button"
-              onClick={() => setStep(0)}
-              disabled={step < 3}
-            >
-              {t("Bekijk de flow", "Watch the flow")}
-              <ArrowUpRight size={14} />
-            </button>
-            <span className="sr-only" role="status">
-              {step === 3
-                ? t("Voorbeeldflow voltooid", "Example workflow complete")
-                : t("Voorbeeldflow gestart", "Example workflow started")}
+  if (index === 2)
+    return (
+      <div className="scene scene-system" aria-hidden={!interactive}>
+        <div className="dashboard">
+          <div className="dash-top">
+            <span>
+              flowdesk<span>◇</span>
             </span>
-          </>
-        )}
+            <span className="dash-avatar">K</span>
+          </div>
+          <div className="dash-title">
+            {t("Alles op zijn plek.", "Everything in place.")}
+          </div>
+          <div className="dash-rows">
+            {[
+              t("Nieuwe aanvraag", "New enquiry"),
+              t("Afspraak ingepland", "Meeting scheduled"),
+              t("Opvolging klaar", "Follow-up ready"),
+            ].map((row, i) => (
+              <div className={`dash-row ${i < step ? "complete" : ""}`} key={i}>
+                <span className="dash-step">0{i + 1}</span>
+                <span>{row}</span>
+                <Check size={14} />
+              </div>
+            ))}
+          </div>
+          {interactive && (
+            <>
+              <button
+                className="flow-button"
+                onClick={() => setStep(0)}
+                disabled={step < 3}
+              >
+                {t("Bekijk de flow", "Watch the flow")}
+                <ArrowUpRight size={14} />
+              </button>
+              <span className="sr-only" role="status">
+                {step === 3
+                  ? t("Voorbeeldflow voltooid", "Example workflow complete")
+                  : t("Voorbeeldflow gestart", "Example workflow started")}
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  return (
+    <div className="scene scene-live" aria-hidden={!interactive}>
+      <div className="live-preview">
+        <div className="live-preview-top">
+          <span>DH!</span>
+          <strong>Different Hair!</strong>
+          <small>EMMEN · NL</small>
+        </div>
+        <div className="live-preview-body">
+          <div>
+            <span className="live-kicker">ONE-MAN SALON · EST. 2011</span>
+            <strong className="live-title">
+              DIFFERENT
+              <em>HAIR!</em>
+            </strong>
+          </div>
+          <div className="live-collage" aria-hidden="true">
+            <span>✂</span>
+            <span>✦</span>
+            <span>DH!</span>
+          </div>
+        </div>
+        <span className="live-ticker">DO YOU DARE TO BE DIFFERENT ✶</span>
       </div>
     </div>
   );
@@ -174,6 +201,10 @@ function ProjectCard({
     t("Webdesign & development", "Web design & development"),
     "App & product design",
     t("Systemen & automatisering", "Systems & automation"),
+    t(
+      "Live website · design & development",
+      "Live website · design & development",
+    ),
   ][index];
   return (
     <article className={`project-card project-${index}`}>
@@ -191,8 +222,10 @@ function ProjectCard({
             <ArrowUpRight size={21} />
           </span>
         </div>
-        <span className="concept-label">
-          {t("Conceptproject", "Concept project")}
+        <span className={`concept-label ${index === 3 ? "live-label" : ""}`}>
+          {index === 3
+            ? t("Live project", "Live project")
+            : t("Conceptproject", "Concept project")}
         </span>
       </button>
     </article>
@@ -257,6 +290,20 @@ export default function App() {
       idea: t(
         "Een nieuwe aanvraag leidt tot een duidelijke volgende stap. De preview laat de stappen zien; er worden geen echte gegevens verstuurd.",
         "A new enquiry leads to a clear next step. The preview illustrates the workflow; it doesn't send any real data.",
+      ),
+    },
+    {
+      description: t(
+        "Een uitgesproken website voor de one-man kapsalon van Frank Meichsner in Emmen. De site vertaalt zijn persoonlijke aanpak naar een eigenzinnige digitale salonervaring.",
+        "A bold website for Frank Meichsner's one-man hair salon in Emmen. The site turns his personal approach into a distinctive digital salon experience.",
+      ),
+      focus: t(
+        "Concept · Webdesign · Copy · Responsive development",
+        "Concept · Web design · Copy · Responsive development",
+      ),
+      idea: t(
+        "Sterke typografie, speelse collage-elementen, klantreviews en een interactieve rondleiding brengen de sfeer van de salon online tot leven. Bezoekers kunnen direct een afspraak plannen.",
+        "Bold typography, playful collage elements, customer reviews and an interactive tour bring the salon atmosphere to life online. Visitors can book an appointment directly.",
       ),
     },
   ];
@@ -471,6 +518,7 @@ export default function App() {
           </div>
           <ProjectCard index={0} t={t} onOpen={setSelected} />
           <ProjectCard index={2} t={t} onOpen={setSelected} />
+          <ProjectCard index={3} t={t} onOpen={setSelected} />
           <ProjectCard index={1} t={t} onOpen={setSelected} />
           <div className="services-card">
             <span className="eyebrow">
@@ -505,8 +553,8 @@ export default function App() {
         </section>
         <p className="concept-note">
           {t(
-            "Drie conceptprojecten. Een indruk van de mogelijkheden, geen uitgevoerde klantopdrachten.",
-            "Three concept projects. An illustration of the possibilities, not completed client commissions.",
+            "Eén live klantproject en drie conceptprojecten. Samen laten ze zien wat er mogelijk is.",
+            "One live client project and three concept projects. Together, they show what is possible.",
           )}
         </p>
         <section className="about-section" id="about">
@@ -699,7 +747,10 @@ export default function App() {
           <>
             <div className="dialog-heading">
               <span className="eyebrow">
-                {t("Conceptproject", "Concept project")} / 0{selected + 1}
+                {selected === 3
+                  ? t("Live project", "Live project")
+                  : t("Conceptproject", "Concept project")}{" "}
+                / 0{selected + 1}
               </span>
               <button
                 className="close-button"
@@ -724,13 +775,17 @@ export default function App() {
               <p>{projects[selected].idea}</p>
               <a
                 className="button button-primary"
-                href="#contact"
+                href={selected === 3 ? "https://differenthair.nl" : "#contact"}
+                target={selected === 3 ? "_blank" : undefined}
+                rel={selected === 3 ? "noreferrer" : undefined}
                 onClick={() => setSelected(null)}
               >
-                {t(
-                  "Zoiets voor jouw bedrijf?",
-                  "Something like this for your business?",
-                )}
+                {selected === 3
+                  ? t("Bekijk de live website", "View the live website")
+                  : t(
+                      "Zoiets voor jouw bedrijf?",
+                      "Something like this for your business?",
+                    )}
                 <ArrowUpRight size={18} />
               </a>
             </div>

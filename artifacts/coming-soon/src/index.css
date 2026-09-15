@@ -72,9 +72,9 @@ svg {
   color: #142b57;
 }
 .site-shell {
-  max-width: 1240px;
+  max-width: 1460px;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0 48px;
 }
 .sr-only {
   position: absolute;
@@ -105,11 +105,11 @@ svg {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 35px 6px 31px;
+  padding: 41px 6px 36px;
 }
 .brand {
   font-family: "Manrope", sans-serif;
-  font-size: 27px;
+  font-size: 30px;
   font-weight: 600;
   letter-spacing: -1.7px;
   white-space: nowrap;
@@ -120,7 +120,7 @@ svg {
 .site-header nav {
   display: flex;
   gap: 31px;
-  font-size: 13px;
+  font-size: 14px;
 }
 .site-header nav a {
   padding: 10px 0;
@@ -167,7 +167,7 @@ svg {
 .portfolio-grid {
   display: grid;
   grid-template-columns: 1.16fr 1fr;
-  gap: 22px;
+  gap: 28px;
   align-items: stretch;
 }
 .intro-card {
@@ -178,7 +178,7 @@ svg {
   align-items: flex-start;
   background: #dce7fc;
   border-radius: var(--radius);
-  padding: 44px;
+  padding: 54px;
 }
 .eyebrow {
   font-size: 10px;
@@ -201,7 +201,7 @@ svg {
 }
 .intro-card h1 {
   font-family: "Manrope", sans-serif;
-  font-size: clamp(40px, 4.7vw, 62px);
+  font-size: clamp(46px, 4.8vw, 72px);
   line-height: 1.1;
   font-weight: 500;
   letter-spacing: -3px;
@@ -211,8 +211,8 @@ svg {
   color: var(--blue);
 }
 .intro-description {
-  max-width: 385px;
-  font-size: 15px;
+  max-width: 430px;
+  font-size: 16px;
   line-height: 1.8;
   color: #4d6386;
 }
@@ -314,25 +314,41 @@ svg {
 }
 .project-1 {
   grid-column: 1;
+  grid-row: 4;
+}
+.project-3 {
+  grid-column: 1 / -1;
   grid-row: 3;
+}
+.project-3 > button {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(285px, 0.55fr);
+}
+.project-3 .scene {
+  height: 100%;
+  min-height: 330px;
+}
+.project-3 .project-copy {
+  padding: 42px;
+  background: #fff;
 }
 .project-copy {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 23px 22px;
+  padding: 21px 27px 25px;
   gap: 16px;
   width: 100%;
   margin-top: auto;
 }
 .project-category {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin-bottom: 5px;
 }
 .project-copy h2 {
-  font-size: 18px;
+  font-size: 21px;
   letter-spacing: -0.4px;
   font-weight: 500;
 }
@@ -366,9 +382,15 @@ svg {
   font-size: 9px;
   letter-spacing: 0.3px;
 }
+.live-label {
+  background: #f72585;
+  border-color: #f72585;
+  color: #fff;
+  font-weight: 600;
+}
 .scene {
   width: 100%;
-  height: 218px;
+  height: 252px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -377,6 +399,126 @@ svg {
 }
 .scene-web {
   background: linear-gradient(135deg, #c1cee9, #8a9fc6);
+}
+.scene-live {
+  background: #f2f0e8;
+  padding: 25px;
+}
+.live-preview {
+  width: min(92%, 760px);
+  min-height: 78%;
+  color: #080808;
+  font-family: "DM Mono", "Courier New", monospace;
+  transform: rotate(-0.7deg);
+}
+.live-preview-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border: 4px solid #080808;
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: #fff;
+  box-shadow: 4px 4px 0 #080808;
+  text-transform: uppercase;
+}
+.live-preview-top > span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: white;
+  background: #080808;
+  font-size: 9px;
+}
+.live-preview-top strong {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+.live-preview-top small {
+  font-size: 8px;
+}
+.live-preview-body {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+  align-items: center;
+  padding: 26px 10px 16px;
+}
+.live-kicker {
+  display: inline-block;
+  padding: 5px 7px;
+  border: 2px solid #080808;
+  background: #f8dc19;
+  font-size: 8px;
+  font-weight: 700;
+}
+.live-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: clamp(31px, 4vw, 58px);
+  line-height: 0.8;
+  letter-spacing: -4px;
+  margin-top: 13px;
+}
+.live-title em {
+  margin-top: 9px;
+  padding: 4px 8px;
+  background: #f72585;
+  color: #fff;
+  font-size: 0.65em;
+  font-style: normal;
+  letter-spacing: -2px;
+  transform: rotate(-2deg);
+}
+.live-collage {
+  position: relative;
+  height: 130px;
+}
+.live-collage span {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border: 3px solid #080808;
+  box-shadow: 5px 5px 0 #080808;
+}
+.live-collage span:nth-child(1) {
+  inset: 2px 25% 15px 0;
+  background: #35c8e8;
+  font-size: 48px;
+  transform: rotate(-6deg);
+}
+.live-collage span:nth-child(2) {
+  width: 70px;
+  height: 70px;
+  right: 2px;
+  top: 0;
+  background: #f72585;
+  color: #fff;
+  font-size: 35px;
+  transform: rotate(7deg);
+}
+.live-collage span:nth-child(3) {
+  width: 68px;
+  height: 48px;
+  right: 14px;
+  bottom: 0;
+  background: #f8dc19;
+  font-size: 15px;
+  font-weight: 800;
+  transform: rotate(-4deg);
+}
+.live-ticker {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-block: 2px solid #080808;
+  padding: 6px 0;
+  font-size: 8px;
+  letter-spacing: 1px;
 }
 .laptop {
   position: relative;
@@ -1243,14 +1385,14 @@ svg {
 }
 @media (min-width: 1100px) {
   .scene {
-    height: 228px;
+    height: 265px;
   }
   .project-1 .scene {
     height: 100%;
-    min-height: 290px;
+    min-height: 340px;
   }
   .intro-card {
-    padding: 45px;
+    padding: 56px;
   }
   .app-word {
     font-size: 42px;
@@ -1290,6 +1432,13 @@ svg {
   }
   .scene {
     height: 196px;
+  }
+  .project-3 .scene {
+    height: 100%;
+    min-height: 290px;
+  }
+  .project-3 .project-copy {
+    padding: 30px;
   }
   .laptop {
     width: 77%;
@@ -1386,21 +1535,35 @@ svg {
   .person > span {
     font-size: 11px;
   }
+  .project-3 {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .project-3 > button {
+    display: flex;
+  }
+  .project-3 .scene {
+    height: 240px;
+    min-height: 0;
+  }
+  .project-3 .project-copy {
+    padding: 20px;
+  }
   .project-0 {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
   }
   .project-2 {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 3;
   }
   .project-1 {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
   }
   .services-card {
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 4;
     padding: 20px;
   }
   .scene {
@@ -1600,21 +1763,25 @@ svg {
   .project-0,
   .project-1,
   .project-2,
+  .project-3,
   .services-card {
     grid-column: 1;
     grid-row: auto;
   }
-  .project-0 {
+  .project-3 {
     order: 1;
   }
-  .project-2 {
+  .project-0 {
     order: 2;
   }
-  .project-1 {
+  .project-2 {
     order: 3;
   }
-  .services-card {
+  .project-1 {
     order: 4;
+  }
+  .services-card {
+    order: 5;
     padding: 27px;
   }
   .intro-card {
@@ -1622,6 +1789,27 @@ svg {
   }
   .scene {
     height: 224px;
+  }
+  .project-3 .scene {
+    height: 240px;
+  }
+  .scene-live {
+    padding: 17px;
+  }
+  .live-preview {
+    width: 100%;
+  }
+  .live-preview-body {
+    padding-top: 21px;
+  }
+  .live-preview-top small {
+    display: none;
+  }
+  .live-title {
+    font-size: 34px;
+  }
+  .live-collage {
+    height: 110px;
   }
   .scene-app {
     min-height: 270px;

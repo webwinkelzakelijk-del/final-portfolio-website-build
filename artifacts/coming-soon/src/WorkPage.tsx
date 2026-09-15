@@ -6,11 +6,44 @@ type Language = "nl" | "en";
 const email = "webwinkelzakelijk@gmail.com";
 const languageKey = "kevin-rebuilds-language";
 
+type WorkProject = {
+  name: string;
+  category: string;
+  tagline: string;
+  description: string;
+  focus: string;
+  preview: number;
+  live?: boolean;
+  url?: string;
+};
+
 export default function WorkPage() {
   const [language, setLanguage] = useState<Language>(initialLanguage);
   const t: Translate = (nl, en) => (language === "nl" ? nl : en);
   const base = import.meta.env.BASE_URL;
-  const projects = [
+  const projects: WorkProject[] = [
+    {
+      name: "Different Hair!",
+      category: t(
+        "Live website · design & development",
+        "Live website · design & development",
+      ),
+      tagline: t(
+        "Een salon die online net zo eigen voelt.",
+        "A salon that feels just as distinctive online.",
+      ),
+      description: t(
+        "Een uitgesproken website voor de one-man kapsalon van Frank Meichsner in Emmen. Sterke typografie, speelse collage-elementen, klantreviews en een interactieve rondleiding brengen de sfeer van de salon online tot leven.",
+        "A bold website for Frank Meichsner's one-man hair salon in Emmen. Strong typography, playful collage elements, customer reviews and an interactive tour bring the salon atmosphere to life online.",
+      ),
+      focus: t(
+        "Concept, webdesign, copy en responsive development",
+        "Concept, web design, copy and responsive development",
+      ),
+      preview: 3,
+      live: true,
+      url: "https://differenthair.nl",
+    },
     {
       name: "Forma Studio",
       category: t("Webdesign & development", "Web design & development"),
@@ -26,6 +59,7 @@ export default function WorkPage() {
         "Visuele identiteit, webdesign en responsive development",
         "Visual identity, web design and responsive development",
       ),
+      preview: 0,
     },
     {
       name: "Ritme",
@@ -39,6 +73,7 @@ export default function WorkPage() {
         "UX-design, interfaceontwerp en interactie",
         "UX design, interface design and interaction",
       ),
+      preview: 1,
     },
     {
       name: "Flowdesk",
@@ -55,6 +90,7 @@ export default function WorkPage() {
         "Procesontwerp, automatisering en dashboarddesign",
         "Process design, automation and dashboard design",
       ),
+      preview: 2,
     },
   ];
 
@@ -162,11 +198,14 @@ export default function WorkPage() {
                   "Interactive concept preview",
                 )}
               >
-                <Preview index={index} t={t} interactive />
+                <Preview index={project.preview} t={t} interactive />
               </div>
               <div className="work-case-copy">
                 <span className="eyebrow">
-                  0{index + 1} / {t("CONCEPTPROJECT", "CONCEPT PROJECT")}
+                  0{index + 1} /{" "}
+                  {project.live
+                    ? t("LIVE PROJECT", "LIVE PROJECT")
+                    : t("CONCEPTPROJECT", "CONCEPT PROJECT")}
                 </span>
                 <span className="work-category">{project.category}</span>
                 <h2>{project.name}</h2>
@@ -178,14 +217,24 @@ export default function WorkPage() {
                 </dl>
                 <a
                   className="text-link"
-                  href={`mailto:${email}?subject=${encodeURIComponent(
-                    t(
-                      `Een project zoals ${project.name}`,
-                      `A project like ${project.name}`,
-                    ),
-                  )}`}
+                  href={
+                    project.url ??
+                    `mailto:${email}?subject=${encodeURIComponent(
+                      t(
+                        `Een project zoals ${project.name}`,
+                        `A project like ${project.name}`,
+                      ),
+                    )}`
+                  }
+                  target={project.live ? "_blank" : undefined}
+                  rel={project.live ? "noreferrer" : undefined}
                 >
-                  {t("Bespreek een soortgelijk idee", "Discuss a similar idea")}
+                  {project.live
+                    ? t("Bekijk de live website", "View the live website")
+                    : t(
+                        "Bespreek een soortgelijk idee",
+                        "Discuss a similar idea",
+                      )}
                   <ArrowUpRight size={18} />
                 </a>
               </div>
@@ -195,8 +244,8 @@ export default function WorkPage() {
 
         <p className="work-disclaimer">
           {t(
-            "De getoonde projecten zijn conceptwerk en laten mijn ontwerp- en ontwikkelmogelijkheden zien.",
-            "The projects shown are concept work illustrating my design and development capabilities.",
+            "Different Hair is een live klantproject. De overige projecten zijn conceptwerk en laten mijn ontwerp- en ontwikkelmogelijkheden zien.",
+            "Different Hair is a live client project. The remaining projects are concept work illustrating my design and development capabilities.",
           )}
         </p>
 
