@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/website-check/:path*",
+      "destination": "https://hosting.kevinrebuilds.com/api/website-check/:path*"
+    }
+  ]
+}
