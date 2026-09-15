@@ -13,8 +13,7 @@ type WorkProject = {
   description: string;
   focus: string;
   preview: number;
-  live?: boolean;
-  url?: string;
+  url: string;
 };
 
 export default function WorkPage() {
@@ -24,7 +23,10 @@ export default function WorkPage() {
   const projects: WorkProject[] = [
     {
       name: "Different Hair!",
-      category: t("Recent werk · live website", "Recent work · live website"),
+      category: t(
+        "Live website · webdesign & development",
+        "Live website · web design & development",
+      ),
       tagline: t(
         "Een salon die online net zo eigen voelt.",
         "A salon that feels just as distinctive online.",
@@ -38,56 +40,7 @@ export default function WorkPage() {
         "Strategy, web design, copy and responsive development",
       ),
       preview: 3,
-      live: true,
       url: "https://differenthair.nl",
-    },
-    {
-      name: "Forma Studio",
-      category: t("Webdesign & development", "Web design & development"),
-      tagline: t(
-        "Een digitale plek met karakter.",
-        "A digital place with character.",
-      ),
-      description: t(
-        "Een website voor een interieurstudio die rustige typografie, ruimtelijke beelden en een heldere route naar het werk samenbrengt. Het ontwerp voelt verfijnd, maar blijft eenvoudig te gebruiken.",
-        "A website for an interior studio combining quiet typography, spatial imagery and a clear path to the work. The design feels refined while staying simple to use.",
-      ),
-      focus: t(
-        "Visuele identiteit, webdesign en responsive development",
-        "Visual identity, web design and responsive development",
-      ),
-      preview: 0,
-    },
-    {
-      name: "Ritme",
-      category: "App & product design",
-      tagline: t("Kleine stappen, op jouw manier.", "Small steps, your way."),
-      description: t(
-        "Een app die dagelijkse gewoontes overzichtelijk en prettig maakt. Eén rustig scherm, haalbare acties en directe feedback geven de gebruiker houvast zonder druk.",
-        "An app that makes daily habits clear and enjoyable. One calm screen, achievable actions and immediate feedback give the user structure without pressure.",
-      ),
-      focus: t(
-        "UX-design, interfaceontwerp en interactie",
-        "UX design, interface design and interaction",
-      ),
-      preview: 1,
-    },
-    {
-      name: "Flowdesk",
-      category: t("Systemen & automatisering", "Systems & automation"),
-      tagline: t(
-        "Meer overzicht. Minder handwerk.",
-        "More clarity. Less busywork.",
-      ),
-      description: t(
-        "Een slim systeem dat aanvragen, afspraken en opvolging verbindt. Iedere stap heeft een duidelijke status, zodat werk blijft bewegen en er minder tussen losse tools verdwijnt.",
-        "A smart system connecting enquiries, appointments and follow-ups. Every step has a clear status, keeping work moving with less falling between separate tools.",
-      ),
-      focus: t(
-        "Procesontwerp, automatisering en dashboarddesign",
-        "Process design, automation and dashboard design",
-      ),
-      preview: 2,
     },
   ];
 
@@ -99,8 +52,8 @@ export default function WorkPage() {
       ?.setAttribute(
         "content",
         t(
-          "Bekijk wat Kevin Rebuilds bouwt: websites, apps en slimme systemen, plus recent live werk.",
-          "Explore what Kevin Rebuilds builds: websites, apps and smart systems, plus recent live work.",
+          "Bekijk de klantprojecten die Kevin Rebuilds heeft ontworpen en gebouwd.",
+          "Explore the client projects designed and built by Kevin Rebuilds.",
         ),
       );
   }, [language]);
@@ -163,19 +116,19 @@ export default function WorkPage() {
         <section className="work-hero">
           <div>
             <span className="eyebrow">
-              {t("MIJN WERK / SELECTIE 2026", "MY WORK / SELECTED 2026")}
+              {t("KLANTPROJECTEN / SELECTIE", "CLIENT PROJECTS / SELECTED")}
             </span>
             <h1>
-              {t("Wat ik bouw.", "What I build.")}
+              {t("Gemaakt voor klanten.", "Made for clients.")}
               <br />
-              <span>{t("Wat al live staat.", "What is already live.")}</span>
+              <span>{t("Nu live.", "Now live.")}</span>
             </h1>
           </div>
           <div className="work-hero-copy">
             <p>
               {t(
-                "Ik ontwerp en bouw websites, apps en slimme systemen. Bekijk mijn recente live werk en drie voorbeelden van wat ik voor je kan maken.",
-                "I design and build websites, apps and smart systems. Explore my recent live work and three examples of what I can create for you.",
+                "Hier verzamel ik werk dat ik voor echte klanten heb ontworpen en gebouwd. Different Hair is het eerste project in deze groeiende selectie.",
+                "This is where I collect work designed and built for real clients. Different Hair is the first project in this growing selection.",
               )}
             </p>
             <a href={base} className="back-link">
@@ -199,14 +152,7 @@ export default function WorkPage() {
               </div>
               <div className="work-case-copy">
                 <span className="eyebrow">
-                  0{index + 1} /{" "}
-                  {project.live
-                    ? t("RECENT WERK", "RECENT WORK")
-                    : [
-                        t("WEBSITE", "WEBSITE"),
-                        t("APP", "APP"),
-                        t("SYSTEEM", "SYSTEM"),
-                      ][project.preview]}
+                  0{index + 1} / {t("KLANTPROJECT", "CLIENT PROJECT")}
                 </span>
                 <span className="work-category">{project.category}</span>
                 <h2>{project.name}</h2>
@@ -218,37 +164,17 @@ export default function WorkPage() {
                 </dl>
                 <a
                   className="text-link"
-                  href={
-                    project.url ??
-                    `mailto:${email}?subject=${encodeURIComponent(
-                      t(
-                        `Een project zoals ${project.name}`,
-                        `A project like ${project.name}`,
-                      ),
-                    )}`
-                  }
-                  target={project.live ? "_blank" : undefined}
-                  rel={project.live ? "noreferrer" : undefined}
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {project.live
-                    ? t("Bekijk de live website", "View the live website")
-                    : t(
-                        "Bespreek een soortgelijk idee",
-                        "Discuss a similar idea",
-                      )}
+                  {t("Bekijk de live website", "View the live website")}
                   <ArrowUpRight size={18} />
                 </a>
               </div>
             </article>
           ))}
         </div>
-
-        <p className="work-disclaimer">
-          {t(
-            "Different Hair is recent live werk. Forma Studio, Ritme en Flowdesk zijn voorbeelden van de websites, apps en systemen die ik kan bouwen.",
-            "Different Hair is recent live work. Forma Studio, Ritme and Flowdesk are examples of the websites, apps and systems I can build.",
-          )}
-        </p>
 
         <section className="work-contact">
           <div>
