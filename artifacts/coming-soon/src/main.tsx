@@ -6,6 +6,7 @@ import WorkPage from "./WorkPage";
 import { ErrorBoundary } from "@/components/error-boundary";
 
 import "./index.css";
+import "./readability.css";
 
 const isWorkPage = window.location.pathname
   .replace(/\/+$/, "")
