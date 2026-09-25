@@ -1,5 +1,25 @@
+# Kevin Rebuilds: search engines and AI assistants are welcome to read this site.
 User-agent: *
 Allow: /
-Disallow: /api/
+Disallow: /bedankt/
+Disallow: /en/thank-you/
+
+# AI search / answer engines (explicitly allowed)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
 
 Sitemap: https://www.kevinrebuilds.com/sitemap.xml

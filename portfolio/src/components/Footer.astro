@@ -1,0 +1,60 @@
+---
+import Icon from "./Icon.astro";
+import { ROUTES, ANCHORS, type Lang, type PageKey } from "../i18n/routes";
+import { site } from "../i18n/site";
+import { CONTACT_EMAIL } from "../config";
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+}
+const { lang, page } = Astro.props;
+const t = site[lang];
+const home = ROUTES.home[lang];
+const a = ANCHORS[lang];
+const cards = t.services.cards;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href={home}>kevin<span>rebuilds.</span></a>
+        <p>{t.footer.about}</p>
+      </div>
+      <nav aria-label={t.footer.solutions}>
+        <h2>{t.footer.solutions}</h2>
+        <ul>
+          <li><a href={ROUTES.websites[lang]}>{cards.websites.title}</a></li>
+          <li><a href={ROUTES.webapps[lang]}>{cards.webapps.title}</a></li>
+          <li><a href={ROUTES.automation[lang]}>{cards.automation.title}</a></li>
+        </ul>
+      </nav>
+      <nav aria-label={t.footer.navigate}>
+        <h2>{t.footer.navigate}</h2>
+        <ul>
+          <li><a href={`${home}#${a.examples}`}>{t.nav.examples}</a></li>
+          <li><a href={`${home}#${a.process}`}>{t.nav.process}</a></li>
+          <li><a href={`${home}#${a.about}`}>{t.nav.about}</a></li>
+          <li><a href={`${home}#${a.request}`}>{t.nav.cta}</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>{t.footer.contact}</h2>
+        <ul>
+          <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
+          <li>
+            <a href={ROUTES[page][lang === "nl" ? "en" : "nl"]} hreflang={lang === "nl" ? "en" : "nl"} data-lang-link={lang === "nl" ? "en" : "nl"}>
+              {lang === "nl" ? "English version" : "Nederlandse versie"}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} Kevin Rebuilds. {t.footer.rights}</span>
+      <a href="#main">{t.footer.top}<Icon name="arrow-up" /></a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import SitePreview from "./previews/SitePreview.astro";
+import PortalPreview from "./previews/PortalPreview.astro";
+import FlowPreview from "./previews/FlowPreview.astro";
+import portrait from "../assets/kevin-head.webp";
+import { ANCHORS, type Lang } from "../i18n/routes";
+import { site } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = site[lang];
+const h = t.hero;
+const a = ANCHORS[lang];
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{h.eyebrow.map((w, i) => <>{i > 0 && <span class="dot" aria-hidden="true">·</span>}<span>{w}</span></>)}</p>
+      <h1 id="hero-title" class="hero-title">
+        <span>{h.title[0]} </span><span>{h.title[1]}</span>{" "}
+        <span class="accent">{h.titleAccent[0]} </span><span class="accent">{h.titleAccent[1]}</span>
+      </h1>
+      <p class="hero-intro">{h.intro}</p>
+      <div class="hero-actions">
+        <a class="btn btn--primary" href={`#${a.request}`}>{h.primary}<Icon name="arrow-right" /></a>
+        <a class="btn btn--secondary" href={`#${a.solutions}`}>{h.secondary}</a>
+      </div>
+      <a class="hello" href={`#${a.about}`}>
+        <Image src={portrait} alt="" width={64} height={64} widths={[64, 128]} sizes="64px" loading="eager" />
+        <span><strong>{h.hello}</strong><span>{h.helloSub}</span></span>
+      </a>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hv" role="img" aria-label={h.visualLabel}>
+        <svg class="hv-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M34 3.2 H38.5 Q40.5 3.2 40.5 5.2 V8.6" />
+          <path d="M74.5 19 H88 Q90 19 90 21 V34" />
+          <path d="M60 58 H66 Q68 58 68 56 V51.5 Q68 49.5 70 49.5 H73" />
+          <path d="M60 74 H66 Q68 74 68 76 V76.5 Q68 78.5 70 78.5 H73" />
+          <path d="M45 92.3 H41 Q39 92.3 39 90.3 V88.4" />
+          <circle cx="40.5" cy="8.6" r="0.8" /><circle cx="90" cy="34" r="0.8" />
+          <circle cx="73" cy="49.5" r="0.8" /><circle cx="73" cy="78.5" r="0.8" /><circle cx="39" cy="88.4" r="0.8" />
+        </svg>
+        <span class="hv-pill hv-pill--site"><Icon name="globe" />{t.demo.website}</span>
+        <SitePreview lang={lang} variant="hero" class="hv-site" />
+        <PortalPreview lang={lang} variant="hero" class="hv-app" />
+        <span class="hv-pill hv-pill--app"><Icon name="bars" />{t.demo.webapp}</span>
+        <span class="hv-pill hv-pill--auto"><Icon name="cog" />{t.demo.automation}</span>
+        <FlowPreview lang={lang} variant="steps" class="hv-flow" />
+      </div>
+      <ul class="hv-mobile-pills" aria-hidden="true">
+        <li><Icon name="globe" />{t.demo.website}</li>
+        <li><Icon name="bars" />{t.demo.webapp}</li>
+        <li><Icon name="cog" />{t.demo.automation}</li>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import { site } from "../../i18n/site";
+import { ROUTES } from "../../i18n/routes";
+const lang = "nl";
+const t = site[lang];
+---
+
+<Base lang={lang} page="thanks" title={t.meta.thanks.title} description={t.meta.thanks.description} noindex>
+  <section class="section simple-page">
+    <div class="container narrow">
+      <span class="success-icon"><Icon name="check" /></span>
+      <h1 class="h2">{t.thanks.title}</h1>
+      <p class="lead">{t.thanks.text}</p>
+      <a class="btn btn--primary" href={ROUTES.home[lang]}>{t.thanks.back}<Icon name="arrow-right" /></a>
+    </div>
+  </section>
+</Base>

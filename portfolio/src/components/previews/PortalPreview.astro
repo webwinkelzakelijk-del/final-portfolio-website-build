@@ -1,0 +1,77 @@
+---
+import Icon, { type IconName } from "../Icon.astro";
+import { site } from "../../i18n/site";
+import type { Lang } from "../../i18n/routes";
+
+interface Props {
+  lang: Lang;
+  variant: "hero" | "mini" | "demo";
+  class?: string;
+}
+const { lang, variant, class: className } = Astro.props;
+const p = site[lang].demo.portal;
+const badge = site[lang].demo.badge;
+const ex = site[lang].examples;
+const menuIcons: IconName[] = ["dashboard", "folder", "file", "message", "cog"];
+const activeIndex = variant === "hero" ? 0 : 1;
+const activityIcons: IconName[] = ["check-circle", "message", "file"];
+---
+
+<div class:list={["pv pv-portal", `pv--${variant}`, className]} data-portal={variant === "demo" ? "" : undefined}>
+  <aside class="pv-side" aria-hidden="true">
+    <span class="pv-side-mark"><Icon name="dashboard" /></span>
+    {variant !== "mini" && <span class="pv-side-title">{p.area}</span>}
+    <ul>
+      {p.menu.map((item, i) => (
+        <li class:list={{ "is-active": i === activeIndex }}>
+          <Icon name={menuIcons[i]} />
+          {variant !== "mini" && <span>{item}</span>}
+        </li>
+      ))}
+    </ul>
+  </aside>
+  <div class="pv-main">
+    <span class="pv-badge">{badge}</span>
+    {variant === "hero" ? (
+      <>
+        <strong class="pv-title">{p.welcome}</strong>
+        <span class="pv-sub">{p.welcomeSub}</span>
+        <div class="pv-stats">
+          {p.stats.map(([n, label]) => (
+            <div><b>{n}</b><span>{label}</span></div>
+          ))}
+        </div>
+        <div class="pv-list">
+          <span class="pv-list-title">{p.recent}</span>
+          {p.activity.map(([label, time], i) => (
+            <div class="pv-row"><Icon name={activityIcons[i]} /><span>{label}</span><em>{time}</em></div>
+          ))}
+        </div>
+      </>
+    ) : (
+      <>
+        <strong class="pv-title">{p.projects}</strong>
+        {variant === "demo" ? (
+          <div class="pv-filters" role="group" aria-label={ex.filterLabel} data-js-only hidden>
+            {p.filters.map((f, i) => (
+              <button type="button" aria-pressed={i === 0 ? "true" : "false"} data-filter={["all", "active", "done"][i]}>{f}</button>
+            ))}
+          </div>
+        ) : (
+          <div class="pv-filters" aria-hidden="true">
+            {p.filters.map((f, i) => <span class:list={{ "is-on": i === 0 }}>{f}</span>)}
+          </div>
+        )}
+        <ul class="pv-list" aria-live={variant === "demo" ? "polite" : undefined}>
+          {p.rows.slice(0, variant === "mini" ? 3 : 4).map(([name, status, label]) => (
+            <li class="pv-row" data-status={status}>
+              <Icon name="file-text" />
+              <span>{name}</span>
+              <em class={`pv-status pv-status--${status}`}>{label}</em>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+  </div>
+</div>

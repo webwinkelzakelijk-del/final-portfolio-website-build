@@ -1,0 +1,63 @@
+---
+import Icon from "./Icon.astro";
+import SitePreview from "./previews/SitePreview.astro";
+import PortalPreview from "./previews/PortalPreview.astro";
+import FlowPreview from "./previews/FlowPreview.astro";
+import { ANCHORS, type Lang } from "../i18n/routes";
+import { site } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = site[lang].examples;
+const request = `#${ANCHORS[lang].request}`;
+---
+
+<section class="section examples" id={ANCHORS[lang].examples} aria-labelledby="examples-title">
+  <div class="container">
+    <div class="section-intro">
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 id="examples-title" class="h2">{t.title}</h2>
+      <p class="lead">{t.intro}</p>
+    </div>
+
+    <div class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label={t.tabsLabel} data-js-only hidden>
+        {t.tabs.map((label, i) => (
+          <button type="button" role="tab" id={`ex-tab-${i}`} aria-controls={`ex-panel-${i}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {t.items.map((item, i) => (
+        <div class="tab-panel" id={`ex-panel-${i}`} data-tab-panel>
+          <div class="example-copy">
+            <span class="badge">{site[lang].demo.badge}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <ul class="check-list">
+              {item.points.map((point) => <li><Icon name="check" />{point}</li>)}
+            </ul>
+            <a class="text-link" href={request} data-service={item.service}>{item.cta}<Icon name="arrow-right" /></a>
+          </div>
+          <div class="example-stage">
+            {i === 0 && (
+              <>
+                <div class="segmented" role="group" aria-label={t.view} data-js-only hidden>
+                  <button type="button" aria-pressed="true" data-view="desktop"><Icon name="monitor" />{t.desktop}</button>
+                  <button type="button" aria-pressed="false" data-view="mobile"><Icon name="phone" />{t.mobile}</button>
+                </div>
+                <div class="site-stage" data-site-stage><SitePreview lang={lang} variant="demo" /></div>
+              </>
+            )}
+            {i === 1 && <PortalPreview lang={lang} variant="demo" />}
+            {i === 2 && <FlowPreview lang={lang} variant="demo" />}
+            <p class="fictional"><Icon name="alert" />{t.fictional}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

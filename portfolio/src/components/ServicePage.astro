@@ -1,0 +1,152 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon, { type IconName } from "./Icon.astro";
+import Process from "./Process.astro";
+import RequestForm from "./RequestForm.astro";
+import SitePreview from "./previews/SitePreview.astro";
+import PortalPreview from "./previews/PortalPreview.astro";
+import FlowPreview from "./previews/FlowPreview.astro";
+import { ROUTES, ANCHORS, SERVICE_VALUE, type Lang, type ServiceKey } from "../i18n/routes";
+import { site } from "../i18n/site";
+import { services } from "../i18n/services";
+import { serviceSchema } from "../seo/schema";
+
+interface Props {
+  lang: Lang;
+  service: ServiceKey;
+}
+const { lang, service } = Astro.props;
+const s = services[lang][service];
+const t = site[lang];
+const home = ROUTES.home[lang];
+const request = `#${ANCHORS[lang].request}`;
+const others = (["websites", "webapps", "automation"] as ServiceKey[]).filter((k) => k !== service);
+const icons: Record<ServiceKey, IconName> = { websites: "globe", webapps: "bars", automation: "cog" };
+const buildIcons: IconName[] = ["check-circle", "check-circle", "check-circle", "check-circle", "check-circle", "check-circle"];
+const labels =
+  lang === "nl"
+    ? { crumbs: "Kruimelpad", build: "Wat ik bouw", buildId: "wat-ik-bouw", processId: "aanpak", others: "Andere oplossingen", problem: "Probleem", solution: "Aanpak" }
+    : { crumbs: "Breadcrumb", build: "What I build", buildId: "what-i-build", processId: "approach", others: "Other solutions", problem: "Problem", solution: "Approach" };
+---
+
+<Base lang={lang} page={service} title={s.meta.title} description={s.meta.description} jsonLd={serviceSchema(lang, service)}>
+  <section class="svc-hero" aria-labelledby="svc-title">
+    <div class="container">
+      <nav class="breadcrumb" aria-label={labels.crumbs}>
+        <ol>
+          <li><a href={home}>Home</a></li>
+          <li aria-current="page">{s.name}</li>
+        </ol>
+      </nav>
+      <div class="svc-hero-grid">
+        <div class="svc-hero-copy">
+          <p class="eyebrow">{s.eyebrow}</p>
+          <h1 id="svc-title" class="svc-title">{s.h1}</h1>
+          <p class="hero-intro">{s.intro}</p>
+          <ul class="check-list check-list--inline">
+            {s.highlights.map((h) => <li><Icon name="check" />{h}</li>)}
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href={request} data-service={SERVICE_VALUE[service]}>{t.nav.cta}<Icon name="arrow-right" /></a>
+            <a class="btn btn--secondary" href={`#${labels.buildId}`}>{labels.build}</a>
+          </div>
+        </div>
+        <div class="svc-hero-visual">
+          {service === "websites" && <SitePreview lang={lang} variant="hero" />}
+          {service === "webapps" && <PortalPreview lang={lang} variant="hero" />}
+          {service === "automation" && <FlowPreview lang={lang} variant="hub" />}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="audience-title">
+    <div class="container">
+      <div class="section-intro">
+        <h2 id="audience-title" class="h2 h2--sm">{s.audience.title}</h2>
+        <p class="lead">{s.audience.intro}</p>
+      </div>
+      <ul class="card-grid card-grid--4">
+        {s.audience.items.map((item) => (
+          <li class="info-card">
+            <span class="icon-tile icon-tile--sm"><Icon name="users" /></span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--tint" aria-labelledby="problems-title">
+    <div class="container">
+      <div class="section-intro">
+        <h2 id="problems-title" class="h2 h2--sm">{s.problems.title}</h2>
+        <p class="lead">{s.problems.intro}</p>
+      </div>
+      <ul class="problem-list">
+        {s.problems.items.map((item) => (
+          <li>
+            <div><span class="problem-label">{labels.problem}</span><p>{item.problem}</p></div>
+            <Icon name="arrow-right" class="problem-arrow" />
+            <div><span class="problem-label problem-label--blue">{labels.solution}</span><p>{item.solution}</p></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id={labels.buildId} aria-labelledby="build-title">
+    <div class="container">
+      <div class="section-intro">
+        <h2 id="build-title" class="h2 h2--sm">{s.build.title}</h2>
+        <p class="lead">{s.build.intro}</p>
+      </div>
+      <ul class="card-grid card-grid--3">
+        {s.build.items.map((item, i) => (
+          <li class="info-card">
+            <span class="icon-tile icon-tile--sm"><Icon name={buildIcons[i]} /></span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Process id={labels.processId} eyebrow={t.process.eyebrow} title={[s.process.title]} intro={s.process.intro} steps={s.process.steps} />
+
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container faq-grid">
+      <h2 id="faq-title" class="h2 h2--sm">{s.faq.title}</h2>
+      <div class="faq-list">
+        {s.faq.items.map(([q, a]) => (
+          <details class="faq-item">
+            <summary><h3>{q}</h3><span class="faq-icon" aria-hidden="true"><Icon name="plus" /></span></summary>
+            <p>{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint section--compact" aria-labelledby="others-title">
+    <div class="container">
+      <h2 id="others-title" class="h3-title">{labels.others}</h2>
+      <ul class="card-grid card-grid--2">
+        {others.map((key) => (
+          <li class="other-card">
+            <span class="icon-tile"><Icon name={icons[key]} /></span>
+            <div>
+              <h3><a class="stretched" href={ROUTES[key][lang]}>{t.services.cards[key].title}</a></h3>
+              <p>{t.services.cards[key].text}</p>
+            </div>
+            <Icon name="arrow-right" class="other-arrow" />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <RequestForm lang={lang} preselect={SERVICE_VALUE[service]} title={s.cta.title} text={s.cta.text} />
+</Base>

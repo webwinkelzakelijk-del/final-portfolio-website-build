@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import portrait from "../assets/kevin-head.webp";
+import { ANCHORS, type Lang } from "../i18n/routes";
+import { site } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = site[lang].personal;
+---
+
+<section class="section personal" id={ANCHORS[lang].about} aria-labelledby="personal-title">
+  <div class="container personal-grid">
+    <figure class="personal-photo">
+      <Image src={portrait} alt={t.alt} width={400} height={400} widths={[320, 400, 800]} sizes="(min-width: 900px) 400px, 80vw" />
+      <figcaption>{t.caption}</figcaption>
+      <svg class="personal-line" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 2 H24 Q30 2 30 8 V86 Q30 92 36 92 H58" />
+        <circle cx="58" cy="92" r="2.4" />
+      </svg>
+    </figure>
+    <div class="personal-copy">
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 id="personal-title" class="h2">{t.title}</h2>
+      {t.paragraphs.map((p) => <p>{p}</p>)}
+      <a class="text-link text-link--lg" href={`#${ANCHORS[lang].request}`}>{t.cta}<Icon name="arrow-right" /></a>
+    </div>
+  </div>
+</section>

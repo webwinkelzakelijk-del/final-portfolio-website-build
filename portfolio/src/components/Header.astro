@@ -1,0 +1,46 @@
+---
+import Icon from "./Icon.astro";
+import { ROUTES, ANCHORS, type Lang, type PageKey } from "../i18n/routes";
+import { site } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+}
+const { lang, page } = Astro.props;
+const t = site[lang].nav;
+const home = ROUTES.home[lang];
+const a = ANCHORS[lang];
+const links = [
+  [`${home}#${a.solutions}`, t.solutions],
+  [`${home}#${a.examples}`, t.examples],
+  [`${home}#${a.process}`, t.process],
+  [`${home}#${a.about}`, t.about],
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href={home}>kevin<span>rebuilds.</span></a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle data-open={t.menu} data-close={t.close}>
+      <span class="menu-icon-open"><Icon name="menu" /></span>
+      <span class="menu-icon-close"><Icon name="x" /></span>
+      <span class="menu-label" data-menu-label>{t.menu}</span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label={t.label}>
+      <ul class="nav-links">
+        {links.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+      </ul>
+      <div class="lang-switch" role="group" aria-label={t.language}>
+        <a href={ROUTES[page].nl} hreflang="nl" lang="nl" aria-current={lang === "nl" ? "page" : undefined} data-lang-link="nl">NL</a>
+        <span aria-hidden="true">/</span>
+        <a href={ROUTES[page].en} hreflang="en" lang="en" aria-current={lang === "en" ? "page" : undefined} data-lang-link="en">EN</a>
+      </div>
+      <a class="btn btn--primary btn--sm" href={`${home}#${a.request}`}>
+        {t.cta}<Icon name="arrow-right" />
+      </a>
+    </nav>
+  </div>
+</header>

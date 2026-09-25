@@ -1,0 +1,42 @@
+---
+import BuildingArt from "./BuildingArt.astro";
+import Icon from "../Icon.astro";
+import { site } from "../../i18n/site";
+import type { Lang } from "../../i18n/routes";
+
+interface Props {
+  lang: Lang;
+  variant: "hero" | "mini" | "demo";
+  class?: string;
+}
+const { lang, variant, class: className } = Astro.props;
+const d = site[lang].demo;
+const isMini = variant === "mini";
+---
+
+<div class:list={["pv pv-site", `pv--${variant}`, className]} data-site-frame={variant === "demo" ? "" : undefined}>
+  <div class="pv-chrome">
+    <span class="pv-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="pv-badge">{d.badge}</span>
+  </div>
+  <div class="pv-site-body">
+    {!isMini && (
+      <div class="pv-site-nav" aria-hidden="true">
+        <span class="pv-logo"></span>
+        <span class="pv-site-links">{d.site.nav.map((item) => <span>{item}</span>)}</span>
+        <span class="pv-burger"><Icon name="menu" /></span>
+      </div>
+    )}
+    <div class="pv-site-hero">
+      <div class="pv-site-copy">
+        {isMini && <span class="pv-logo"></span>}
+        <strong>{isMini ? d.site.miniTitle : d.site.title}</strong>
+        <span class="pv-site-text">{isMini ? d.site.miniText : d.site.text}</span>
+        <span class="pv-site-btn" aria-hidden="true">{!isMini && d.site.button}{!isMini && <Icon name="arrow-right" />}</span>
+      </div>
+      <div class="pv-site-image">
+        <BuildingArt id={`${variant}-${lang}`} />
+      </div>
+    </div>
+  </div>
+</div>
