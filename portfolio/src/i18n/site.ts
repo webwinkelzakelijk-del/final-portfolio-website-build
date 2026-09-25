@@ -94,7 +94,7 @@ const nl = {
   },
   work: {
     eyebrow: "Recent werk",
-    title: "Mijn eerste live klantproject.",
+    title: "Uitgelicht klantproject.",
     intro: "Geen demo, maar een echte website die live staat voor een klant.",
     live: "Live",
     liveLong: "Live klantproject",
@@ -330,7 +330,7 @@ const en: SiteDict = {
   },
   work: {
     eyebrow: "Recent work",
-    title: "My first live client project.",
+    title: "Featured client project.",
     intro: "Not a demo, but a real website that is live for a client.",
     live: "Live",
     liveLong: "Live client project",

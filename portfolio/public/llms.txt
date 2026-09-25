@@ -6,7 +6,7 @@ Kevin Rebuilds is based in Emmen, Drenthe (the Netherlands) and works for busine
 
 ## Recent work
 
-- [Different Hair!](https://www.differenthair.nl/): the first live client project. A website for Frank Meichsner's one-man hair salon in Emmen (strategy, web design, copywriting and responsive development).
+- [Different Hair!](https://www.differenthair.nl/): a live client project. A website for Frank Meichsner's one-man hair salon in Emmen (strategy, web design, copywriting and responsive development).
 
 ## Services (Dutch)
 
