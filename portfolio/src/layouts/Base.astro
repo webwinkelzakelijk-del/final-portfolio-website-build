@@ -1,0 +1,88 @@
+---
+import "../styles/global.css";
+import { dict, SITE, EMAIL, type Lang } from "../i18n/content";
+import { getImage } from "astro:assets";
+import ogSource from "../assets/kevin-portrait.png";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = dict[lang];
+const path = lang === "nl" ? "/" : "/en/";
+const canonical = new URL(path, SITE).href;
+const og = await getImage({ src: ogSource, width: 1200, height: 1200, format: "jpg", quality: 82 });
+const ogUrl = new URL(og.src, SITE).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Kevin Rebuilds",
+  url: SITE,
+  email: EMAIL,
+  image: ogUrl,
+  description: t.meta.description,
+  areaServed: ["NL", "Worldwide"],
+  address: { "@type": "PostalAddress", addressRegion: "Drenthe", addressCountry: "NL" },
+  founder: { "@type": "Person", name: "Kevin", jobTitle: "Web designer & developer" },
+  knowsLanguage: ["nl", "en"],
+  serviceType: ["Webdesign", "Web development", "Web apps", "Automation"],
+};
+---
+
+<!doctype html>
+<html lang={lang} data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="nl" href={`${SITE}/`} />
+    <link rel="alternate" hreflang="en" href={`${SITE}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${SITE}/`} />
+    <meta name="theme-color" content="#0c0c0f" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kevin Rebuilds" />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={t.locale} />
+    <meta property="og:image" content={ogUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.meta.title} />
+    <meta name="twitter:description" content={t.meta.description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+
+    <!-- Runs before paint: flags JS, first visit (preloader) and old ?lang= links. -->
+    <script is:inline define:vars={{ lang }}>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        try {
+          var p = new URLSearchParams(location.search).get("lang");
+          if (p === "en" && lang === "nl") { location.replace("/en/" + location.hash); return; }
+          if (p === "nl" && lang === "en") { location.replace("/" + location.hash); return; }
+          if (!sessionStorage.getItem("kr-visited") && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            d.classList.add("first-visit");
+          }
+          sessionStorage.setItem("kr-visited", "1");
+        } catch (e) {}
+      })();
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
