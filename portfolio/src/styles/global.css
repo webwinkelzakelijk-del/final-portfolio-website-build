@@ -772,3 +772,5 @@ h1, h2, h3, .hero-title, .svc-title { overflow-wrap: break-word; hyphens: auto; 
   .process-grid--stacked { grid-template-columns: minmax(0, 1fr); gap: 48px; }
   .process-grid--stacked .process-head { max-width: 760px; }
 }
+
+.footer-location { display: flex; align-items: center; min-height: 40px; color: var(--muted); font-size: 0.9688rem; }

@@ -44,6 +44,7 @@ const year = new Date().getFullYear();
         <h2>{t.footer.contact}</h2>
         <ul>
           <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
+          <li class="footer-location">{t.footer.location}</li>
           <li>
             <a href={ROUTES[page][lang === "nl" ? "en" : "nl"]} hreflang={lang === "nl" ? "en" : "nl"} data-lang-link={lang === "nl" ? "en" : "nl"}>
               {lang === "nl" ? "English version" : "Nederlandse versie"}

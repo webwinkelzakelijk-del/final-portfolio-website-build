@@ -5,9 +5,9 @@ const nl = {
   skip: "Ga naar de inhoud",
   meta: {
     home: {
-      title: "Website, webapp of automatisering laten maken | Kevin Rebuilds",
+      title: "Website, webapp of automatisering in Emmen | Kevin Rebuilds",
       description:
-        "Ik ontwerp en bouw websites, webapps en automatiseringen op maat voor ondernemers en bedrijven. Je werkt rechtstreeks met mij, van het eerste gesprek tot de oplevering.",
+        "Ik ontwerp en bouw websites, webapps en automatiseringen op maat voor ondernemers in Emmen, Drenthe en de rest van Nederland. Je werkt rechtstreeks met mij, van het eerste gesprek tot de oplevering.",
     },
     thanks: {
       title: "Bedankt voor je aanvraag | Kevin Rebuilds",
@@ -191,6 +191,7 @@ const nl = {
   },
   footer: {
     about: "Websites, webapps en automatiseringen op maat voor ondernemers en bedrijven.",
+    location: "Emmen, Drenthe",
     solutions: "Oplossingen",
     navigate: "Navigatie",
     contact: "Contact",
@@ -216,9 +217,9 @@ const en: SiteDict = {
   skip: "Skip to content",
   meta: {
     home: {
-      title: "Custom websites, web apps & automation | Kevin Rebuilds",
+      title: "Websites, web apps & automation | Kevin Rebuilds, Emmen",
       description:
-        "I design and build custom websites, web apps and automations for entrepreneurs and businesses. You work directly with me, from the first conversation to delivery.",
+        "I design and build custom websites, web apps and automations for businesses, based in Emmen, the Netherlands. You work directly with me, from the first conversation to delivery.",
     },
     thanks: {
       title: "Thank you for your request | Kevin Rebuilds",
@@ -402,6 +403,7 @@ const en: SiteDict = {
   },
   footer: {
     about: "Custom websites, web apps and automations for entrepreneurs and businesses.",
+    location: "Emmen, Drenthe (the Netherlands)",
     solutions: "Solutions",
     navigate: "Navigate",
     contact: "Contact",

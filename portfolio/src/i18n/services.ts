@@ -19,16 +19,16 @@ export type ServiceContent = {
 const nl: Record<ServiceKey, ServiceContent> = {
   websites: {
     meta: {
-      title: "Website laten maken op maat | Kevin Rebuilds",
+      title: "Website laten maken op maat in Emmen | Kevin Rebuilds",
       description:
-        "Een professionele website op maat voor je bedrijf: helder, snel, goed vindbaar en gemaakt om bezoekers om te zetten in aanvragen. Ontworpen en gebouwd door Kevin.",
+        "Een professionele website op maat voor je bedrijf: helder, snel, goed vindbaar en gemaakt om bezoekers om te zetten in aanvragen. Ontworpen en gebouwd door Kevin in Emmen, Drenthe.",
     },
     name: "Websites",
     schemaType: "Webdesign en websiteontwikkeling",
     eyebrow: "Oplossing · Websites",
     h1: "Een professionele website op maat voor jouw bedrijf.",
     intro:
-      "Ik ontwerp en bouw websites op maat voor ondernemers en bedrijven. Een website die in een paar seconden duidelijk maakt wat je doet, vertrouwen wekt en bezoekers een logische volgende stap geeft, zoals een aanvraag, een afspraak of een telefoontje.",
+      "Ik ontwerp en bouw websites op maat voor ondernemers en bedrijven. Een website die in een paar seconden duidelijk maakt wat je doet, vertrouwen wekt en bezoekers een logische volgende stap geeft, zoals een aanvraag, een afspraak of een telefoontje. Ik werk vanuit Emmen (Drenthe), voor bedrijven in de regio en daarbuiten.",
     highlights: ["Ontwerp en bouw op maat", "Snel en mobielvriendelijk", "Technisch klaar voor Google"],
     audience: {
       title: "Voor wie is een website op maat?",
@@ -81,22 +81,23 @@ const nl: Record<ServiceKey, ServiceContent> = {
         ["Kan ik de website later zelf aanpassen?", "Dat bespreken we vooraf. Sommige bedrijven willen zelf teksten en beelden kunnen wijzigen, anderen laten dat liever aan mij over. De technische opzet stem ik daarop af."],
         ["Word ik gevonden in Google met een nieuwe website?", "Ik bouw de website met een goede technische basis voor zoekmachines: snelle pagina's, een logische structuur en goede titels en beschrijvingen. Een positie in Google kan niemand garanderen; die hangt ook af van concurrentie en inhoud."],
         ["Regel je ook hosting en onderhoud?", "Dat kan. We bespreken welke hosting past en of je onderhoud wilt, zodat je website veilig en up-to-date blijft."],
+        ["Werk je alleen voor bedrijven in Emmen?", "Nee. Ik werk vanuit Emmen in Drenthe, voor bedrijven in de regio en in de rest van Nederland. Veel kan online; in de regio kunnen we ook persoonlijk afspreken."],
       ],
     },
     cta: { title: "Een website die past bij je bedrijf?", text: "Vertel kort wat je zoekt. Ik denk met je mee over de beste aanpak." },
   },
   webapps: {
     meta: {
-      title: "Webapp of klantportaal laten ontwikkelen | Kevin Rebuilds",
+      title: "Webapp of klantportaal laten maken in Emmen | Kevin Rebuilds",
       description:
-        "Een webapp op maat, zoals een klantportaal, dashboard of interne tool, die past bij hoe jouw bedrijf werkt. Ontworpen en gebouwd door Kevin.",
+        "Een webapp op maat, zoals een klantportaal, dashboard of interne tool, die past bij hoe jouw bedrijf werkt. Ontworpen en gebouwd door Kevin in Emmen, Drenthe.",
     },
     name: "Webapps",
     schemaType: "Ontwikkeling van webapplicaties op maat",
     eyebrow: "Oplossing · Webapps",
     h1: "Een webapp op maat die past bij jouw manier van werken.",
     intro:
-      "Ik ontwerp en bouw webapps op maat: klantportalen, dashboards en interne tools die in de browser werken. Geen standaardsoftware waar je je werkwijze op moet aanpassen, maar een tool die aansluit op hoe jouw bedrijf werkt.",
+      "Ik ontwerp en bouw webapps op maat: klantportalen, dashboards en interne tools die in de browser werken. Geen standaardsoftware waar je je werkwijze op moet aanpassen, maar een tool die aansluit op hoe jouw bedrijf werkt. Ik werk vanuit Emmen (Drenthe), voor bedrijven in de regio en daarbuiten.",
     highlights: ["Klantportalen en dashboards", "Gebouwd rond jouw werkwijze", "Werkt in de browser, ook op mobiel"],
     audience: {
       title: "Voor wie is een webapp op maat?",
@@ -148,22 +149,23 @@ const nl: Record<ServiceKey, ServiceContent> = {
         ["Werkt een webapp ook op mobiel?", "Ja. Een webapp werkt in de browser en ik ontwerp de schermen zo dat ze ook op telefoon en tablet goed bruikbaar zijn."],
         ["Is een klantportaal veilig?", "Veiligheid neem ik vanaf het begin mee: inloggen, toegangsrechten per gebruiker en een beveiligde verbinding. Welke maatregelen nodig zijn, bespreken we op basis van het soort gegevens."],
         ["Kan de webapp later uitgebreid worden?", "Ja. Ik bouw de webapp zo dat er later functies bij kunnen komen, zodat je klein kunt beginnen en kunt uitbreiden wat werkt."],
+        ["Werk je alleen voor bedrijven in Emmen?", "Nee. Ik werk vanuit Emmen in Drenthe, voor bedrijven in de regio en in de rest van Nederland. Veel kan online; in de regio kunnen we ook persoonlijk afspreken."],
       ],
     },
     cta: { title: "Een tool die past bij jouw werkwijze?", text: "Vertel wat je nu lastig of tijdrovend vindt. Samen kijken we wat een webapp kan betekenen." },
   },
   automation: {
     meta: {
-      title: "Bedrijfsprocessen automatiseren | Kevin Rebuilds",
+      title: "Bedrijfsprocessen automatiseren in Emmen | Kevin Rebuilds",
       description:
-        "Minder handmatig werk door je systemen te koppelen: aanvragen automatisch verwerken, bevestigen en opslaan. Automatisering op maat voor ondernemers, gebouwd door Kevin.",
+        "Minder handmatig werk door je systemen te koppelen: aanvragen automatisch verwerken, bevestigen en opslaan. Automatisering op maat voor ondernemers, gebouwd door Kevin in Emmen, Drenthe.",
     },
     name: "Automatisering",
     schemaType: "Automatisering van bedrijfsprocessen",
     eyebrow: "Oplossing · Automatisering",
     h1: "Koppel je systemen en verminder handmatig werk.",
     intro:
-      "Ik help ondernemers terugkerend handwerk te automatiseren. Denk aan aanvragen die automatisch in je CRM komen, bevestigingsmails die vanzelf worden verstuurd en gegevens die je niet meer hoeft over te typen tussen verschillende programma's.",
+      "Ik help ondernemers terugkerend handwerk te automatiseren. Denk aan aanvragen die automatisch in je CRM komen, bevestigingsmails die vanzelf worden verstuurd en gegevens die je niet meer hoeft over te typen tussen verschillende programma's. Ik werk vanuit Emmen (Drenthe), voor bedrijven in de regio en daarbuiten.",
     highlights: ["Systemen die met elkaar praten", "Minder overtypen en fouten", "Afgestemd op jouw proces"],
     audience: {
       title: "Voor wie is automatisering interessant?",
@@ -215,6 +217,7 @@ const nl: Record<ServiceKey, ServiceContent> = {
         ["Moet ik mijn huidige software vervangen?", "Meestal niet. Het doel is juist om de programma's die je al gebruikt beter met elkaar te laten samenwerken."],
         ["Wat gebeurt er als een koppeling niet werkt?", "Ik bouw koppelingen zo dat fouten zichtbaar worden in plaats van stil mis te gaan, bijvoorbeeld met een melding. We bespreken ook wie wat doet als er iets hapert."],
         ["Is automatisering ook iets voor een klein bedrijf?", "Juist voor kleine bedrijven kan het veel schelen, omdat je minder tijd kwijt bent aan administratie. We kijken samen of de tijdswinst opweegt tegen de investering."],
+        ["Werk je alleen voor bedrijven in Emmen?", "Nee. Ik werk vanuit Emmen in Drenthe, voor bedrijven in de regio en in de rest van Nederland. Veel kan online; in de regio kunnen we ook persoonlijk afspreken."],
       ],
     },
     cta: { title: "Minder handwerk in je bedrijf?", text: "Beschrijf welk werk steeds terugkomt. Ik kijk mee wat er te automatiseren valt." },
@@ -224,16 +227,16 @@ const nl: Record<ServiceKey, ServiceContent> = {
 const en: Record<ServiceKey, ServiceContent> = {
   websites: {
     meta: {
-      title: "Custom business website design & development | Kevin Rebuilds",
+      title: "Custom business websites | Kevin Rebuilds, Emmen (NL)",
       description:
-        "A professional custom website for your business: clear, fast, search-ready and designed to turn visitors into enquiries. Designed and built by Kevin.",
+        "A professional custom website for your business: clear, fast, search-ready and designed to turn visitors into enquiries. Designed and built by Kevin in Emmen, the Netherlands.",
     },
     name: "Websites",
     schemaType: "Web design and website development",
     eyebrow: "Solution · Websites",
     h1: "A professional custom website for your business.",
     intro:
-      "I design and build custom websites for entrepreneurs and businesses. A website that makes clear what you do within seconds, builds trust and gives visitors a logical next step, such as a request, an appointment or a phone call.",
+      "I design and build custom websites for entrepreneurs and businesses. A website that makes clear what you do within seconds, builds trust and gives visitors a logical next step, such as a request, an appointment or a phone call. I work from Emmen in the Netherlands, for businesses nearby and further afield.",
     highlights: ["Custom design and build", "Fast and mobile-friendly", "Technically ready for Google"],
     audience: {
       title: "Who is a custom website for?",
@@ -286,22 +289,23 @@ const en: Record<ServiceKey, ServiceContent> = {
         ["Can I update the website myself later?", "We agree on that upfront. Some businesses want to edit texts and images themselves, others prefer to leave it to me. I set up the technical side accordingly."],
         ["Will a new website make me visible on Google?", "I build the website with a good technical foundation for search engines: fast pages, a logical structure and good titles and descriptions. Nobody can guarantee a ranking; it also depends on competition and content."],
         ["Do you also handle hosting and maintenance?", "I can. We'll discuss which hosting fits and whether you want maintenance, so your website stays secure and up to date."],
+        ["Do you only work with businesses in Emmen?", "No. I work from Emmen in Drenthe, the Netherlands, for businesses in the region, across the country and abroad. Most of the work can be done online."],
       ],
     },
     cta: { title: "A website that fits your business?", text: "Tell me briefly what you're looking for. I'll think along with you about the best approach." },
   },
   webapps: {
     meta: {
-      title: "Custom web app & client portal development | Kevin Rebuilds",
+      title: "Custom web apps & client portals | Kevin Rebuilds, Emmen",
       description:
-        "A custom web app, such as a client portal, dashboard or internal tool, that fits the way your business works. Designed and built by Kevin.",
+        "A custom web app, such as a client portal, dashboard or internal tool, that fits the way your business works. Designed and built by Kevin in Emmen, the Netherlands.",
     },
     name: "Web apps",
     schemaType: "Custom web application development",
     eyebrow: "Solution · Web apps",
     h1: "A custom web app that fits the way you work.",
     intro:
-      "I design and build custom web apps: client portals, dashboards and internal tools that run in the browser. Not off-the-shelf software you have to adapt to, but a tool that fits how your business works.",
+      "I design and build custom web apps: client portals, dashboards and internal tools that run in the browser. Not off-the-shelf software you have to adapt to, but a tool that fits how your business works. I work from Emmen in the Netherlands, for businesses nearby and further afield.",
     highlights: ["Client portals and dashboards", "Built around your workflow", "Runs in the browser, on mobile too"],
     audience: {
       title: "Who is a custom web app for?",
@@ -353,22 +357,23 @@ const en: Record<ServiceKey, ServiceContent> = {
         ["Does a web app work on mobile?", "Yes. A web app runs in the browser, and I design the screens to work well on phones and tablets too."],
         ["Is a client portal secure?", "I take security into account from the start: login, access rights per user and a secure connection. Which measures are needed depends on the type of data, and we discuss that together."],
         ["Can the web app be extended later?", "Yes. I build the web app so features can be added later, so you can start small and expand what works."],
+        ["Do you only work with businesses in Emmen?", "No. I work from Emmen in Drenthe, the Netherlands, for businesses in the region, across the country and abroad. Most of the work can be done online."],
       ],
     },
     cta: { title: "A tool that fits the way you work?", text: "Tell me what you currently find difficult or time-consuming. Together we'll see what a web app could do." },
   },
   automation: {
     meta: {
-      title: "Business process automation | Kevin Rebuilds",
+      title: "Business process automation | Kevin Rebuilds, Emmen (NL)",
       description:
-        "Less manual work by connecting your systems: process, confirm and store requests automatically. Custom automation for businesses, built by Kevin.",
+        "Less manual work by connecting your systems: process, confirm and store requests automatically. Custom automation for businesses, built by Kevin in Emmen, the Netherlands.",
     },
     name: "Automation",
     schemaType: "Business process automation",
     eyebrow: "Solution · Automation",
     h1: "Connect your systems and reduce manual work.",
     intro:
-      "I help businesses automate repetitive manual work. Think of requests that land in your CRM automatically, confirmation emails that go out by themselves, and data you no longer have to retype between different programs.",
+      "I help businesses automate repetitive manual work. Think of requests that land in your CRM automatically, confirmation emails that go out by themselves, and data you no longer have to retype between different programs. I work from Emmen in the Netherlands, for businesses nearby and further afield.",
     highlights: ["Systems that talk to each other", "Less retyping and fewer errors", "Tailored to your process"],
     audience: {
       title: "Who is automation for?",
@@ -420,6 +425,7 @@ const en: Record<ServiceKey, ServiceContent> = {
         ["Do I need to replace my current software?", "Usually not. The goal is to make the programs you already use work together better."],
         ["What happens if an integration fails?", "I build integrations so that errors become visible instead of failing silently, for example with a notification. We also agree who does what if something goes wrong."],
         ["Is automation worthwhile for a small business?", "It can make a big difference for small businesses, because you spend less time on admin. Together we check whether the time saved outweighs the investment."],
+        ["Do you only work with businesses in Emmen?", "No. I work from Emmen in Drenthe, the Netherlands, for businesses in the region, across the country and abroad. Most of the work can be done online."],
       ],
     },
     cta: { title: "Less manual work in your business?", text: "Describe which work keeps coming back. I'll look at what can be automated." },

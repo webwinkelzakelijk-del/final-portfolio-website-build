@@ -1,5 +1,5 @@
 // JSON-LD. Only facts that are true and visible on the site: no ratings,
-// no address, no founding date, no client counts.
+// no street address, no founding date, no client counts.
 import { SITE_URL, BRAND, CONTACT_EMAIL } from "../config";
 import { ROUTES, type Lang, type ServiceKey } from "../i18n/routes";
 import { site } from "../i18n/site";
@@ -9,6 +9,12 @@ const ORG_ID = `${SITE_URL}/#organization`;
 const PERSON_ID = `${SITE_URL}/#kevin`;
 const abs = (path: string) => new URL(path, SITE_URL).href;
 const KEYS: ServiceKey[] = ["websites", "webapps", "automation"];
+const ADDRESS = { "@type": "PostalAddress", addressLocality: "Emmen", addressRegion: "Drenthe", addressCountry: "NL" };
+const AREA = [
+  { "@type": "City", name: "Emmen" },
+  { "@type": "AdministrativeArea", name: "Drenthe" },
+  { "@type": "Country", name: "Nederland" },
+];
 
 export function homeSchema(lang: Lang) {
   const t = site[lang];
@@ -33,6 +39,8 @@ export function homeSchema(lang: Lang) {
       image: abs(`/og/home-${lang}.png`),
       description: t.meta.home.description,
       knowsLanguage: ["nl", "en"],
+      address: ADDRESS,
+      areaServed: AREA,
       founder: { "@id": PERSON_ID },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -55,6 +63,7 @@ export function homeSchema(lang: Lang) {
       name: "Kevin",
       jobTitle: lang === "nl" ? "Ontwerper en bouwer van websites, webapps en automatiseringen" : "Designer and builder of websites, web apps and automations",
       worksFor: { "@id": ORG_ID },
+      homeLocation: { "@type": "Place", address: ADDRESS },
       image: abs(`/og/home-${lang}.png`),
       knowsLanguage: ["nl", "en"],
     },
@@ -74,7 +83,8 @@ export function serviceSchema(lang: Lang, key: ServiceKey) {
       description: s.meta.description,
       url,
       inLanguage: lang,
-      provider: { "@type": "ProfessionalService", "@id": ORG_ID, name: BRAND, url: abs(ROUTES.home[lang]) },
+      provider: { "@type": "ProfessionalService", "@id": ORG_ID, name: BRAND, url: abs(ROUTES.home[lang]), address: ADDRESS },
+      areaServed: AREA,
       audience: { "@type": "BusinessAudience", name: lang === "nl" ? "Ondernemers en bedrijven" : "Entrepreneurs and businesses" },
     },
     {

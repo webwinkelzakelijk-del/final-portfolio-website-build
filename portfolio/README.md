@@ -67,7 +67,7 @@ The form posts to **FormSubmit**, the same service and inbox the previous site u
 - Unique title, meta description, canonical, `hreflang` (nl, en, x-default) and Open Graph/Twitter image per page.
 - `sitemap.xml` (with language alternates) and `robots.txt`, which explicitly allows search and AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and others).
 - `llms.txt`: a short, factual summary of the services for AI assistants.
-- JSON-LD with only verifiable facts: `WebSite`, `ProfessionalService` (with an offer catalogue of the three services), `Person`, and per service page `Service`, `FAQPage` and `BreadcrumbList`. There are deliberately no reviews, ratings, address or client counts.
+- JSON-LD with only verifiable facts: `WebSite`, `ProfessionalService` (location Emmen, Drenthe; offer catalogue of the three services), `Person`, and per service page `Service` (area served: Emmen, Drenthe, Nederland), `FAQPage` and `BreadcrumbList`. There are deliberately no reviews, ratings, street address or client counts.
 - Service pages answer questions directly (who it's for, problems, what I build, process, FAQ), which is what both Google and AI answer engines quote.
 
 ## Checks performed
