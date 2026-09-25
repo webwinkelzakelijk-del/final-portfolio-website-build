@@ -28,7 +28,7 @@ const request = `#${ANCHORS[lang].request}`;
       <div class="tab-list" role="tablist" aria-label={t.tabsLabel} data-js-only hidden>
         {t.tabs.map((label, i) => (
           <button type="button" role="tab" id={`ex-tab-${i}`} aria-controls={`ex-panel-${i}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>
-            {label}
+            <span class="tab-long">{label}</span><span class="tab-short" aria-hidden="true">{t.tabsShort[i]}</span>
           </button>
         ))}
       </div>

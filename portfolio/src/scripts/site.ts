@@ -92,12 +92,14 @@ if (tabs) {
 
 /* Demo 1: website desktop / mobile view --------------------------------- */
 const stage = $("[data-site-stage]");
-$$<HTMLButtonElement>("[data-view]").forEach((btn, _, all) =>
-  btn.addEventListener("click", () => {
-    all.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-    stage?.classList.toggle("is-mobile", btn.dataset.view === "mobile");
-  }),
-);
+const viewButtons = $$<HTMLButtonElement>("[data-view]");
+const setView = (view: string) => {
+  viewButtons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
+  stage?.classList.toggle("is-mobile", view === "mobile");
+};
+viewButtons.forEach((btn) => btn.addEventListener("click", () => setView(btn.dataset.view!)));
+// On phones the desktop screenshot is too small to read: start with the mobile view.
+if (matchMedia("(max-width: 639px)").matches) setView("mobile");
 
 /* Demo 2: portal project filter ----------------------------------------- */
 $$("[data-portal]").forEach((portal) => {

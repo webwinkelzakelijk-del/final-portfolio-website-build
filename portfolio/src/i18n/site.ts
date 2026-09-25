@@ -119,6 +119,7 @@ const nl = {
       "Drie demo-concepten die laten zien wat ik voor je kan bouwen. De namen en gegevens zijn fictief; er wordt niets verstuurd of opgeslagen.",
     tabsLabel: "Kies een voorbeeld",
     tabs: ["Zakelijke website", "Klantportaal", "Aanvraagflow"],
+    tabsShort: ["Website", "Portaal", "Flow"],
     items: [
       {
         title: "Een zakelijke website voor een architectenbureau",
@@ -358,6 +359,7 @@ const en: SiteDict = {
       "Three demo concepts that show what I can build for you. Names and data are fictional; nothing is sent or stored.",
     tabsLabel: "Choose an example",
     tabs: ["Business website", "Client portal", "Request flow"],
+    tabsShort: ["Website", "Portal", "Flow"],
     items: [
       {
         title: "A business website for an architecture firm",

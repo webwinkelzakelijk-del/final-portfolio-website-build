@@ -44,6 +44,8 @@ for (let y = 0; y <= target_h; y += Math.round(+h * 0.6)) {
   await sleep(350);
 }
 await send("Runtime.evaluate", { expression: "window.scrollTo(0, 0)" });
+// Optional: CDP_EVAL runs custom JS before the capture (e.g. open a tab, hide other sections).
+if (process.env.CDP_EVAL) await send("Runtime.evaluate", { expression: process.env.CDP_EVAL, awaitPromise: true });
 await sleep(2500);
 const shot = await send("Page.captureScreenshot", {
   format: "png",
