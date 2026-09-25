@@ -1,6 +1,12 @@
-# Kevin Rebuilds — Cobalt
+# Kevin Rebuilds
 
-The portfolio lives in `artifacts/coming-soon`. It is a static React + Vite site; the portfolio itself does not need the API server or a database.
+> **v2 (current):** the new portfolio lives in [`portfolio/`](portfolio/README.md): Astro + GSAP + Lenis, NL at `/` and EN at `/en/`.
+> Build with `cd portfolio && npm install && npm run build`, then upload `portfolio/dist/` to CloudPanel.
+> Everything below describes the previous version (v1), kept for reference.
+
+# v1 — Cobalt
+
+The previous portfolio lives in `artifacts/coming-soon`. It is a static React + Vite site; the portfolio itself does not need the API server or a database.
 
 The homepage is served from `/`. The complete project overview is a separate multi-page entry at `/werk/`; the Work link in the main navigation opens that page.
 

@@ -1,0 +1,69 @@
+---
+import Icon, { type IconName } from "../Icon.astro";
+import { site } from "../../i18n/site";
+import type { Lang } from "../../i18n/routes";
+
+interface Props {
+  lang: Lang;
+  variant: "steps" | "hub" | "demo";
+  class?: string;
+}
+const { lang, variant, class: className } = Astro.props;
+const f = site[lang].demo.flow;
+const badge = site[lang].demo.badge;
+const ex = site[lang].examples;
+const stepIcons: IconName[] = ["file-text", "mail", "send", "check"];
+const inIcons: IconName[] = ["file-text", "mail", "sheet", "blocks"];
+const outIcons: IconName[] = ["user-plus", "mail", "tasks", "hash"];
+---
+
+{variant === "steps" && (
+  <ol class:list={["pv-flow-steps", className]} aria-hidden="true">
+    {f.steps.map((step, i) => (
+      <li class:list={{ "is-done": i === f.steps.length - 1 }}>
+        <span class="pv-flow-icon"><Icon name={i === f.steps.length - 1 ? "check" : stepIcons[i]} /></span>
+        <span>{step}</span>
+      </li>
+    ))}
+  </ol>
+)}
+
+{variant === "hub" && (
+  <div class:list={["pv pv-hub", className]} aria-hidden="true">
+    <span class="pv-badge">{badge}</span>
+    <div class="pv-hub-grid">
+      <svg class="pv-hub-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+        {[11, 37, 63, 89].map((y) => <path d={`M40 ${y} C 46 ${y}, 44 50, 50 50`} />)}
+        {[11, 37, 63, 89].map((y) => <path d={`M50 50 C 56 50, 54 ${y}, 60 ${y}`} />)}
+      </svg>
+      <ul class="pv-hub-col">
+        {f.inputs.map((label, i) => <li><Icon name={inIcons[i]} /><span>{label}</span></li>)}
+      </ul>
+      <span class="pv-hub-core"><Icon name="zap" /></span>
+      <ul class="pv-hub-col">
+        {f.outputs.map((label, i) => <li><Icon name={outIcons[i]} /><span>{label}</span></li>)}
+      </ul>
+    </div>
+  </div>
+)}
+
+{variant === "demo" && (
+  <div class:list={["pv pv-flow-demo", className]} data-flow>
+    <span class="pv-badge">{badge}</span>
+    <ol class="pv-flow-steps">
+      {f.steps.map((step, i) => (
+        <li class="is-done" data-step>
+          <span class="pv-flow-icon"><Icon name={stepIcons[i]} /></span>
+          <span>{step}</span>
+          <em class="pv-flow-state" data-state data-js-only hidden>{ex.flowWaiting}</em>
+        </li>
+      ))}
+    </ol>
+    <div class="pv-flow-controls" data-js-only hidden>
+      <button type="button" class="btn btn--secondary btn--sm" data-flow-run>
+        <Icon name="play" /><span data-flow-label>{ex.flowStart}</span>
+      </button>
+      <p class="pv-flow-status" role="status" aria-live="polite" data-flow-status></p>
+    </div>
+  </div>
+)}

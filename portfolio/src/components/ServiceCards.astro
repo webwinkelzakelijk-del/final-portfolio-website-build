@@ -1,0 +1,44 @@
+---
+import Icon, { type IconName } from "./Icon.astro";
+import SitePreview from "./previews/SitePreview.astro";
+import PortalPreview from "./previews/PortalPreview.astro";
+import FlowPreview from "./previews/FlowPreview.astro";
+import { ROUTES, ANCHORS, type Lang, type ServiceKey } from "../i18n/routes";
+import { site } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = site[lang].services;
+const keys: ServiceKey[] = ["websites", "webapps", "automation"];
+const icons: Record<ServiceKey, IconName> = { websites: "globe", webapps: "bars", automation: "cog" };
+---
+
+<section class="section services" id={ANCHORS[lang].solutions} aria-labelledby="services-title">
+  <div class="container">
+    <div class="services-head">
+      <h2 id="services-title" class="h2">{t.title}</h2>
+      <p class="services-aside">{t.aside[0]}<br />{t.aside[1]}</p>
+    </div>
+    <ul class="service-cards">
+      {keys.map((key) => (
+        <li class="service-card">
+          <div class="service-card-head">
+            <span class="icon-tile"><Icon name={icons[key]} /></span>
+            <div>
+              <h3><a href={ROUTES[key][lang]} class="stretched">{t.cards[key].title}</a></h3>
+              <p>{t.cards[key].text}</p>
+            </div>
+          </div>
+          <div class="service-card-preview">
+            {key === "websites" && <SitePreview lang={lang} variant="mini" />}
+            {key === "webapps" && <PortalPreview lang={lang} variant="mini" />}
+            {key === "automation" && <FlowPreview lang={lang} variant="hub" />}
+          </div>
+          <span class="text-link" aria-hidden="true">{t.cards[key].link}<Icon name="arrow-right" /></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

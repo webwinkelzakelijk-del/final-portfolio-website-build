@@ -1,0 +1,38 @@
+---
+// Simple architectural illustration for the fictional website demo (no photo needed).
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+---
+
+<svg class="building-art" viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id={`sky-${id}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bcd2ee" />
+      <stop offset="1" stop-color="#eef3fa" />
+    </linearGradient>
+    <linearGradient id={`glass-${id}`} x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b4a5c" />
+      <stop offset="0.55" stop-color="#26313e" />
+      <stop offset="1" stop-color="#4b5d70" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="240" fill={`url(#sky-${id})`} />
+  <rect y="208" width="300" height="32" fill="#c9cfc4" />
+  <rect x="48" y="84" width="236" height="126" fill="#dcd8d0" />
+  <rect x="22" y="66" width="272" height="18" fill="#f1eee8" />
+  <rect x="22" y="84" width="272" height="3" fill="#bdb7ad" />
+  <rect x="64" y="98" width="206" height="46" fill={`url(#glass-${id})`} />
+  <g stroke="#9aa6b2" stroke-width="1.2" opacity="0.7">
+    <path d="M98 98v46M132 98v46M166 98v46M200 98v46M234 98v46" />
+  </g>
+  <rect x="48" y="150" width="236" height="4" fill="#bdb7ad" />
+  <rect x="64" y="158" width="118" height="52" fill={`url(#glass-${id})`} />
+  <g stroke="#9aa6b2" stroke-width="1.2" opacity="0.7"><path d="M103 158v52M142 158v52" /></g>
+  <rect x="186" y="158" width="84" height="52" fill="#b98f63" />
+  <g stroke="#a47a50" stroke-width="1"><path d="M194 158v52M202 158v52M210 158v52M218 158v52M226 158v52M234 158v52M242 158v52M250 158v52M258 158v52" /></g>
+  <circle cx="30" cy="186" r="22" fill="#7f9a78" />
+  <circle cx="16" cy="198" r="16" fill="#6d8a67" />
+  <rect x="28" y="196" width="4" height="16" fill="#5b4a3a" />
+</svg>

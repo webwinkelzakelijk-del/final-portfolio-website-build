@@ -1,0 +1,140 @@
+---
+import Icon, { type IconName } from "./Icon.astro";
+import { ROUTES, ANCHORS, type Lang } from "../i18n/routes";
+import { site } from "../i18n/site";
+import { CONTACT_EMAIL, FORM_AJAX_ENDPOINT, FORM_POST_ENDPOINT, SITE_URL } from "../config";
+
+interface Props {
+  lang: Lang;
+  preselect?: "website" | "webapp" | "automation";
+  title?: string;
+  text?: string;
+}
+const { lang, preselect, title, text } = Astro.props;
+const t = site[lang].form;
+const options: { value: "website" | "webapp" | "automation"; icon: IconName }[] = [
+  { value: "website", icon: "globe" },
+  { value: "webapp", icon: "bars" },
+  { value: "automation", icon: "cog" },
+];
+const enabled = Boolean(FORM_AJAX_ENDPOINT);
+const next = new URL(ROUTES.thanks[lang], SITE_URL).href;
+const e = t.errors;
+---
+
+<section class="section request" id={ANCHORS[lang].request} aria-labelledby="request-title">
+  <div class="container">
+    <div class="request-card">
+      <div class="request-intro">
+        <p class="eyebrow">{t.eyebrow}</p>
+        <h2 id="request-title" class="h2 h2--sm">{title ?? t.title}</h2>
+        <p>{text ?? t.text}</p>
+        <p class="request-direct">
+          {t.direct}<br />
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        </p>
+      </div>
+
+      <div class="request-body">
+        {!enabled && (
+          <p class="notice notice--error" role="note">
+            <Icon name="alert" />
+            <span>{e.disabled} <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</span>
+          </p>
+        )}
+
+        <form
+          class="request-form"
+          action={FORM_POST_ENDPOINT || undefined}
+          method="post"
+          novalidate
+          data-request-form
+          data-endpoint={FORM_AJAX_ENDPOINT}
+          data-subject={t.subject}
+          data-lang={lang}
+          data-msg={JSON.stringify({
+            summary: e.summary,
+            service: e.service,
+            name: e.name,
+            emailEmpty: e.emailEmpty,
+            emailInvalid: e.emailInvalid,
+            message: e.message,
+            tooFast: e.tooFast,
+            network: e.network,
+            failed: e.failed,
+            sending: t.sending,
+            submit: t.submit,
+            email: CONTACT_EMAIL,
+          })}
+          hidden={!enabled}
+        >
+          <div class="error-summary" role="alert" tabindex="-1" data-error-summary hidden>
+            <h3>{e.summary}</h3>
+            <ul></ul>
+          </div>
+
+          <input type="hidden" name="_subject" value={t.subject} />
+          <input type="hidden" name="_next" value={next} />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="taal" value={lang} />
+          <div class="honeypot" aria-hidden="true">
+            <label>Website <input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <fieldset class="service-choice" id="rf-service" aria-describedby="rf-service-error">
+            <legend>{t.serviceLegend}</legend>
+            <div class="service-options">
+              {options.map((o) => (
+                <label class="service-option">
+                  <input type="radio" name="dienst" value={t.services[o.value]} data-service-value={o.value} required checked={preselect === o.value} />
+                  <span><Icon name={o.icon} />{t.services[o.value]}</span>
+                </label>
+              ))}
+            </div>
+            <p class="field-error" id="rf-service-error" data-error-for="service" hidden></p>
+          </fieldset>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="rf-name">{t.name}</label>
+              <input id="rf-name" name="naam" type="text" autocomplete="name" required maxlength="100" aria-describedby="rf-name-error" />
+              <p class="field-error" id="rf-name-error" data-error-for="name" hidden></p>
+            </div>
+            <div class="field">
+              <label for="rf-email">{t.email}</label>
+              <input id="rf-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" aria-describedby="rf-email-error" />
+              <p class="field-error" id="rf-email-error" data-error-for="email" hidden></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="rf-company">{t.company} <span class="optional">({t.optional})</span></label>
+            <input id="rf-company" name="bedrijf" type="text" autocomplete="organization" maxlength="120" />
+          </div>
+
+          <div class="field">
+            <label for="rf-message">{t.message}</label>
+            <textarea id="rf-message" name="bericht" rows="4" required minlength="10" maxlength="3000" aria-describedby="rf-message-hint rf-message-error"></textarea>
+            <p class="field-hint" id="rf-message-hint">{t.messageHint}</p>
+            <p class="field-error" id="rf-message-error" data-error-for="message" hidden></p>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit" data-submit>
+            <span class="btn-spinner" aria-hidden="true"><Icon name="loader" /></span>
+            <span data-submit-label>{t.submit}</span>
+            <Icon name="arrow-right" class="btn-arrow" />
+          </button>
+          <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+          <p class="form-note">{t.note} {t.privacy} <a href={ROUTES.privacy[lang]}>{t.privacyLink}</a>.</p>
+        </form>
+
+        <div class="form-success" data-form-success tabindex="-1" hidden>
+          <span class="success-icon"><Icon name="check" /></span>
+          <h3>{t.success.title}</h3>
+          <p>{t.success.text}</p>
+          <button class="btn btn--secondary btn--sm" type="button" data-form-reset>{t.success.again}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

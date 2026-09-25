@@ -1,0 +1,34 @@
+---
+import css from "../styles/global.css?inline";
+import { site } from "../i18n/site";
+const nl = site.nl.notFound;
+const en = site.en.notFound;
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>404 | Kevin Rebuilds</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <style is:inline set:html={css}></style>
+  </head>
+  <body>
+    <main class="section simple-page">
+      <div class="container narrow">
+        <a class="wordmark" href="/">kevin<span>rebuilds.</span></a>
+        <p class="eyebrow" style="margin-top:48px">404</p>
+        <h1 class="h2">{nl.title}</h1>
+        <p class="lead">{nl.text}</p>
+        <p class="lead" lang="en">{en.title} {en.text}</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="/">{nl.back}</a>
+          <a class="btn btn--secondary" href="/en/" lang="en">{en.back}</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

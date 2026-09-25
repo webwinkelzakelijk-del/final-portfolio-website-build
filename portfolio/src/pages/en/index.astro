@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+import Hero from "../../components/Hero.astro";
+import ServiceCards from "../../components/ServiceCards.astro";
+import Work from "../../components/Work.astro";
+import Examples from "../../components/Examples.astro";
+import Personal from "../../components/Personal.astro";
+import Process from "../../components/Process.astro";
+import RequestForm from "../../components/RequestForm.astro";
+import { site } from "../../i18n/site";
+import { ANCHORS } from "../../i18n/routes";
+import { homeSchema } from "../../seo/schema";
+const lang = "en";
+const t = site[lang];
+const steps = t.process.steps.map(([title, text]) => ({ title, text }));
+---
+
+<Base lang={lang} page="home" title={t.meta.home.title} description={t.meta.home.description} jsonLd={homeSchema(lang)}>
+  <Hero lang={lang} />
+  <ServiceCards lang={lang} />
+  <Work lang={lang} />
+  <Examples lang={lang} />
+  <Personal lang={lang} />
+  <Process id={ANCHORS[lang].process} eyebrow={t.process.eyebrow} title={t.process.title} steps={steps} />
+  <RequestForm lang={lang} />
+</Base>

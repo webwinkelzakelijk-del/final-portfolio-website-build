@@ -1,0 +1,31 @@
+---
+interface Props {
+  id?: string;
+  eyebrow: string;
+  title: string[];
+  intro?: string;
+  steps: { title: string; text: string }[];
+}
+const { id, eyebrow, title, intro, steps } = Astro.props;
+---
+
+<section class="process" id={id} aria-labelledby={`${id ?? "process"}-title`}>
+  <div class:list={["container process-grid", { "process-grid--stacked": steps.length > 3 }]} style={`--steps:${steps.length}`}>
+    <div class="process-head">
+      <p class="eyebrow eyebrow--light">{eyebrow}</p>
+      <h2 id={`${id ?? "process"}-title`} class="h2">
+        {title.map((line, i) => <>{i > 0 && <br />}{line}</>)}
+      </h2>
+      {intro && <p>{intro}</p>}
+    </div>
+    <ol class="process-steps">
+      {steps.map((step, i) => (
+        <li>
+          <span class="step-no" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
