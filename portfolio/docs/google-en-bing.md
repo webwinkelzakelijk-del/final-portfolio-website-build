@@ -18,13 +18,13 @@ Deze stappen doe je zelf, omdat ze inloggen op jouw Google- en Microsoft-account
 6. **Verificatie:** Google vraagt meestal om een korte video of een code per post/telefoon. Volg de instructies. Zonder verificatie verschijnt je profiel niet.
 
 ### Beschrijving (max. 750 tekens, kopieer en plak)
-> Kevin Rebuilds ontwerpt en bouwt websites, webapps en automatiseringen op maat voor ondernemers en bedrijven. Vanuit Emmen (Drenthe) werk ik voor bedrijven in de regio en in de rest van Nederland. Je werkt rechtstreeks met mij, van het eerste gesprek tot de oplevering. Denk aan een professionele bedrijfswebsite of landingspagina, een klantportaal of dashboard dat past bij jouw manier van werken, of een automatisering die je systemen koppelt en handmatig werk vermindert. Na een kennismaking ontvang je een helder voorstel met een duidelijke prijs. Websites vanaf € 750 en webapps vanaf € 2.500, excl. btw.
+> Kevin Rebuilds ontwerpt en bouwt websites, webapps en automatiseringen op maat voor ondernemers en bedrijven. Vanuit Emmen (Drenthe) werk ik voor bedrijven in de regio en in de rest van Nederland. Je werkt rechtstreeks met mij, van het eerste gesprek tot de oplevering. Denk aan een professionele bedrijfswebsite of landingspagina, een klantportaal of dashboard dat past bij jouw manier van werken, of een automatisering die je systemen koppelt en handmatig werk vermindert. Na een kennismaking ontvang je een helder voorstel met een duidelijke prijs. Websites vanaf € 499 en webapps vanaf € 1.499, excl. btw.
 
 ### Diensten (bij *Diensten* toevoegen, met prijs waar mogelijk)
 | Dienst | Omschrijving | Prijs |
 | --- | --- | --- |
-| Website op maat | Professionele bedrijfswebsite of landingspagina, snel en mobielvriendelijk. | vanaf € 750 excl. btw |
-| Webapp / klantportaal | Klantportaal, dashboard of interne tool op maat. | vanaf € 2.500 excl. btw |
+| Website op maat | Professionele bedrijfswebsite of landingspagina, snel en mobielvriendelijk. | vanaf € 499 excl. btw |
+| Webapp / klantportaal | Klantportaal, dashboard of interne tool op maat. | vanaf € 1.499 excl. btw |
 | Automatisering | Systemen koppelen en handmatig werk verminderen. | op aanvraag |
 
 ### Links met meting (optioneel)

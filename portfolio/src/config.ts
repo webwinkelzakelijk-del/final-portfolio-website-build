@@ -9,8 +9,8 @@ export const CONTACT_EMAIL = "webwinkelzakelijk@gmail.com";
  * Used on the homepage, the service pages and in the structured data.
  */
 export const PRICES: Record<"website" | "webapp" | "automation", number | null> = {
-  website: 750,
-  webapp: 2500,
+  website: 499,
+  webapp: 1499,
   automation: null,
 };
 export const formatPrice = (value: number, lang: "nl" | "en") =>
