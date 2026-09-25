@@ -12,9 +12,9 @@ export const ROUTES: Record<PageKey, Record<Lang, string>> = {
 };
 
 /** Section anchors on the homepage, per language. */
-export const ANCHORS: Record<Lang, { solutions: string; examples: string; process: string; about: string; request: string }> = {
-  nl: { solutions: "oplossingen", examples: "voorbeelden", process: "werkwijze", about: "over-kevin", request: "aanvragen" },
-  en: { solutions: "solutions", examples: "examples", process: "process", about: "about-kevin", request: "request" },
+export const ANCHORS: Record<Lang, { solutions: string; work: string; examples: string; process: string; about: string; request: string }> = {
+  nl: { solutions: "oplossingen", work: "werk", examples: "voorbeelden", process: "werkwijze", about: "over-kevin", request: "aanvragen" },
+  en: { solutions: "solutions", work: "work", examples: "examples", process: "process", about: "about-kevin", request: "request" },
 };
 
 /** Value used by the form's service choice. */

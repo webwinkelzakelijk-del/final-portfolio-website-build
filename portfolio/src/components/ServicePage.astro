@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Icon, { type IconName } from "./Icon.astro";
 import Process from "./Process.astro";
+import Work from "./Work.astro";
 import RequestForm from "./RequestForm.astro";
 import SitePreview from "./previews/SitePreview.astro";
 import PortalPreview from "./previews/PortalPreview.astro";
@@ -113,6 +114,8 @@ const labels =
       </ul>
     </div>
   </section>
+
+  {service === "websites" && <Work lang={lang} id={lang === "nl" ? "recent-werk" : "recent-work"} />}
 
   <Process id={labels.processId} eyebrow={t.process.eyebrow} title={[s.process.title]} intro={s.process.intro} steps={s.process.steps} />
 

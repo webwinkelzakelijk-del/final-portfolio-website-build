@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import dhDesktop from "../assets/differenthair-desktop.webp";
+import dhMobile from "../assets/differenthair-mobile.webp";
+import { ANCHORS, type Lang } from "../i18n/routes";
+import { site } from "../i18n/site";
+
+interface Props {
+  lang: Lang;
+  /** On service pages the section gets a plain id so the homepage anchor stays unique. */
+  id?: string;
+}
+const { lang, id } = Astro.props;
+const t = site[lang].work;
+const p = t.project;
+---
+
+<section class="section work" id={id ?? ANCHORS[lang].work} aria-labelledby="work-title">
+  <div class="container">
+    <div class="section-intro">
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 id="work-title" class="h2">{t.title}</h2>
+      <p class="lead">{t.intro}</p>
+    </div>
+
+    <article class="case" aria-labelledby="case-title">
+      <a class="case-visual" href={p.url} target="_blank" rel="noopener" aria-label={`${p.cta}: ${p.name} (${t.newTab})`}>
+        <figure class="shot shot--desktop case-desktop">
+          <div class="shot-bar" aria-hidden="true">
+            <span class="pv-dots"><i></i><i></i><i></i></span>
+            <span class="shot-url">{p.domain}</span>
+            <span class="badge badge--live"><i></i>{t.live}</span>
+          </div>
+          <Image src={dhDesktop} alt={p.altDesktop} widths={[720, 1100, 1440, 2200]} sizes="(min-width: 1240px) 760px, (min-width: 960px) 60vw, 92vw" loading="lazy" />
+        </figure>
+        <figure class="case-phone" aria-hidden="true">
+          <div class="phone-frame phone-frame--static">
+            <div class="phone-screen phone-screen--static">
+              <Image src={dhMobile} alt="" widths={[240, 480]} sizes="200px" loading="lazy" />
+            </div>
+          </div>
+        </figure>
+      </a>
+
+      <div class="case-copy">
+        <span class="badge badge--live"><i></i>{t.liveLong}</span>
+        <h3 id="case-title">{p.name}</h3>
+        <p class="case-client">{p.client}</p>
+        <p>{p.summary}</p>
+        <dl class="case-facts">
+          <dt>{t.rolesLabel}</dt>
+          <dd><ul class="case-roles">{p.roles.map((r) => <li>{r}</li>)}</ul></dd>
+        </dl>
+        <a class="btn btn--secondary" href={p.url} target="_blank" rel="noopener">
+          {p.cta}<Icon name="arrow-up-right" /><span class="sr-only"> ({t.newTab})</span>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>

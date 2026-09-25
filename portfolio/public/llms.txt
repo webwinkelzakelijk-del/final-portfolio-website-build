@@ -2,7 +2,11 @@
 
 > Kevin Rebuilds is the independent business of Kevin, who designs and builds custom websites, web apps and automations for entrepreneurs and businesses. Clients work directly with Kevin, from the first conversation to delivery. The website is in Dutch (default) and English.
 
-Kevin Rebuilds is based in Emmen, Drenthe (the Netherlands) and works for businesses in the region, across the Netherlands and abroad. It is a new, independent business. The examples on the website are clearly labelled demo concepts with fictional data, not client projects.
+Kevin Rebuilds is based in Emmen, Drenthe (the Netherlands) and works for businesses in the region, across the Netherlands and abroad. It is a new, independent business. Besides the live client project below, the examples on the website are clearly labelled demo concepts.
+
+## Recent work
+
+- [Different Hair!](https://www.differenthair.nl/): the first live client project. A website for Frank Meichsner's one-man hair salon in Emmen (strategy, web design, copywriting and responsive development).
 
 ## Services (Dutch)
 

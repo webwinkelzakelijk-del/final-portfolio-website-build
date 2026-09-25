@@ -33,6 +33,8 @@ document.addEventListener("keydown", (e) => {
 /* Language switch keeps the current section (anchors differ per language) */
 const anchorPairs: [string, string][] = [
   ["oplossingen", "solutions"],
+  ["werk", "work"],
+  ["recent-werk", "recent-work"],
   ["voorbeelden", "examples"],
   ["werkwijze", "process"],
   ["over-kevin", "about-kevin"],

@@ -8,7 +8,7 @@ export default defineConfig({
   build: { format: "directory", inlineStylesheets: "auto" },
   // Old URLs from the previous site keep working.
   redirects: {
-    "/werk": "/#voorbeelden",
+    "/werk": "/#werk",
     "/contact": "/#aanvragen",
   },
   server: { port: 4321, host: true },

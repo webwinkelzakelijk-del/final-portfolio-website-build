@@ -17,6 +17,7 @@ const nl = {
   nav: {
     label: "Hoofdnavigatie",
     solutions: "Oplossingen",
+    work: "Werk",
     examples: "Voorbeelden",
     process: "Werkwijze",
     about: "Over Kevin",
@@ -89,6 +90,26 @@ const nl = {
       websites: { title: "Websites", text: "Een sterke online basis voor je bedrijf.", link: "Meer over websites" },
       webapps: { title: "Webapps", text: "Een portaal of tool die past bij jouw manier van werken.", link: "Meer over webapps" },
       automation: { title: "Automatisering", text: "Koppel je systemen en verminder handmatig werk.", link: "Meer over automatisering" },
+    },
+  },
+  work: {
+    eyebrow: "Recent werk",
+    title: "Mijn eerste live klantproject.",
+    intro: "Geen demo, maar een echte website die live staat voor een klant.",
+    live: "Live",
+    liveLong: "Live klantproject",
+    rolesLabel: "Wat ik deed",
+    newTab: "opent in een nieuw tabblad",
+    project: {
+      name: "Different Hair!",
+      client: "Frank Meichsner · one-man kapsalon in Emmen",
+      summary:
+        "Een uitgesproken website voor de one-man kapsalon van Frank Meichsner in Emmen. Eigenzinnig, net als de salon zelf: sterke typografie, speelse collage-elementen en een duidelijke route naar een afspraak.",
+      roles: ["Strategie", "Webdesign", "Copywriting", "Responsive development"],
+      url: "https://www.differenthair.nl/",
+      domain: "differenthair.nl",
+      cta: "Bekijk de live website",
+      altDesktop: "Screenshot van de live website van Different Hair! op desktop: een wit tegeltje als achtergrond, de grote kop 'Different Hair!', de knoppen 'Plan je afspraak' en 'Bekijk de salon' en een collage van polaroids.",
     },
   },
   examples: {
@@ -232,6 +253,7 @@ const en: SiteDict = {
   nav: {
     label: "Main navigation",
     solutions: "Solutions",
+    work: "Work",
     examples: "Examples",
     process: "Process",
     about: "About Kevin",
@@ -304,6 +326,26 @@ const en: SiteDict = {
       websites: { title: "Websites", text: "A strong online foundation for your business.", link: "More about websites" },
       webapps: { title: "Web apps", text: "A portal or tool that fits the way you work.", link: "More about web apps" },
       automation: { title: "Automation", text: "Connect your systems and reduce manual work.", link: "More about automation" },
+    },
+  },
+  work: {
+    eyebrow: "Recent work",
+    title: "My first live client project.",
+    intro: "Not a demo, but a real website that is live for a client.",
+    live: "Live",
+    liveLong: "Live client project",
+    rolesLabel: "What I did",
+    newTab: "opens in a new tab",
+    project: {
+      name: "Different Hair!",
+      client: "Frank Meichsner · one-man hair salon in Emmen (NL)",
+      summary:
+        "A bold website for Frank Meichsner's one-man hair salon in Emmen. As distinctive as the salon itself: strong typography, playful collage elements and a clear path to booking an appointment.",
+      roles: ["Strategy", "Web design", "Copywriting", "Responsive development"],
+      url: "https://www.differenthair.nl/",
+      domain: "differenthair.nl",
+      cta: "View the live website",
+      altDesktop: "Screenshot of the live Different Hair! website on desktop: a white tile background, the large heading 'Different Hair!', the buttons 'Plan je afspraak' and 'Bekijk de salon' and a collage of polaroids.",
     },
   },
   examples: {
