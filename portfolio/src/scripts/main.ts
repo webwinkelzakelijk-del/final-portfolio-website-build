@@ -349,7 +349,7 @@ if (!reduced) {
       scrollTrigger: { trigger: photo, start: "top 80%" },
     });
     gsap.to($("img", photo), {
-      yPercent: -7,
+      yPercent: -3,
       ease: "none",
       scrollTrigger: { trigger: photo, start: "top bottom", end: "bottom top", scrub: true },
     });

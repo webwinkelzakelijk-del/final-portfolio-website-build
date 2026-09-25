@@ -2097,41 +2097,40 @@ ol {
 }
 @media (min-width: 1024px) {
   .about-grid {
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 88px;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    gap: clamp(56px, 7vw, 112px);
     align-items: center;
   }
 }
 .about-photo {
   position: relative;
+  width: 100%;
+  max-width: 440px;
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   background: var(--card);
 }
 .about-photo img {
   position: absolute;
-  inset: -8% 0;
+  inset: -4% 0;
   width: 100%;
-  height: 116%;
+  height: 108%;
   object-fit: cover;
-  object-position: 50% 30%;
-  will-change: transform;
+  object-position: 50% 35%;
 }
 .about-photo figcaption {
   position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
-  padding: 14px 18px;
-  border-radius: 16px;
-  background: rgba(12, 12, 15, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(12, 12, 15, 0.62);
   color: #f2efe9;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.25rem;
+  font-size: 1.0625rem;
 }
 .about-copy {
   display: grid;
