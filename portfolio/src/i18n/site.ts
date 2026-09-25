@@ -101,7 +101,7 @@ const nl = {
     items: [
       {
         title: "Een zakelijke website voor een architectenbureau",
-        text: "Een rustige, overtuigende website met een duidelijke boodschap, sterke beelden en één heldere vervolgstap. Schakel tussen desktop en mobiel om te zien hoe de opbouw zich aanpast.",
+        text: "VORM architectuur is een fictief architectenbureau. De website is rustig en overtuigend, met een duidelijke boodschap, sterke beelden en één heldere vervolgstap. Schakel tussen desktop en mobiel om te zien hoe de opbouw zich aanpast.",
         points: ["Heldere boodschap boven de vouw", "Eén duidelijke vervolgstap", "Ontworpen voor desktop én mobiel"],
         cta: "Vraag een website aan",
         service: "website",
@@ -132,6 +132,9 @@ const nl = {
     flowDone: "Klaar",
     flowComplete: "Demo afgerond. Er is niets verstuurd.",
     fictional: "Fictieve voorbeeldgegevens",
+    shotDesktopAlt: "Demo-concept: homepage van het fictieve architectenbureau VORM architectuur op desktop, met de kop 'Ruimte voor morgen.', een grote foto van een moderne woning en twee uitgelichte projecten.",
+    shotMobileAlt: "Demo-concept: dezelfde homepage van VORM architectuur op mobiel, met de projecten onder elkaar.",
+    shotMobileScroll: "Scroll door de mobiele pagina",
   },
   personal: {
     eyebrow: "De persoon achter je project",
@@ -313,7 +316,7 @@ const en: SiteDict = {
     items: [
       {
         title: "A business website for an architecture firm",
-        text: "A calm, convincing website with a clear message, strong visuals and one obvious next step. Switch between desktop and mobile to see how the layout adapts.",
+        text: "VORM architectuur is a fictional architecture firm. The website is calm and convincing, with a clear message, strong visuals and one obvious next step. Switch between desktop and mobile to see how the layout adapts.",
         points: ["A clear message above the fold", "One obvious next step", "Designed for desktop and mobile"],
         cta: "Request a website",
         service: "website",
@@ -344,6 +347,9 @@ const en: SiteDict = {
     flowDone: "Done",
     flowComplete: "Demo finished. Nothing was sent.",
     fictional: "Fictional sample data",
+    shotDesktopAlt: "Demo concept: homepage of the fictional architecture firm VORM architectuur on desktop, with the heading 'Ruimte voor morgen.', a large photo of a modern house and two featured projects.",
+    shotMobileAlt: "Demo concept: the same VORM architectuur homepage on mobile, with the projects stacked.",
+    shotMobileScroll: "Scroll through the mobile page",
   },
   personal: {
     eyebrow: "The person behind your project",

@@ -774,3 +774,24 @@ h1, h2, h3, .hero-title, .svc-title { overflow-wrap: break-word; hyphens: auto; 
 }
 
 .footer-location { display: flex; align-items: center; min-height: 40px; color: var(--muted); font-size: 0.9688rem; }
+
+/* Website demo: real screenshots (desktop in a browser, mobile in a phone) */
+.site-stage { justify-items: stretch; }
+.shot { margin: 0; }
+.shot--desktop { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: var(--shadow-lg); }
+.shot-bar { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 14px; border-bottom: 1px solid var(--line); }
+.shot-bar .pv-dots i { width: 9px; height: 9px; }
+.shot-bar .pv-dots { gap: 6px; }
+.shot-url { flex: 1; max-width: 260px; margin-inline: auto; padding: 3px 12px; border-radius: 999px; background: var(--bg-soft); font-size: 0.75rem; color: var(--subtle); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shot--desktop img { display: block; width: 100%; height: auto; }
+.shot--mobile { display: grid; justify-items: center; gap: 10px; }
+.shot--mobile figcaption { font-size: 0.875rem; color: var(--subtle); }
+.phone-frame { width: min(300px, 100%); padding: 10px; border-radius: 40px; background: #0d1526; box-shadow: var(--shadow-lg); }
+.phone-screen { height: 560px; overflow-y: auto; overscroll-behavior: contain; border-radius: 30px; background: #f4f2ee; scrollbar-width: thin; }
+.phone-screen:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.phone-screen img { display: block; width: 100%; height: auto; }
+/* With JS the toggle shows one view at a time; without JS both are visible. */
+.js .site-stage:not(.is-mobile) .shot--mobile { display: none; }
+.js .site-stage.is-mobile .shot--desktop { display: none; }
+.site-stage .shot + .shot { margin-top: 20px; }
+.js .site-stage .shot + .shot { margin-top: 0; }

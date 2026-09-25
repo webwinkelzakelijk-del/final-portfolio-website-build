@@ -1,6 +1,8 @@
 ---
 import Icon from "./Icon.astro";
-import SitePreview from "./previews/SitePreview.astro";
+import { Image } from "astro:assets";
+import vormDesktop from "../assets/vorm-desktop.webp";
+import vormMobile from "../assets/vorm-mobile.webp";
 import PortalPreview from "./previews/PortalPreview.astro";
 import FlowPreview from "./previews/FlowPreview.astro";
 import { ANCHORS, type Lang } from "../i18n/routes";
@@ -49,7 +51,20 @@ const request = `#${ANCHORS[lang].request}`;
                   <button type="button" aria-pressed="true" data-view="desktop"><Icon name="monitor" />{t.desktop}</button>
                   <button type="button" aria-pressed="false" data-view="mobile"><Icon name="phone" />{t.mobile}</button>
                 </div>
-                <div class="site-stage" data-site-stage><SitePreview lang={lang} variant="demo" /></div>
+                <div class="site-stage" data-site-stage>
+                  <figure class="shot shot--desktop">
+                    <div class="shot-bar" aria-hidden="true"><span class="pv-dots"><i></i><i></i><i></i></span><span class="shot-url">VORM architectuur · demo</span><span class="badge">{site[lang].demo.badge}</span></div>
+                    <Image src={vormDesktop} alt={t.shotDesktopAlt} widths={[640, 960, 1448]} sizes="(min-width: 1240px) 680px, (min-width: 960px) 56vw, 92vw" loading="lazy" />
+                  </figure>
+                  <figure class="shot shot--mobile">
+                    <div class="phone-frame">
+                      <div class="phone-screen" tabindex="0" role="region" aria-label={t.shotMobileScroll}>
+                        <Image src={vormMobile} alt={t.shotMobileAlt} widths={[320, 667]} sizes="300px" loading="lazy" />
+                      </div>
+                    </div>
+                    <figcaption>{t.shotMobileScroll}</figcaption>
+                  </figure>
+                </div>
               </>
             )}
             {i === 1 && <PortalPreview lang={lang} variant="demo" />}
