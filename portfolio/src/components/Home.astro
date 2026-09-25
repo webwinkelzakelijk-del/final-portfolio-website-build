@@ -241,104 +241,55 @@ const searchPhrase = lang === "nl" ? "webdesigner in drenthe" : "freelance web d
 
   <!-- WORK ------------------------------------------------------------- -->
   <section class="section work" id="werk" data-chapter="dark" aria-labelledby="work-title">
-    <div class="work-pin">
-      <div class="container">
-        <div class="work-head">
-          <div>
-            <span class="eyebrow" data-reveal>{t.work.eyebrow}</span>
-            <h2 class="h2" id="work-title" style="margin-top:24px" data-lines>
-              <span class="line"><span>{t.work.title[0]}</span></span>
-              <span class="line"><span class="serif accent">{t.work.title[1]}</span></span>
-            </h2>
-          </div>
-          <span class="work-hint" aria-hidden="true">{t.work.hint}<Icon name="arrow-right" /></span>
-        </div>
-      </div>
-      <div class="work-viewport">
-        <div class="container">
-          <div class="work-track">
-            {t.work.projects.map((p, i) => (
-              <article class="project" aria-labelledby={`project-${p.id}`}>
-                {p.kind === "live" ? (
-                  <a class="project-visual" href={p.url} target="_blank" rel="noopener" data-cursor="view" aria-label={`${p.cta}: ${p.name}`}>
-                    <div class="pv-inner" data-parallax-x>
-                      <div class="pv-screenshot">
-                        <div class="browser">
-                          <div class="browser-bar"><i></i><i></i><i></i><small>differenthair.nl</small></div>
-                          <Image src={differentHair} alt={lang === "nl" ? "Homepage van Different Hair" : "Different Hair homepage"} widths={[720, 1440]} sizes="(min-width: 1024px) 70vw, 100vw" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                ) : (
-                  <div class="project-visual" aria-hidden="true" data-cursor="none">
-                    <div class="pv-inner" data-parallax-x>
-                      {p.id === "forma" && (
-                        <div class="pv-forma">
-                          <div class="fm-copy">
-                            <span class="fm-logo">FORMA ✳ STUDIO</span>
-                            <span class="fm-title">{t.work.mock.forma[0]}</span>
-                            <span class="fm-foot">{t.work.mock.forma[1]} — 01</span>
-                          </div>
-                          <div class="fm-art"></div>
-                        </div>
-                      )}
-                      {p.id === "ritme" && (
-                        <div class="pv-ritme">
-                          <div class="rt-words">
-                            {lang === "nl" ? "kleine stappen." : "small steps."}
-                            <em>{lang === "nl" ? "jouw ritme." : "your rhythm."}</em>
-                          </div>
-                          <div class="phone">
-                            <div class="phone-screen">
-                              <b>ritme.</b>
-                              <strong>{t.work.mock.ritme[0]}</strong>
-                              <div class="ring"></div>
-                              <div class="habit done">{t.work.mock.ritme[1]}</div>
-                              <div class="habit done">{t.work.mock.ritme[2]}</div>
-                              <div class="habit">{t.work.mock.ritme[3]}</div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                      {p.id === "flowdesk" && (
-                        <div class="pv-flow">
-                          <div class="dash">
-                            <div class="dash-top"><span>flowdesk ◇</span><span>K</span></div>
-                            <div class="dash-title">{t.work.mock.flowdesk[0]}</div>
-                            {t.work.mock.flowdesk.slice(1).map((row, r) => (
-                              <div class="dash-row" data-flow-row><em>0{r + 1}</em>{row}<Icon name="check" /></div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-                <div class="project-meta">
-                  <div class="project-top">
-                    <span>0{i + 1}</span>
-                    <span class={`badge ${p.kind === "live" ? "badge--live" : ""}`}>
-                      {p.kind === "live" ? t.work.live : t.work.concept}
-                    </span>
-                    <span>{p.category}</span>
-                  </div>
-                  <h3 id={`project-${p.id}`}>{p.name}</h3>
-                  <p>{p.summary}</p>
-                  {p.kind === "live" && (
-                    <a class="project-link" href={p.url} target="_blank" rel="noopener">
-                      {p.cta}<Icon name="arrow-up-right" class="arrow" />
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="container">
-      <p class="work-note">{t.work.conceptNote}</p>
+      <div class="section-head">
+        <span class="eyebrow" data-reveal>{t.work.eyebrow}</span>
+        <h2 class="h2" id="work-title" data-lines>
+          <span class="line"><span>{t.work.title[0]}</span></span>
+          <span class="line"><span class="serif accent">{t.work.title[1]}</span></span>
+        </h2>
+      </div>
+
+      <article class="case" aria-labelledby="case-title">
+        <a class="case-visual" href={t.work.project.url} target="_blank" rel="noopener" data-cursor="view" aria-label={`${t.work.project.cta}: ${t.work.project.name}`}>
+          <div class="case-inner" data-parallax>
+            <div class="browser">
+              <div class="browser-bar"><i></i><i></i><i></i><small>{t.work.project.domain}</small></div>
+              <Image src={differentHair} alt={t.work.project.alt} widths={[720, 1440]} sizes="(min-width: 1480px) 1380px, 94vw" />
+            </div>
+          </div>
+        </a>
+
+        <div class="case-meta">
+          <div class="case-title" data-reveal>
+            <span class="badge badge--live">{t.work.live}</span>
+            <h3 id="case-title">{t.work.project.name}</h3>
+          </div>
+          <div class="case-text" data-reveal>
+            <p>{t.work.project.summary}</p>
+            <a class="project-link" href={t.work.project.url} target="_blank" rel="noopener">
+              {t.work.project.cta}<Icon name="arrow-up-right" class="arrow" />
+            </a>
+          </div>
+          <dl class="case-facts" data-reveal>
+            <div><dt>{t.work.clientLabel}</dt><dd>{t.work.project.client}</dd></div>
+            <div>
+              <dt>{t.work.rolesLabel}</dt>
+              <dd><ul class="case-roles">{t.work.project.roles.map((r) => <li class="tag">{r}</li>)}</ul></dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <div class="case-next" data-reveal>
+        <div>
+          <h3>{t.work.next.title}</h3>
+          <p>{t.work.next.text}</p>
+        </div>
+        <a class="btn btn--cobalt magnetic" href="#contact">
+          {t.work.next.cta}<Icon name="arrow-up-right" class="arrow" />
+        </a>
+      </div>
     </div>
   </section>
 

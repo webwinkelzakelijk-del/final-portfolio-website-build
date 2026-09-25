@@ -400,64 +400,20 @@ if (track && !reduced) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Work: horizontal gallery on desktop, parallax everywhere            */
+/* Work: featured case scales in and drifts                            */
 /* ------------------------------------------------------------------ */
-const work = $<HTMLElement>(".work");
-const mm = gsap.matchMedia();
-if (work && !reduced) {
-  mm.add("(min-width: 1024px)", () => {
-    work.classList.add("is-horizontal");
-    const workTrack = $(".work-track", work)!;
-    const pin = $(".work-pin", work)!;
-    const distance = () => workTrack.scrollWidth - window.innerWidth + 40;
-    const tween = gsap.to(workTrack, {
-      x: () => -distance(),
-      ease: "none",
-      scrollTrigger: {
-        trigger: pin,
-        start: "top top",
-        end: () => `+=${distance()}`,
-        pin: true,
-        scrub: 0.8,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-      },
-    });
-    $$("[data-parallax-x]", work).forEach((inner) =>
-      gsap.fromTo(inner, { xPercent: 4 }, {
-        xPercent: -4,
-        ease: "none",
-        scrollTrigger: {
-          trigger: inner.parentElement!,
-          containerAnimation: tween,
-          start: "left right",
-          end: "right left",
-          scrub: true,
-        },
-      }),
-    );
-    return () => work.classList.remove("is-horizontal");
+const caseVisual = $(".case-visual");
+if (caseVisual && !reduced) {
+  gsap.fromTo(caseVisual, { scale: 0.92 }, {
+    scale: 1,
+    ease: "none",
+    scrollTrigger: { trigger: caseVisual, start: "top bottom", end: "top 30%", scrub: true },
   });
-  mm.add("(max-width: 1023px)", () => {
-    $$("[data-parallax-x]", work).forEach((inner) =>
-      gsap.fromTo(inner, { yPercent: 3 }, {
-        yPercent: -3,
-        ease: "none",
-        scrollTrigger: { trigger: inner.parentElement!, start: "top bottom", end: "bottom top", scrub: true },
-      }),
-    );
+  gsap.fromTo($("[data-parallax]", caseVisual), { yPercent: -4 }, {
+    yPercent: 4,
+    ease: "none",
+    scrollTrigger: { trigger: caseVisual, start: "top bottom", end: "bottom top", scrub: true },
   });
-}
-
-// Flowdesk rows tick through
-const flowRows = $$("[data-flow-row]");
-if (flowRows.length && !reduced) {
-  const flowLoop = gsap.timeline({ repeat: -1, repeatDelay: 1.2, paused: true })
-    .set(flowRows, { opacity: 0.35 })
-    .to(flowRows, { opacity: 1, duration: 0.4, stagger: 0.6 });
-  new IntersectionObserver(([entry]) => (entry.isIntersecting ? flowLoop.play() : flowLoop.pause())).observe(
-    flowRows[0].closest(".project-visual")!,
-  );
 }
 
 /* ------------------------------------------------------------------ */

@@ -102,52 +102,25 @@ const nl = {
   work: {
     eyebrow: "Geselecteerd werk",
     title: ["Werk dat", "voor zich spreekt."],
-    hint: "Scroll om te ontdekken",
     view: "Bekijk",
     live: "Live project",
-    concept: "Concept",
-    conceptNote:
-      "Concepten laten zien wat ik kan bouwen. Het zijn geen klantopdrachten.",
-    projects: [
-      {
-        id: "different-hair",
-        name: "Different Hair!",
-        kind: "live",
-        category: "Website · Strategie, ontwerp, copy & development",
-        summary:
-          "Een uitgesproken website voor de one-man kapsalon van Frank Meichsner in Emmen. Eigenzinnig, net als de salon zelf, met direct een afspraak plannen.",
-        url: "https://differenthair.nl",
-        cta: "Bekijk live website",
-      },
-      {
-        id: "forma",
-        name: "Forma Studio",
-        kind: "concept",
-        category: "Website · Interieurstudio",
-        summary:
-          "Rustige typografie, ruimtelijke beelden en een heldere route van inspiratie naar een eerste gesprek.",
-      },
-      {
-        id: "ritme",
-        name: "Ritme",
-        kind: "concept",
-        category: "App · Gewoontes & welzijn",
-        summary:
-          "Kleine stappen, jouw ritme. Een app die dagelijkse gewoontes overzichtelijk maakt, zonder druk.",
-      },
-      {
-        id: "flowdesk",
-        name: "Flowdesk",
-        kind: "concept",
-        category: "Systeem · Aanvragen & opvolging",
-        summary:
-          "Aanvragen, afspraken en opvolging in één flow. Een nieuwe aanvraag leidt automatisch tot de volgende stap.",
-      },
-    ],
-    mock: {
-      forma: ["Een plek die bij je past.", "Design & interiors"],
-      ritme: ["Ruimte voor jezelf.", "Even naar buiten", "Water drinken", "Lezen"],
-      flowdesk: ["Alles op zijn plek.", "Nieuwe aanvraag", "Afspraak ingepland", "Opvolging verstuurd"],
+    clientLabel: "Klant",
+    rolesLabel: "Wat ik deed",
+    project: {
+      name: "Different Hair!",
+      client: "Frank Meichsner · one-man kapsalon, Emmen",
+      summary:
+        "Een uitgesproken website voor de one-man kapsalon van Frank Meichsner in Emmen. Eigenzinnig, net als de salon zelf: sterke typografie, speelse collage-elementen, echte klantreviews en direct online een afspraak plannen.",
+      roles: ["Strategie", "Webdesign", "Copywriting", "Responsive development"],
+      url: "https://differenthair.nl",
+      domain: "differenthair.nl",
+      cta: "Bekijk live website",
+      alt: "Homepage van Different Hair",
+    },
+    next: {
+      title: "Jouw bedrijf als volgende?",
+      text: "Ik bouw graag ook voor jou een website die opvalt en aanvragen oplevert.",
+      cta: "Plan een kennismaking",
     },
   },
   why: {
@@ -396,52 +369,25 @@ const en: Dict = {
   work: {
     eyebrow: "Selected work",
     title: ["Work that", "speaks for itself."],
-    hint: "Scroll to explore",
     view: "View",
     live: "Live project",
-    concept: "Concept",
-    conceptNote:
-      "Concepts show what I can build. They are not client commissions.",
-    projects: [
-      {
-        id: "different-hair",
-        name: "Different Hair!",
-        kind: "live",
-        category: "Website · Strategy, design, copy & development",
-        summary:
-          "A bold website for Frank Meichsner's one-man hair salon in Emmen. As distinctive as the salon itself, with online booking built in.",
-        url: "https://differenthair.nl",
-        cta: "View live website",
-      },
-      {
-        id: "forma",
-        name: "Forma Studio",
-        kind: "concept",
-        category: "Website · Interior studio",
-        summary:
-          "Quiet typography, spatial imagery and a clear path from inspiration to a first conversation.",
-      },
-      {
-        id: "ritme",
-        name: "Ritme",
-        kind: "concept",
-        category: "App · Habits & wellbeing",
-        summary:
-          "Small steps, your rhythm. An app that makes daily habits clear, without the pressure.",
-      },
-      {
-        id: "flowdesk",
-        name: "Flowdesk",
-        kind: "concept",
-        category: "System · Enquiries & follow-up",
-        summary:
-          "Enquiries, appointments and follow-ups in one flow. Every new enquiry triggers the next step automatically.",
-      },
-    ],
-    mock: {
-      forma: ["A space to call your own.", "Design & interiors"],
-      ritme: ["Make room for yourself.", "Go for a walk", "Drink water", "Read"],
-      flowdesk: ["Everything in place.", "New enquiry", "Meeting scheduled", "Follow-up sent"],
+    clientLabel: "Client",
+    rolesLabel: "What I did",
+    project: {
+      name: "Different Hair!",
+      client: "Frank Meichsner · one-man hair salon, Emmen (NL)",
+      summary:
+        "A bold website for Frank Meichsner's one-man hair salon in Emmen. As distinctive as the salon itself: strong typography, playful collage elements, real client reviews and online booking built in.",
+      roles: ["Strategy", "Web design", "Copywriting", "Responsive development"],
+      url: "https://differenthair.nl",
+      domain: "differenthair.nl",
+      cta: "View live website",
+      alt: "Different Hair homepage",
+    },
+    next: {
+      title: "Your business next?",
+      text: "I'd love to build you a website that stands out and brings in enquiries.",
+      cta: "Book an intro call",
     },
   },
   why: {
