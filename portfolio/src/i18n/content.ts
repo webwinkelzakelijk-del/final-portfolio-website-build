@@ -240,7 +240,7 @@ const nl = {
       ],
       [
         "Hoe lang duurt het voordat mijn website live staat?",
-        "Een compacte website staat vaak binnen enkele weken live. Grotere projecten plannen we samen in duidelijke stappen, zodat je altijd weet wat er gebeurt.",
+        "Een compacte website staat vaak binnen enkele dagen live. Grotere projecten plannen we samen in duidelijke stappen, zodat je altijd weet wat er gebeurt.",
       ],
       [
         "Ik heb nog geen uitgewerkt plan. Is dat erg?",
@@ -534,7 +534,7 @@ const en: Dict = {
       ],
       [
         "How long until my website is live?",
-        "A compact website is often live within a few weeks. Larger projects are planned together in clear steps, so you always know what's happening.",
+        "A compact website is often live within a few days. Larger projects are planned together in clear steps, so you always know what's happening.",
       ],
       [
         "I don't have a finished plan yet. Is that a problem?",
