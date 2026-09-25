@@ -12,6 +12,10 @@ const pages = {
   "webapps-en": ["A web app that fits", "the way you work.", "Solution · Web apps"],
   "automation-nl": ["Koppel je systemen,", "minder handwerk.", "Oplossing · Automatisering"],
   "automation-en": ["Connect your systems,", "less manual work.", "Solution · Automation"],
+  "privacy-nl": ["Privacy-", "verklaring.", "Kevin Rebuilds"],
+  "privacy-en": ["Privacy", "statement.", "Kevin Rebuilds"],
+  "terms-nl": ["Algemene", "voorwaarden.", "Kevin Rebuilds"],
+  "terms-en": ["Terms and", "conditions.", "Kevin Rebuilds"],
   "thanks-nl": ["Bedankt voor", "je aanvraag.", "Kevin Rebuilds"],
   "thanks-en": ["Thank you for", "your request.", "Kevin Rebuilds"],
 };

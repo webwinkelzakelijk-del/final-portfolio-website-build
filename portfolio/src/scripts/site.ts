@@ -34,6 +34,7 @@ document.addEventListener("keydown", (e) => {
 const anchorPairs: [string, string][] = [
   ["oplossingen", "solutions"],
   ["werk", "work"],
+  ["prijzen", "pricing"],
   ["recent-werk", "recent-work"],
   ["voorbeelden", "examples"],
   ["werkwijze", "process"],

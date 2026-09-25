@@ -14,7 +14,8 @@ Static, bilingual business website built with **Astro 7**. No UI framework, one 
 | Homepage, navigation, form and footer text (NL + EN) | `src/i18n/site.ts` |
 | Service page content (NL + EN) | `src/i18n/services.ts` |
 | URLs and section anchors | `src/i18n/routes.ts` |
-| E-mail address, form delivery | `src/config.ts` |
+| E-mail address, form delivery, prices, search engine verification | `src/config.ts` |
+| Privacy statement and terms (NL + EN) | `src/i18n/legal.ts` |
 | Colours, typography, layout | `src/styles/global.css` (design tokens at the top) |
 | Demo interfaces (website, portal, flow) | `src/components/previews/` |
 | Interactions and form validation | `src/scripts/site.ts` |
@@ -61,6 +62,18 @@ The form posts to **FormSubmit**, the same service and inbox the previous site u
 2. **Recommended: hide the address.** After activation FormSubmit shows a random alias. Build with it:
    `PUBLIC_FORMSUBMIT_ID=<alias> npm run build` (PowerShell: `$env:PUBLIC_FORMSUBMIT_ID="<alias>"; npm run build`).
 3. To temporarily switch the form off: `PUBLIC_FORMSUBMIT_ID=""`. The form is then hidden and visitors see the e-mail address instead.
+
+## Prices
+
+Starting prices (excl. VAT) live in `PRICES` in `src/config.ts` and are used on the homepage, the service pages, the FAQ answers and the structured data. `null` shows "Op aanvraag / On request".
+
+## Google Business Profile, Search Console and Bing
+
+See `docs/google-en-bing.md` for the step-by-step plan and ready-to-paste texts. Verification codes can be set at build time with `PUBLIC_GOOGLE_SITE_VERIFICATION` and `PUBLIC_BING_SITE_VERIFICATION` (or verify via DNS in Cloudflare, which is recommended).
+
+## Legal pages
+
+`/privacy/`, `/en/privacy/`, `/algemene-voorwaarden/` and `/en/terms/`. The privacy statement describes what the site actually does (FormSubmit → Gmail, own hosting, Cloudflare, no cookies or tracking). **The terms and conditions are a draft: have them checked by a legal professional before relying on them.** Add your KvK number once you have it.
 
 ## SEO & GEO (AI search)
 

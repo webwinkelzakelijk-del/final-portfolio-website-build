@@ -35,6 +35,7 @@ const year = new Date().getFullYear();
         <h2>{t.footer.navigate}</h2>
         <ul>
           <li><a href={`${home}#${a.work}`}>{t.nav.work}</a></li>
+          <li><a href={`${home}#${a.pricing}`}>{t.nav.pricing}</a></li>
           <li><a href={`${home}#${a.examples}`}>{t.nav.examples}</a></li>
           <li><a href={`${home}#${a.process}`}>{t.nav.process}</a></li>
           <li><a href={`${home}#${a.about}`}>{t.nav.about}</a></li>
@@ -56,6 +57,10 @@ const year = new Date().getFullYear();
     </div>
     <div class="footer-bottom">
       <span>© {year} Kevin Rebuilds. {t.footer.rights}</span>
+      <span class="footer-legal">
+        <a href={ROUTES.privacy[lang]}>{t.footer.privacy}</a>
+        <a href={ROUTES.terms[lang]}>{t.footer.terms}</a>
+      </span>
       <a href="#main">{t.footer.top}<Icon name="arrow-up" /></a>
     </div>
   </div>

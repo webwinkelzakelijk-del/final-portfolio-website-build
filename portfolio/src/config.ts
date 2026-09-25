@@ -5,6 +5,26 @@ export const BRAND = "Kevin Rebuilds";
 export const CONTACT_EMAIL = "webwinkelzakelijk@gmail.com";
 
 /**
+ * Starting prices in euros, excluding VAT. `null` = "op aanvraag" (on request).
+ * Used on the homepage, the service pages and in the structured data.
+ */
+export const PRICES: Record<"website" | "webapp" | "automation", number | null> = {
+  website: 750,
+  webapp: 2500,
+  automation: null,
+};
+export const formatPrice = (value: number, lang: "nl" | "en") =>
+  new Intl.NumberFormat(lang === "nl" ? "nl-NL" : "en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
+
+/**
+ * Search engine ownership checks (meta-tag method). Paste the code from
+ * Google Search Console / Bing Webmaster Tools, or leave empty when you
+ * verify via DNS in Cloudflare (recommended, see docs/google-en-bing.md).
+ */
+export const GOOGLE_SITE_VERIFICATION = (import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION as string | undefined) ?? "";
+export const BING_SITE_VERIFICATION = (import.meta.env.PUBLIC_BING_SITE_VERIFICATION as string | undefined) ?? "";
+
+/**
  * Contact form delivery (FormSubmit, the service the previous site already used).
  *
  * FormSubmit accepts either the inbox address or a random alias that FormSubmit

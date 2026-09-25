@@ -75,7 +75,7 @@ const nl: Record<ServiceKey, ServiceContent> = {
     faq: {
       title: "Veelgestelde vragen over een website laten maken",
       items: [
-        ["Wat kost een website op maat?", "Dat hangt af van de omvang: een landingspagina is iets anders dan een meertalige bedrijfswebsite. Na een kennismaking ontvang je een voorstel met een duidelijke prijs, zodat je vooraf weet waar je aan toe bent."],
+        ["Wat kost een website op maat?", "Een website op maat begint vanaf € 750 excl. btw, bijvoorbeeld voor een compacte website of landingspagina. De uiteindelijke prijs hangt af van de omvang: een landingspagina is iets anders dan een meertalige bedrijfswebsite. Na een kennismaking ontvang je een voorstel met een duidelijke prijs, zodat je vooraf weet waar je aan toe bent."],
         ["Hoe lang duurt het om een website te laten maken?", "Een compacte website kan vaak binnen enkele dagen tot een paar weken klaar zijn. De planning hangt vooral af van de omvang en van hoe snel teksten en beelden beschikbaar zijn. In het voorstel staat een concrete planning."],
         ["Moet ik zelf teksten en foto's aanleveren?", "Het liefst lever je de inhoud over je bedrijf aan, omdat jij je klanten het beste kent. Ik help met de structuur en het aanscherpen van teksten, zodat alles helder en overtuigend wordt."],
         ["Kan ik de website later zelf aanpassen?", "Dat bespreken we vooraf. Sommige bedrijven willen zelf teksten en beelden kunnen wijzigen, anderen laten dat liever aan mij over. De technische opzet stem ik daarop af."],
@@ -145,7 +145,7 @@ const nl: Record<ServiceKey, ServiceContent> = {
       title: "Veelgestelde vragen over een webapp laten ontwikkelen",
       items: [
         ["Wat is het verschil tussen een website en een webapp?", "Een website informeert bezoekers. Een webapp is een tool waarmee gebruikers iets doen: inloggen, gegevens bekijken, formulieren invullen of taken afhandelen. Beide werken in de browser."],
-        ["Wat kost een webapp op maat?", "Dat hangt sterk af van de functies en koppelingen. Na een kennismaking ontvang je een voorstel met een duidelijke prijs. Vaak is het slim om met een kleinere eerste versie te beginnen."],
+        ["Wat kost een webapp op maat?", "Een webapp begint vanaf € 2.500 excl. btw, bijvoorbeeld voor een eenvoudige eerste versie. Daarna hangt de prijs sterk af van de functies en koppelingen. Na een kennismaking ontvang je een voorstel met een duidelijke prijs. Vaak is het slim om met een kleinere eerste versie te beginnen."],
         ["Werkt een webapp ook op mobiel?", "Ja. Een webapp werkt in de browser en ik ontwerp de schermen zo dat ze ook op telefoon en tablet goed bruikbaar zijn."],
         ["Is een klantportaal veilig?", "Veiligheid neem ik vanaf het begin mee: inloggen, toegangsrechten per gebruiker en een beveiligde verbinding. Welke maatregelen nodig zijn, bespreken we op basis van het soort gegevens."],
         ["Kan de webapp later uitgebreid worden?", "Ja. Ik bouw de webapp zo dat er later functies bij kunnen komen, zodat je klein kunt beginnen en kunt uitbreiden wat werkt."],
@@ -283,7 +283,7 @@ const en: Record<ServiceKey, ServiceContent> = {
     faq: {
       title: "Frequently asked questions about a custom website",
       items: [
-        ["How much does a custom website cost?", "It depends on the scope: a landing page is different from a multilingual business website. After an introduction you'll receive a proposal with a clear price, so you know where you stand upfront."],
+        ["How much does a custom website cost?", "A custom website starts from €750 excl. VAT, for example for a compact website or landing page. The final price depends on the scope: a landing page is different from a multilingual business website. After an introduction you'll receive a proposal with a clear price, so you know where you stand upfront."],
         ["How long does it take to build a website?", "A compact website can often be ready within a few days to a few weeks. The timeline mainly depends on the scope and on how quickly texts and images are available. The proposal includes a concrete timeline."],
         ["Do I need to provide the texts and photos?", "Ideally you provide the content about your business, since you know your clients best. I help with the structure and with sharpening the copy so everything is clear and convincing."],
         ["Can I update the website myself later?", "We agree on that upfront. Some businesses want to edit texts and images themselves, others prefer to leave it to me. I set up the technical side accordingly."],
@@ -353,7 +353,7 @@ const en: Record<ServiceKey, ServiceContent> = {
       title: "Frequently asked questions about custom web app development",
       items: [
         ["What's the difference between a website and a web app?", "A website informs visitors. A web app is a tool users do something with: log in, view data, fill in forms or handle tasks. Both run in the browser."],
-        ["How much does a custom web app cost?", "That depends heavily on the features and integrations. After an introduction you'll receive a proposal with a clear price. It's often smart to start with a smaller first version."],
+        ["How much does a custom web app cost?", "A web app starts from €2,500 excl. VAT, for example for a simple first version. Beyond that, the price depends heavily on the features and integrations. After an introduction you'll receive a proposal with a clear price. It's often smart to start with a smaller first version."],
         ["Does a web app work on mobile?", "Yes. A web app runs in the browser, and I design the screens to work well on phones and tablets too."],
         ["Is a client portal secure?", "I take security into account from the start: login, access rights per user and a secure connection. Which measures are needed depends on the type of data, and we discuss that together."],
         ["Can the web app be extended later?", "Yes. I build the web app so features can be added later, so you can start small and expand what works."],

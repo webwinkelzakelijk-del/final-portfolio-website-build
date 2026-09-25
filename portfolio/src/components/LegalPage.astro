@@ -1,0 +1,40 @@
+---
+import Base from "../layouts/Base.astro";
+import { ROUTES, type Lang, type PageKey } from "../i18n/routes";
+import type { LegalDoc } from "../i18n/legal";
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+  doc: LegalDoc;
+}
+const { lang, page, doc } = Astro.props;
+const crumbs = lang === "nl" ? "Kruimelpad" : "Breadcrumb";
+---
+
+<Base lang={lang} page={page} title={doc.meta.title} description={doc.meta.description}>
+  <article class="section legal">
+    <div class="container legal-inner">
+      <nav class="breadcrumb" aria-label={crumbs}>
+        <ol>
+          <li><a href={ROUTES.home[lang]}>Home</a></li>
+          <li aria-current="page">{doc.title}</li>
+        </ol>
+      </nav>
+      <header class="legal-head">
+        <p class="eyebrow">{doc.eyebrow}</p>
+        <h1 class="h2">{doc.title}</h1>
+        <p class="legal-updated">{doc.updated}</p>
+        <p class="lead">{doc.intro}</p>
+        {doc.note && <p class="legal-note">{doc.note}</p>}
+      </header>
+      {doc.blocks.map((b) => (
+        <section class="legal-block">
+          <h2>{b.h}</h2>
+          {b.p?.map((p) => <p>{p}</p>)}
+          {b.ul && <ul>{b.ul.map((li) => <li>{li}</li>)}</ul>}
+        </section>
+      ))}
+    </div>
+  </article>
+</Base>

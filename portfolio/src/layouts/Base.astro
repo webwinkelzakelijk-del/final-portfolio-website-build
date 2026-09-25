@@ -2,7 +2,7 @@
 import css from "../styles/global.css?inline";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_URL, BRAND } from "../config";
+import { SITE_URL, BRAND, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from "../config";
 import { ROUTES, type Lang, type PageKey } from "../i18n/routes";
 import { site } from "../i18n/site";
 
@@ -41,6 +41,8 @@ const og = new URL(ogImage ?? `/og/${page}-${lang}.png`, SITE_URL).href;
     )}
     <meta name="theme-color" content="#ffffff" />
     <meta name="author" content="Kevin, Kevin Rebuilds" />
+    {GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />}
+    {BING_SITE_VERIFICATION && <meta name="msvalidate.01" content={BING_SITE_VERIFICATION} />}
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={BRAND} />

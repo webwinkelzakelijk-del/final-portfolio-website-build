@@ -3,7 +3,7 @@ import { SITE_URL } from "../config";
 import { ROUTES, type PageKey } from "../i18n/routes";
 
 // Indexable pages only (the thank-you pages are noindex).
-const PAGES: PageKey[] = ["home", "websites", "webapps", "automation"];
+const PAGES: PageKey[] = ["home", "websites", "webapps", "automation", "privacy", "terms"];
 const abs = (p: string) => new URL(p, SITE_URL).href;
 
 export const GET: APIRoute = () => {

@@ -125,7 +125,7 @@ const e = t.errors;
             <Icon name="arrow-right" class="btn-arrow" />
           </button>
           <p class="form-status" role="status" aria-live="polite" data-form-status></p>
-          <p class="form-note">{t.note} {t.privacy}</p>
+          <p class="form-note">{t.note} {t.privacy} <a href={ROUTES.privacy[lang]}>{t.privacyLink}</a>.</p>
         </form>
 
         <div class="form-success" data-form-success tabindex="-1" hidden>
