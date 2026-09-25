@@ -186,15 +186,23 @@ if (finePointer && !reduced) {
   });
 
   // Hero orbs drift toward the pointer
-  const orbs = $$(".orb");
+  const orbs = $$(".orb").map((orb, i) => ({
+    x: gsap.quickTo(orb, "x", { duration: 1.6, ease: "power2.out" }),
+    y: gsap.quickTo(orb, "y", { duration: 1.6, ease: "power2.out" }),
+    i,
+  }));
+  let heroVisible = true;
+  new IntersectionObserver(([entry]) => (heroVisible = entry.isIntersecting)).observe($(".hero")!);
   window.addEventListener(
     "pointermove",
     (e) => {
+      if (!heroVisible) return;
       const x = e.clientX / window.innerWidth - 0.5;
       const y = e.clientY / window.innerHeight - 0.5;
-      orbs.forEach((orb, i) =>
-        gsap.to(orb, { x: x * (60 + i * 40), y: y * (50 + i * 30), duration: 1.6, ease: "power2.out", overwrite: "auto" }),
-      );
+      orbs.forEach((o) => {
+        o.x(x * (60 + o.i * 40));
+        o.y(y * (50 + o.i * 30));
+      });
     },
     { passive: true },
   );
@@ -209,13 +217,17 @@ $$(".bento-card").forEach((card) => {
   });
 });
 
+const heroEl = $(".hero");
+if (heroEl)
+  new IntersectionObserver(([entry]) => heroEl.classList.toggle("is-offscreen", !entry.isIntersecting)).observe(heroEl);
+
 /* ------------------------------------------------------------------ */
 /* Intro: preloader → hero                                             */
 /* ------------------------------------------------------------------ */
 function heroIntro(delay = 0) {
   if (reduced) return;
   const tl = gsap.timeline({ delay });
-  tl.from(".hero-title .line > span", { yPercent: 110, rotate: 3, duration: 1.25, stagger: 0.1, ease: "expo.out" })
+  tl.from(".hero-title .line > span", { yPercent: 110, rotate: 3, duration: 1.1, stagger: 0.08, ease: "expo.out" })
     .from("[data-hero-fade]", { opacity: 0, y: 24, duration: 1, stagger: 0.08, ease: "power3.out" }, "-=0.85")
     .from(".site-header", { yPercent: -100, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "transform,opacity" }, "-=1")
     .from(".orb", { scale: 0.6, opacity: 0, duration: 2, stagger: 0.15, ease: "power2.out" }, 0);
@@ -232,17 +244,17 @@ if (root.classList.contains("first-visit") && preloader && !reduced) {
       lenis?.start();
     },
   });
-  tl.from(".preloader-name .line > span", { yPercent: 110, duration: 0.9, ease: "expo.out" })
-    .from(".preloader-sub", { opacity: 0, y: 12, duration: 0.6 }, "-=0.5")
+  tl.from(".preloader-name .line > span", { yPercent: 110, duration: 0.6, ease: "expo.out" })
+    .from(".preloader-sub", { opacity: 0, y: 12, duration: 0.4 }, "-=0.35")
     .to(counter, {
       v: 100,
-      duration: 1.5,
+      duration: 0.85,
       ease: "power2.inOut",
       onUpdate: () => (count.textContent = String(Math.round(counter.v))),
-    }, 0.1)
-    .to(".preloader-bar", { scaleX: 1, duration: 1.5, ease: "power2.inOut" }, 0.1)
-    .to(preloader, { clipPath: "inset(0 0 100% 0)", duration: 1, ease: "expo.inOut" }, "+=0.15");
-  heroIntro(tl.duration() - 0.55);
+    }, 0.05)
+    .to(".preloader-bar", { scaleX: 1, duration: 0.85, ease: "power2.inOut" }, 0.05)
+    .to(preloader, { clipPath: "inset(0 0 100% 0)", duration: 0.75, ease: "expo.inOut" }, "+=0.05");
+  heroIntro(tl.duration() - 0.45);
 } else {
   preloader?.remove();
   heroIntro(0.05);
@@ -373,8 +385,12 @@ if (track && !reduced) {
       boost = Math.min(Math.abs(self.getVelocity()) / 120, 14);
     },
   });
+  let marqueeVisible = true;
+  let width = group.offsetWidth;
+  new ResizeObserver(() => (width = group.offsetWidth)).observe(group);
+  new IntersectionObserver(([entry]) => (marqueeVisible = entry.isIntersecting)).observe(track);
   gsap.ticker.add(() => {
-    const width = group.offsetWidth;
+    if (!marqueeVisible) return;
     x += (base + boost) * direction;
     boost *= 0.94;
     if (x <= -width) x += width;
@@ -436,9 +452,12 @@ if (work && !reduced) {
 // Flowdesk rows tick through
 const flowRows = $$("[data-flow-row]");
 if (flowRows.length && !reduced) {
-  gsap.timeline({ repeat: -1, repeatDelay: 1.2 })
+  const flowLoop = gsap.timeline({ repeat: -1, repeatDelay: 1.2, paused: true })
     .set(flowRows, { opacity: 0.35 })
     .to(flowRows, { opacity: 1, duration: 0.4, stagger: 0.6 });
+  new IntersectionObserver(([entry]) => (entry.isIntersecting ? flowLoop.play() : flowLoop.pause())).observe(
+    flowRows[0].closest(".project-visual")!,
+  );
 }
 
 /* ------------------------------------------------------------------ */

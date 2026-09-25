@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import { dict, SITE, EMAIL, type Lang } from "../i18n/content";
 import { getImage } from "astro:assets";
-import ogSource from "../assets/kevin-portrait.png";
+import ogSource from "../assets/kevin-head.webp";
 
 interface Props {
   lang: Lang;
@@ -61,7 +61,7 @@ const jsonLd = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&family=DM+Sans:opsz,wght@9..40,400..700&family=Instrument+Serif:ital@1&display=swap"
     />
 
     <!-- Runs before paint: flags JS, first visit (preloader) and old ?lang= links. -->

@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import Icon from "./Icon.astro";
 import { dict, EMAIL, FIVERR, type Lang } from "../i18n/content";
-import portrait from "../assets/kevin-portrait.png";
 import head from "../assets/kevin-head.webp";
 import differentHair from "../assets/different-hair.png";
 
@@ -135,7 +134,7 @@ const searchPhrase = lang === "nl" ? "webdesigner in drenthe" : "freelance web d
         <defs><path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs>
         <text><textPath href="#badge-circle">{`${t.preloader} · ${t.hero.secondary} · `}</textPath></text>
       </svg>
-      <span class="spin-badge-core"><Icon name="arrow-down" /></span>
+      <span class="spin-badge-core"></span>
     </a>
     <span class="scroll-cue" aria-hidden="true">{t.hero.scroll}</span>
   </section>
@@ -434,7 +433,7 @@ const searchPhrase = lang === "nl" ? "webdesigner in drenthe" : "freelance web d
   <section class="section about" id="over" data-chapter="dark" aria-labelledby="about-title">
     <div class="container about-grid">
       <figure class="about-photo" data-clip-reveal>
-        <Image src={portrait} alt={t.about.photoAlt} widths={[560, 900, 1122]} sizes="(min-width: 1024px) 45vw, 100vw" data-parallax-y />
+        <Image src={head} alt={t.about.photoAlt} widths={[560, 900, 1200]} sizes="(min-width: 1024px) 45vw, 100vw" data-parallax-y />
         <figcaption>{t.about.caption}</figcaption>
       </figure>
       <div class="about-copy">

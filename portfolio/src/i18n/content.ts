@@ -228,7 +228,7 @@ const nl = {
       ["1", "aanspreekpunt, van begin tot eind"],
       ["2", "talen: Nederlands & Engels"],
     ],
-    photoAlt: "Portret van Kevin, glimlachend aan een houten tafel",
+    photoAlt: "Portret van Kevin, glimlachend in een lichte werkruimte",
   },
   faq: {
     eyebrow: "Veelgestelde vragen",
@@ -522,7 +522,7 @@ const en: Dict = {
       ["1", "point of contact, start to finish"],
       ["2", "languages: Dutch & English"],
     ],
-    photoAlt: "Portrait of Kevin, smiling at a wooden table",
+    photoAlt: "Portrait of Kevin, smiling in a bright workspace",
   },
   faq: {
     eyebrow: "Frequently asked",
