@@ -11,7 +11,6 @@ import { ROUTES, ANCHORS, SERVICE_VALUE, type Lang, type ServiceKey } from "../i
 import { site } from "../i18n/site";
 import { services } from "../i18n/services";
 import { serviceSchema } from "../seo/schema";
-import { PRICES, formatPrice } from "../config";
 
 interface Props {
   lang: Lang;
@@ -23,8 +22,6 @@ const t = site[lang];
 const home = ROUTES.home[lang];
 const request = `#${ANCHORS[lang].request}`;
 const others = (["websites", "webapps", "automation"] as ServiceKey[]).filter((k) => k !== service);
-const price = PRICES[SERVICE_VALUE[service]];
-const pr = t.pricing;
 const icons: Record<ServiceKey, IconName> = { websites: "globe", webapps: "bars", automation: "cog" };
 const buildIcons: IconName[] = ["check-circle", "check-circle", "check-circle", "check-circle", "check-circle", "check-circle"];
 const labels =
@@ -50,10 +47,6 @@ const labels =
           <ul class="check-list check-list--inline">
             {s.highlights.map((h) => <li><Icon name="check" />{h}</li>)}
           </ul>
-          <p class="svc-price">
-            {price === null ? <strong>{pr.onRequest}</strong> : <>{pr.from} <strong>{formatPrice(price, lang)}</strong> {pr.exVat}</>}
-            <a href={`${home}#${ANCHORS[lang].pricing}`}>{pr.factorsTitle}</a>
-          </p>
           <div class="hero-actions">
             <a class="btn btn--primary" href={request} data-service={SERVICE_VALUE[service]}>{t.nav.cta}<Icon name="arrow-right" /></a>
             <a class="btn btn--secondary" href={`#${labels.buildId}`}>{labels.build}</a>

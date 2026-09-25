@@ -5,18 +5,6 @@ export const BRAND = "Kevin Rebuilds";
 export const CONTACT_EMAIL = "webwinkelzakelijk@gmail.com";
 
 /**
- * Starting prices in euros, excluding VAT. `null` = "op aanvraag" (on request).
- * Used on the homepage, the service pages and in the structured data.
- */
-export const PRICES: Record<"website" | "webapp" | "automation", number | null> = {
-  website: 499,
-  webapp: 1499,
-  automation: null,
-};
-export const formatPrice = (value: number, lang: "nl" | "en") =>
-  new Intl.NumberFormat(lang === "nl" ? "nl-NL" : "en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
-
-/**
  * Search engine ownership checks (meta-tag method). Paste the code from
  * Google Search Console / Bing Webmaster Tools, or leave empty when you
  * verify via DNS in Cloudflare (recommended, see docs/google-en-bing.md).

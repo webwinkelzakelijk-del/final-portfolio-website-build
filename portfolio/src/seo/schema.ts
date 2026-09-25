@@ -1,7 +1,6 @@
 // JSON-LD. Only facts that are true and visible on the site: no ratings,
 // no street address, no founding date, no client counts.
-import { SITE_URL, BRAND, CONTACT_EMAIL, PRICES } from "../config";
-import { SERVICE_VALUE } from "../i18n/routes";
+import { SITE_URL, BRAND, CONTACT_EMAIL } from "../config";
 import { ROUTES, type Lang, type ServiceKey } from "../i18n/routes";
 import { site } from "../i18n/site";
 import { services } from "../i18n/services";
@@ -86,19 +85,6 @@ export function serviceSchema(lang: Lang, key: ServiceKey) {
       inLanguage: lang,
       provider: { "@type": "ProfessionalService", "@id": ORG_ID, name: BRAND, url: abs(ROUTES.home[lang]), address: ADDRESS },
       areaServed: AREA,
-      ...(PRICES[SERVICE_VALUE[key]] !== null && {
-        offers: {
-          "@type": "Offer",
-          url,
-          priceCurrency: "EUR",
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            minPrice: PRICES[SERVICE_VALUE[key]],
-            priceCurrency: "EUR",
-            valueAddedTaxIncluded: false,
-          },
-        },
-      }),
       audience: { "@type": "BusinessAudience", name: lang === "nl" ? "Ondernemers en bedrijven" : "Entrepreneurs and businesses" },
     },
     {
