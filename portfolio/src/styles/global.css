@@ -841,3 +841,49 @@ h1, h2, h3, .hero-title, .svc-title { overflow-wrap: break-word; hyphens: auto; 
 .footer-legal a { color: var(--muted) !important; font-weight: 500 !important; }
 .footer-legal a:hover { color: var(--blue) !important; }
 .form-note a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Examples on phones: one-row tabs, demo first, compact copy ------------ */
+@media (max-width: 639px) {
+  .tab-list {
+    width: auto;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 6px var(--gutter);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .tab-list::-webkit-scrollbar { display: none; }
+  .tab-list button {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-height: 44px;
+    border: 1px solid var(--line);
+    background: #fff;
+    white-space: nowrap;
+  }
+  .tab-list button[aria-selected="true"] { border-color: var(--blue); }
+  .tab-panel { gap: 20px; padding: 14px; }
+  .example-stage { order: -1; }
+  .example-copy { gap: 12px; padding: 0 4px 6px; }
+  .example-copy .check-list { display: none; }
+  .example-copy h3 { font-size: 1.3rem; }
+  .example-copy p { font-size: 1rem; }
+  .site-stage { padding: 10px; }
+  .shot-bar .badge { display: none; }
+  .phone-frame { width: min(280px, 100%); }
+  .phone-screen { height: 480px; }
+  .segmented { justify-self: center; }
+  .pv-flow-demo { padding: 48px 12px 16px; }
+}
+
+.tab-short { display: none; }
+@media (max-width: 639px) {
+  .tab-list { overflow: visible; margin-inline: 0; padding: 0; gap: 8px; }
+  .tab-list button { flex: 1 1 0; padding: 0 8px; }
+  .tab-long { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .tab-short { display: inline; }
+}
