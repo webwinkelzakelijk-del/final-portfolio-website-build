@@ -271,6 +271,8 @@ if (form && form.dataset.endpoint) {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
+        // FormSubmit requires a Referer; the site-wide header omits it for cross-origin requests.
+        referrerPolicy: "origin",
         signal: AbortSignal.timeout(20000),
       });
       const body = (await res.json().catch(() => null)) as { success?: boolean | string } | null;
