@@ -69,7 +69,7 @@ See `docs/google-en-bing.md` for the step-by-step plan and ready-to-paste texts.
 
 ## Legal pages
 
-`/privacy/`, `/en/privacy/`, `/algemene-voorwaarden/` and `/en/terms/`. The privacy statement describes what the site actually does (FormSubmit → Gmail, own hosting, Cloudflare, no cookies or tracking). **The terms and conditions are a draft: have them checked by a legal professional before relying on them.** Add your KvK number once you have it.
+`/privacy/`, `/en/privacy/`, `/algemene-voorwaarden/` and `/en/terms/`. The privacy statement describes what the site actually does (FormSubmit → Gmail, own hosting, Cloudflare, no cookies or tracking). **The terms and conditions are a draft: have them checked by a legal professional before relying on them.** The KvK number is configured once in `src/config.ts` and displayed in both languages.
 
 ## SEO & GEO (AI search)
 

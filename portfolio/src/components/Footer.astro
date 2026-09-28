@@ -2,7 +2,7 @@
 import Icon from "./Icon.astro";
 import { ROUTES, ANCHORS, type Lang, type PageKey } from "../i18n/routes";
 import { site } from "../i18n/site";
-import { CONTACT_EMAIL } from "../config";
+import { CONTACT_EMAIL, KVK_NUMBER } from "../config";
 
 interface Props {
   lang: Lang;
@@ -46,6 +46,7 @@ const year = new Date().getFullYear();
         <ul>
           <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
           <li class="footer-location">{t.footer.location}</li>
+          <li class="footer-location">{t.footer.registrationLabel}: {KVK_NUMBER}</li>
           <li>
             <a href={ROUTES[page][lang === "nl" ? "en" : "nl"]} hreflang={lang === "nl" ? "en" : "nl"} data-lang-link={lang === "nl" ? "en" : "nl"}>
               {lang === "nl" ? "English version" : "Nederlandse versie"}

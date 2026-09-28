@@ -3,6 +3,7 @@
 export const SITE_URL = "https://www.kevinrebuilds.com";
 export const BRAND = "Kevin Rebuilds";
 export const CONTACT_EMAIL = "webwinkelzakelijk@gmail.com";
+export const KVK_NUMBER = "42176893";
 
 /**
  * Search engine ownership checks (meta-tag method). Paste the code from

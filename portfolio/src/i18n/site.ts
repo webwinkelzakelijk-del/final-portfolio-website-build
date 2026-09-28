@@ -218,6 +218,7 @@ const nl = {
   footer: {
     about: "Websites, webapps en automatiseringen op maat voor ondernemers en bedrijven.",
     location: "Emmen, Drenthe",
+    registrationLabel: "KvK",
     solutions: "Oplossingen",
     navigate: "Navigatie",
     contact: "Contact",
@@ -458,6 +459,7 @@ const en: SiteDict = {
   footer: {
     about: "Custom websites, web apps and automations for entrepreneurs and businesses.",
     location: "Emmen, Drenthe (the Netherlands)",
+    registrationLabel: "Chamber of Commerce (KvK)",
     solutions: "Solutions",
     navigate: "Navigate",
     contact: "Contact",

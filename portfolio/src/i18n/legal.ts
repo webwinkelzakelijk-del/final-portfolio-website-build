@@ -1,5 +1,5 @@
 import type { Lang } from "./routes";
-import { CONTACT_EMAIL } from "../config";
+import { CONTACT_EMAIL, KVK_NUMBER } from "../config";
 
 export type LegalBlock = { h: string; p?: string[]; ul?: string[] };
 export type LegalDoc = {
@@ -12,8 +12,8 @@ export type LegalDoc = {
   note?: string;
 };
 
-const UPDATED_NL = "Laatst bijgewerkt: 25 september 2026";
-const UPDATED_EN = "Last updated: 25 September 2026";
+const UPDATED_NL = "Laatst bijgewerkt: 28 september 2026";
+const UPDATED_EN = "Last updated: 28 September 2026";
 
 export const privacy: Record<Lang, LegalDoc> = {
   nl: {
@@ -30,7 +30,7 @@ export const privacy: Record<Lang, LegalDoc> = {
       {
         h: "Wie is verantwoordelijk?",
         p: [
-          `Kevin Rebuilds, gevestigd in Emmen (Drenthe), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in deze verklaring. Je bereikt me via ${CONTACT_EMAIL}.`,
+          `Kevin Rebuilds, gevestigd in Emmen (Drenthe), KvK-nummer ${KVK_NUMBER}, is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in deze verklaring. Je bereikt me via ${CONTACT_EMAIL}.`,
         ],
       },
       {
@@ -116,7 +116,7 @@ export const privacy: Record<Lang, LegalDoc> = {
     blocks: [
       {
         h: "Who is responsible?",
-        p: [`Kevin Rebuilds, based in Emmen (Drenthe, the Netherlands), is responsible for processing personal data as described in this statement. You can reach me at ${CONTACT_EMAIL}.`],
+        p: [`Kevin Rebuilds, based in Emmen (Drenthe, the Netherlands), Dutch Chamber of Commerce (KvK) number ${KVK_NUMBER}, is responsible for processing personal data as described in this statement. You can reach me at ${CONTACT_EMAIL}.`],
       },
       {
         h: "Which data do I process?",
@@ -190,7 +190,7 @@ export const terms: Record<Lang, LegalDoc> = {
     intro:
       "Deze algemene voorwaarden gelden voor alle offertes, opdrachten en overeenkomsten van Kevin Rebuilds voor het ontwerpen, bouwen en onderhouden van websites, webapps en automatiseringen.",
     blocks: [
-      { h: "1. Definities", ul: ["Opdrachtnemer: Kevin Rebuilds, gevestigd in Emmen.", "Opdrachtgever: de partij die Kevin Rebuilds een opdracht geeft.", "Opdracht: het werk dat in de offerte of het voorstel is omschreven."] },
+      { h: "1. Definities", ul: [`Opdrachtnemer: Kevin Rebuilds, gevestigd in Emmen, KvK-nummer ${KVK_NUMBER}.`, "Opdrachtgever: de partij die Kevin Rebuilds een opdracht geeft.", "Opdracht: het werk dat in de offerte of het voorstel is omschreven."] },
       { h: "2. Toepasselijkheid", p: ["Deze voorwaarden gelden voor iedere offerte en overeenkomst tussen opdrachtnemer en opdrachtgever. Afwijkingen gelden alleen als ze schriftelijk zijn afgesproken. Algemene voorwaarden van de opdrachtgever zijn niet van toepassing."] },
       { h: "3. Offertes en voorstellen", p: ["Offertes en voorstellen zijn vrijblijvend en 30 dagen geldig, tenzij anders vermeld. Een opdracht komt tot stand zodra de opdrachtgever de offerte schriftelijk of per e-mail accepteert."] },
       { h: "4. Uitvoering", p: ["Opdrachtnemer voert de opdracht zorgvuldig en naar beste kunnen uit. Genoemde planningen zijn een inschatting en geen fatale termijnen, tenzij uitdrukkelijk anders is afgesproken."] },
@@ -219,7 +219,7 @@ export const terms: Record<Lang, LegalDoc> = {
       "These general terms and conditions apply to all quotes, assignments and agreements of Kevin Rebuilds for designing, building and maintaining websites, web apps and automations.",
     note: "This is a translation for convenience. In case of any difference, the Dutch version (Algemene voorwaarden) prevails.",
     blocks: [
-      { h: "1. Definitions", ul: ["Contractor: Kevin Rebuilds, based in Emmen, the Netherlands.", "Client: the party that gives Kevin Rebuilds an assignment.", "Assignment: the work described in the quote or proposal."] },
+      { h: "1. Definitions", ul: [`Contractor: Kevin Rebuilds, based in Emmen, the Netherlands, Dutch Chamber of Commerce (KvK) number ${KVK_NUMBER}.`, "Client: the party that gives Kevin Rebuilds an assignment.", "Assignment: the work described in the quote or proposal."] },
       { h: "2. Applicability", p: ["These terms apply to every quote and agreement between contractor and client. Deviations only apply if agreed in writing. The client's own terms and conditions do not apply."] },
       { h: "3. Quotes and proposals", p: ["Quotes and proposals are non-binding and valid for 30 days, unless stated otherwise. An assignment is formed as soon as the client accepts the quote in writing or by email."] },
       { h: "4. Execution", p: ["The contractor carries out the assignment carefully and to the best of their ability. Timelines are estimates and not strict deadlines, unless explicitly agreed otherwise."] },
