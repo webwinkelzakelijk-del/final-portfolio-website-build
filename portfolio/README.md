@@ -58,7 +58,7 @@ The form posts to **FormSubmit**, the same service and inbox the previous site u
 
 ### Still to set up (once)
 
-1. **Activate FormSubmit for this inbox.** The first submission from the live domain triggers an activation e-mail from FormSubmit to `webwinkelzakelijk@gmail.com`; click the link in it. Until then FormSubmit does not deliver, and the site correctly shows "not sent".
+1. **Activate FormSubmit for this inbox.** The first submission from the live domain triggers an activation e-mail from FormSubmit to `info@kevinrebuilds.com`; click the link in it. Until then FormSubmit does not deliver, and the site correctly shows "not sent".
 2. **Recommended: hide the address.** After activation FormSubmit shows a random alias. Build with it:
    `PUBLIC_FORMSUBMIT_ID=<alias> npm run build` (PowerShell: `$env:PUBLIC_FORMSUBMIT_ID="<alias>"; npm run build`).
 3. To temporarily switch the form off: `PUBLIC_FORMSUBMIT_ID=""`. The form is then hidden and visitors see the e-mail address instead.

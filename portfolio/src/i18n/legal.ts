@@ -60,7 +60,7 @@ export const privacy: Record<Lang, LegalDoc> = {
           "FormSubmit (formsubmit.co) stuurt de gegevens uit het aanvraagformulier door naar mijn mailbox.",
           "Google (Gmail) levert de mailbox waarin aanvragen en e-mails binnenkomen.",
           "Mijn hostingpartij bewaart de bestanden van deze website op een server.",
-          "Cloudflare verzorgt de beveiligde en snelle levering van de website en verwerkt daarbij technische gegevens zoals je IP-adres.",
+          `Cloudflare verzorgt de beveiligde en snelle levering van de website en stuurt e-mail aan ${CONTACT_EMAIL} door naar mijn Gmail-inbox. Daarbij verwerkt Cloudflare ook technische gegevens zoals je IP-adres.`,
         ],
       },
       {
@@ -143,7 +143,7 @@ export const privacy: Record<Lang, LegalDoc> = {
           "FormSubmit (formsubmit.co) forwards the data from the request form to my inbox.",
           "Google (Gmail) provides the inbox where requests and emails arrive.",
           "My hosting provider stores the files of this website on a server.",
-          "Cloudflare provides secure and fast delivery of the website and processes technical data such as your IP address.",
+          `Cloudflare provides secure and fast delivery of the website and forwards email sent to ${CONTACT_EMAIL} to my Gmail inbox. It also processes technical data such as your IP address.`,
         ],
       },
       {

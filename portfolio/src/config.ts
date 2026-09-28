@@ -2,7 +2,7 @@
 
 export const SITE_URL = "https://www.kevinrebuilds.com";
 export const BRAND = "Kevin Rebuilds";
-export const CONTACT_EMAIL = "webwinkelzakelijk@gmail.com";
+export const CONTACT_EMAIL = "info@kevinrebuilds.com";
 export const KVK_NUMBER = "42176893";
 
 /**
@@ -19,7 +19,7 @@ export const BING_SITE_VERIFICATION = (import.meta.env.PUBLIC_BING_SITE_VERIFICA
  * FormSubmit accepts either the inbox address or a random alias that FormSubmit
  * gives you after activation (recommended, keeps the address out of the HTML).
  * Set it at build time:   PUBLIC_FORMSUBMIT_ID=<alias or address> npm run build
- * Without the variable the existing inbox address is used.
+ * Without the variable the public contact address is used.
  * Set PUBLIC_FORMSUBMIT_ID="" (empty) to switch sending off: the form then shows
  * a clear "use e-mail instead" message and never pretends to send.
  */
