@@ -21,6 +21,6 @@ const steps = t.process.steps.map(([title, text]) => ({ title, text }));
   <Work lang={lang} />
   <Examples lang={lang} />
   <Personal lang={lang} />
-  <Process id={ANCHORS[lang].process} eyebrow={t.process.eyebrow} title={t.process.title} steps={steps} />
+  <Process id={ANCHORS[lang].process} eyebrow={t.process.eyebrow} title={t.process.title} steps={steps} note={t.process.note} />
   <RequestForm lang={lang} />
 </Base>

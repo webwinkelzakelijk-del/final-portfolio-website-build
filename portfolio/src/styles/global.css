@@ -591,6 +591,15 @@ main:focus { outline: none; }
 .process-steps h3 { font-size: 1.1875rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
 .process-steps p { color: rgba(255, 255, 255, 0.88); font-size: 0.9688rem; }
 .process ::selection { background: #fff; color: var(--blue); }
+.process-note {
+  display: grid; gap: 16px; margin-top: clamp(36px, 5vw, 56px);
+  padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.28);
+}
+.process-note h3 { color: #fff; font-size: 1.25rem; line-height: 1.4; letter-spacing: -0.02em; max-width: 24em; }
+.process-note p { color: rgba(255, 255, 255, 0.88); max-width: 65ch; }
+@media (min-width: 1024px) {
+  .process-note { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.6fr); gap: 56px; }
+}
 .process :focus-visible { outline-color: #fff; }
 
 /* Request form ---------------------------------------------------------- */

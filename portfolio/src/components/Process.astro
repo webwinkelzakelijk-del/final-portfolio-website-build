@@ -5,8 +5,9 @@ interface Props {
   title: string[];
   intro?: string;
   steps: { title: string; text: string }[];
+  note?: { title: string; text: string };
 }
-const { id, eyebrow, title, intro, steps } = Astro.props;
+const { id, eyebrow, title, intro, steps, note } = Astro.props;
 ---
 
 <section class="process" id={id} aria-labelledby={`${id ?? "process"}-title`}>
@@ -28,4 +29,12 @@ const { id, eyebrow, title, intro, steps } = Astro.props;
       ))}
     </ol>
   </div>
+  {note && (
+    <div class="container">
+      <aside class="process-note" aria-labelledby={`${id ?? "process"}-note-title`}>
+        <h3 id={`${id ?? "process"}-note-title`}>{note.title}</h3>
+        <p>{note.text}</p>
+      </aside>
+    </div>
+  )}
 </section>

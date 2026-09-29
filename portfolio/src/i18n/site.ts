@@ -172,6 +172,10 @@ const nl = {
   process: {
     eyebrow: "Werkwijze",
     title: ["Van idee naar", "iets dat werkt."],
+    note: {
+      title: "Slim gebouwd, met AI en persoonlijke aandacht.",
+      text: "Ik gebruik AI om ideeën sneller uit te werken en terugkerend werk te versnellen. Zelf bepaal ik de richting, werk ik de details uit en controleer ik het resultaat. Zo krijgt jouw project de aandacht die het verdient.",
+    },
     steps: [
       ["Kennismaken", "We bespreken je idee, doelen en mogelijkheden."],
       ["Ontwerp & bouw", "Ik vertaal de afspraken naar een ontwerp en bouw de oplossing."],
@@ -413,6 +417,10 @@ const en: SiteDict = {
   process: {
     eyebrow: "Process",
     title: ["From idea to", "something that works."],
+    note: {
+      title: "Built smarter, with AI and personal attention.",
+      text: "I use AI to develop ideas faster and speed up repetitive work. I set the direction, refine the details and check the result myself. That way, your project gets the attention it deserves.",
+    },
     steps: [
       ["Getting acquainted", "We discuss your idea, goals and possibilities."],
       ["Design & build", "I turn what we agreed into a design and build the solution."],
