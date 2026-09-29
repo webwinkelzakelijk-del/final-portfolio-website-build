@@ -100,6 +100,12 @@ const nl = {
     liveLong: "Live klantproject",
     rolesLabel: "Wat ik deed",
     newTab: "opent in een nieuw tabblad",
+    trustpilot: {
+      title: "Ook op Trustpilot",
+      text: "Hebben we samengewerkt? Deel je ervaring via mijn Trustpilot-profiel.",
+      cta: "Bekijk mijn Trustpilot-profiel",
+      url: "https://nl.trustpilot.com/review/kevinrebuilds.com",
+    },
     project: {
       name: "Different Hair!",
       client: "Frank Meichsner · one-man kapsalon in Emmen",
@@ -345,6 +351,12 @@ const en: SiteDict = {
     liveLong: "Live client project",
     rolesLabel: "What I did",
     newTab: "opens in a new tab",
+    trustpilot: {
+      title: "Find me on Trustpilot",
+      text: "Have we worked together? Share your experience through my Trustpilot profile.",
+      cta: "View my Trustpilot profile",
+      url: "https://www.trustpilot.com/review/kevinrebuilds.com",
+    },
     project: {
       name: "Different Hair!",
       client: "Frank Meichsner · one-man hair salon in Emmen (NL)",
