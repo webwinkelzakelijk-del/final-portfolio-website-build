@@ -240,10 +240,7 @@ main:focus { outline: none; }
 .hero {
   position: relative; overflow: hidden;
   padding-block: clamp(40px, 6vw, 72px) clamp(56px, 7vw, 88px);
-  background:
-    radial-gradient(60% 70% at 85% 30%, rgba(31, 79, 224, 0.1), transparent 70%),
-    radial-gradient(40% 50% at 100% 90%, rgba(31, 79, 224, 0.06), transparent 70%),
-    #fff;
+  background: #fff;
 }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: center; }
 .hero-grid > * { min-width: 0; }

@@ -1,0 +1,87 @@
+---
+import type { Lang } from "../i18n/routes";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const labels = lang === "nl"
+  ? { play: "Animatie afspelen", pause: "Animatie pauzeren", description: "Animatie van het bouwproces van een website: van schets en ontwerp tot ontwikkeling en livegang." }
+  : { play: "Play animation", pause: "Pause animation", description: "Website building animation: from sketch and design to development and launch. The animation contains Dutch labels." };
+---
+
+<div class="hero-animation" data-hero-animation>
+  <video
+    id="hero-build-video"
+    width="1280"
+    height="1254"
+    poster="/media/hero-build-poster.webp"
+    data-src="/media/hero-build.mp4"
+    preload="none"
+    muted
+    loop
+    playsinline
+    aria-label={labels.description}
+  ></video>
+  <button
+    class="hero-animation-toggle"
+    type="button"
+    aria-controls="hero-build-video"
+    data-play={labels.play}
+    data-pause={labels.pause}
+    hidden
+  >{labels.play}</button>
+</div>
+
+<style>
+  .hero-animation { position: relative; width: 100%; }
+  video { display: block; width: 100%; height: auto; aspect-ratio: 1280 / 1254; background: #fff; }
+  .hero-animation-toggle {
+    position: absolute; bottom: 8px; right: 8px;
+    min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+    background: #fff; color: var(--muted); font: inherit; font-size: 0.75rem; cursor: pointer;
+  }
+  .hero-animation-toggle:hover { color: var(--blue); border-color: var(--blue); }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-hero-animation]");
+  const video = root?.querySelector("video");
+  const button = root?.querySelector("button");
+  if (root && video && button) {
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const connection = (navigator as Navigator & { connection?: EventTarget & { saveData?: boolean } }).connection;
+    let wantsPlayback = !motion.matches && !connection?.saveData;
+    let visible = false;
+    button.hidden = false;
+    video.muted = true;
+
+    const updateLabel = () => {
+      button.textContent = (video.paused ? button.dataset.play : button.dataset.pause) ?? "";
+    };
+    const syncPlayback = () => {
+      if (!wantsPlayback || !visible || document.hidden) {
+        video.pause();
+        return;
+      }
+      // No video download until it is visible; reduced-motion/data-saving users see the poster.
+      if (!video.hasAttribute("src")) video.src = video.dataset.src!;
+      void video.play().catch(updateLabel);
+    };
+    button.addEventListener("click", () => {
+      wantsPlayback = video.paused;
+      syncPlayback();
+    });
+    video.addEventListener("play", updateLabel);
+    video.addEventListener("pause", updateLabel);
+    video.addEventListener("error", () => { button.hidden = true; });
+    const onPreferenceChange = () => {
+      wantsPlayback = !motion.matches && !connection?.saveData;
+      syncPlayback();
+    };
+    motion.addEventListener("change", onPreferenceChange);
+    connection?.addEventListener("change", onPreferenceChange);
+    document.addEventListener("visibilitychange", syncPlayback);
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      syncPlayback();
+    }, { threshold: 0.1 }).observe(root);
+  }
+</script>
