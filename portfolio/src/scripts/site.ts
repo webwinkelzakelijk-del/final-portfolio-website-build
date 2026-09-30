@@ -39,6 +39,8 @@ const anchorPairs: [string, string][] = [
   ["werkwijze", "process"],
   ["over-kevin", "about-kevin"],
   ["aanvragen", "request"],
+  ["veelgestelde-vragen", "faq"],
+  ["reviews", "reviews"],
   ["wat-ik-bouw", "what-i-build"],
   ["aanpak", "approach"],
 ];

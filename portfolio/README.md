@@ -13,6 +13,7 @@ Static, bilingual business website built with **Astro 7**. No UI framework, one 
 | --- | --- |
 | Homepage, navigation, form and footer text (NL + EN) | `src/i18n/site.ts` |
 | Service page content (NL + EN) | `src/i18n/services.ts` |
+| Google review snapshot and profile links | `src/content/googleReviews.ts` |
 | URLs and section anchors | `src/i18n/routes.ts` |
 | E-mail address, form delivery, search engine verification | `src/config.ts` |
 | Privacy statement and terms (NL + EN) | `src/i18n/legal.ts` |
@@ -66,6 +67,10 @@ The form posts to **FormSubmit**, the same service and inbox the previous site u
 ## Google Business Profile, Search Console and Bing
 
 See `docs/google-en-bing.md` for the step-by-step plan and ready-to-paste texts. Verification codes can be set at build time with `PUBLIC_GOOGLE_SITE_VERIFICATION` and `PUBLIC_BING_SITE_VERIFICATION` (or verify via DNS in Cloudflare, which is recommended).
+
+## Google reviews and homepage FAQ
+
+The hero links to the Google Business Profile; the review section shows the original review and the date the rating was checked. Footer links let visitors read or write a review. This is a static snapshot, not a live widget: check Google and update `rating`, `count` and `checkedAt` together in `src/content/googleReviews.ts`, then rebuild and deploy. Keep review quotes verbatim with author and original language. No Google scripts, tracking or API keys are loaded. Homepage FAQ text lives in `src/i18n/site.ts`; native `details` elements work without JavaScript.
 
 ## Legal pages
 

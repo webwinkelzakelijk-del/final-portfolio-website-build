@@ -1,0 +1,38 @@
+---
+import Icon from "./Icon.astro";
+import { googleReviews as reviews } from "../content/googleReviews";
+import { ANCHORS, type Lang } from "../i18n/routes";
+import { site } from "../i18n/site";
+interface Props { lang: Lang; compact?: boolean; }
+const { lang, compact = false } = Astro.props;
+const t = site[lang].reviews;
+const score = reviews.rating.toLocaleString(lang, { minimumFractionDigits: 1 });
+const count = `${reviews.count} ${reviews.count === 1 ? t.singular : t.plural}`;
+const date = new Date(`${reviews.checkedAt}T12:00:00Z`).toLocaleDateString(lang, { day: "numeric", month: "short", year: "numeric" });
+---
+{compact ? (
+  <a class="hero-review" href={reviews.profileUrl} target="_blank" rel="noopener" title={`${t.checked}: ${date}`} aria-label={`${score} ${t.outOf} 5 · ${count} (${t.newTab})`}>
+    <span class="review-stars" aria-hidden="true">{Array.from({ length: 5 }, () => <Icon name="star" />)}</span>
+    <span><strong>{score}/5</strong><span class="review-separator" aria-hidden="true"> · </span>{count}</span>
+    <Icon name="arrow-up-right" />
+    <span class="sr-only"> ({t.newTab})</span>
+  </a>
+) : (
+  <section class="section reviews" id={ANCHORS[lang].reviews} aria-labelledby="reviews-title">
+    <div class="container reviews-grid">
+      <div class="reviews-intro">
+        <p class="eyebrow">{t.eyebrow}</p>
+        <h2 id="reviews-title" class="h2 h2--sm">{t.title}</h2>
+        <p class="reviews-score"><strong>{score}<span>/5</span></strong><span>{count}</span></p>
+        <p class="reviews-date">{t.checked}: <time datetime={reviews.checkedAt}>{date}</time></p>
+        <a class="text-link" href={reviews.profileUrl} target="_blank" rel="noopener">{t.read}<Icon name="arrow-up-right" /><span class="sr-only"> ({t.newTab})</span></a>
+      </div>
+      <figure class="review-card">
+        <div class="review-card-top"><span class="review-stars" role="img" aria-label={t.fiveStars}>{Array.from({ length: 5 }, () => <Icon name="star" />)}</span><span class="review-source">Google</span></div>
+        <blockquote lang={reviews.review.language}><p>“{reviews.review.text}”</p></blockquote>
+        <figcaption><span class="review-avatar" aria-hidden="true">S</span><span><strong>{reviews.review.author}</strong><span>{t.source}</span></span></figcaption>
+        {lang === "en" && <p class="review-original">{t.original}</p>}
+      </figure>
+    </div>
+  </section>
+)}

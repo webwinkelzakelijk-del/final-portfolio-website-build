@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Icon from "./Icon.astro";
 import HeroAnimation from "./HeroAnimation.astro";
+import GoogleReviews from "./GoogleReviews.astro";
 import portrait from "../assets/kevin-head.webp";
 import { ANCHORS, type Lang } from "../i18n/routes";
 import { site } from "../i18n/site";
@@ -28,6 +29,7 @@ const a = ANCHORS[lang];
         <a class="btn btn--primary" href={`#${a.request}`}>{h.primary}<Icon name="arrow-right" /></a>
         <a class="btn btn--secondary" href={`#${a.solutions}`}>{h.secondary}</a>
       </div>
+      <GoogleReviews lang={lang} compact />
       <a class="hello" href={`#${a.about}`}>
         <Image src={portrait} alt="" width={64} height={64} widths={[64, 128]} sizes="64px" loading="eager" />
         <span><strong>{h.hello}</strong><span>{h.helloSub}</span></span>

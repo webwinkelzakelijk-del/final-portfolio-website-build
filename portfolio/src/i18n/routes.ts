@@ -14,9 +14,9 @@ export const ROUTES: Record<PageKey, Record<Lang, string>> = {
 };
 
 /** Section anchors on the homepage, per language. */
-export const ANCHORS: Record<Lang, { solutions: string; work: string; examples: string; process: string; about: string; request: string }> = {
-  nl: { solutions: "oplossingen", work: "werk", examples: "voorbeelden", process: "werkwijze", about: "over-kevin", request: "aanvragen" },
-  en: { solutions: "solutions", work: "work", examples: "examples", process: "process", about: "about-kevin", request: "request" },
+export const ANCHORS: Record<Lang, { solutions: string; work: string; examples: string; process: string; about: string; request: string; reviews: string; faq: string }> = {
+  nl: { solutions: "oplossingen", work: "werk", examples: "voorbeelden", process: "werkwijze", about: "over-kevin", request: "aanvragen", reviews: "reviews", faq: "veelgestelde-vragen" },
+  en: { solutions: "solutions", work: "work", examples: "examples", process: "process", about: "about-kevin", request: "request", reviews: "reviews", faq: "faq" },
 };
 
 /** Value used by the form's service choice. */

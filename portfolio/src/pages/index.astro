@@ -7,6 +7,8 @@ import Examples from "../components/Examples.astro";
 import Personal from "../components/Personal.astro";
 import Process from "../components/Process.astro";
 import RequestForm from "../components/RequestForm.astro";
+import GoogleReviews from "../components/GoogleReviews.astro";
+import HomeFAQ from "../components/HomeFAQ.astro";
 import { site } from "../i18n/site";
 import { ANCHORS } from "../i18n/routes";
 import { homeSchema } from "../seo/schema";
@@ -19,8 +21,10 @@ const steps = t.process.steps.map(([title, text]) => ({ title, text }));
   <Hero lang={lang} />
   <ServiceCards lang={lang} />
   <Work lang={lang} />
+  <GoogleReviews lang={lang} />
   <Examples lang={lang} />
   <Personal lang={lang} />
   <Process id={ANCHORS[lang].process} eyebrow={t.process.eyebrow} title={t.process.title} steps={steps} note={t.process.note} />
+  <HomeFAQ lang={lang} />
   <RequestForm lang={lang} />
 </Base>
