@@ -862,12 +862,6 @@ h1, h2, h3, .hero-title, .svc-title { overflow-wrap: break-word; hyphens: auto; 
 .case-roles { display: flex; flex-wrap: wrap; gap: 8px; }
 .case-roles li { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.875rem; font-weight: 500; color: var(--text); background: var(--bg-soft); }
 .case-copy .btn svg { width: 18px; height: 18px; }
-.case-trustpilot { display: grid; gap: 8px; width: 100%; margin-top: 6px; padding-top: 20px; border-top: 1px solid var(--line); }
-.case-trustpilot-title { font-weight: 700; color: var(--ink); }
-.case-trustpilot > p:not(.case-trustpilot-title) { font-size: 0.9375rem; color: var(--muted); }
-.case-trustpilot-link { display: inline-flex; align-items: center; gap: 8px; justify-self: start; min-height: 44px; padding: 4px 0; color: var(--blue); font-size: 0.9375rem; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
-.case-trustpilot-link:hover { color: var(--blue-hover); }
-.case-trustpilot-link svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 
 /* Legal pages ----------------------------------------------------------- */
